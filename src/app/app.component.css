@@ -1,0 +1,27 @@
+.toolbar-spacer {
+  flex: 1 1 auto;
+}
+
+/*::ng-deep .mat-snack-bar-container.success {
+  background: green;
+  color: black;
+}
+
+::ng-deep .mat-snack-bar-container.error {
+  background: red;
+  color: black;
+}
+
+::ng-deep .mat-simple-snackbar-action {
+  color: black;
+}*/
+
+.logo {
+  width: 50px;
+  margin-right: 15px;
+}
+
+.content {
+  height: 88vh;
+  padding-top: 0.5em;
+}

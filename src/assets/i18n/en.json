@@ -1,0 +1,12 @@
+{
+  "app": {
+    "title": "Eru",
+    "menu": {
+      "tooltip": "Menu",
+      "home": "Home"
+    }
+  },
+  "home": {
+    "title": "Home"
+  }
+}

@@ -1,1 +1,22 @@
 /* You can add global styles to this file, and also import other style files */
+@import "@angular/material/prebuilt-themes/indigo-pink.css";
+
+.input-width {
+  width: 400px;
+}
+
+mat-grid-list {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* this adds the "card" effect */
+}
+
+table {
+  width: 100%;
+}
+
+mat-radio-button {
+  margin: 0 12px;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
