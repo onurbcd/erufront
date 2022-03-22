@@ -1,4 +1,7 @@
 {
+  "shared": {
+    "confirmMsg": "Are you sure you want to delete?"
+  },
   "app": {
     "title": "Eru",
     "menu": {
@@ -8,5 +11,9 @@
   },
   "home": {
     "title": "Home"
+  },
+  "button": {
+    "ok": "Ok",
+    "cancel": "Cancel"
   }
 }

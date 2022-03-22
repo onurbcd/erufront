@@ -27,8 +27,20 @@ import { RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { ClipboardModule } from 'ngx-clipboard';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { ConfirmDialogComponent } from './components';
 
-export const importModules = [];
+export const importModules = [
+  CommonModule,
+  MatDialogModule,
+  MatButtonModule,
+  TranslateModule,
+  MatRadioModule,
+  ReactiveFormsModule,
+  MatInputModule,
+  MatTooltipModule,
+  MatIconModule,
+  RouterModule,
+];
 
 export const exportModules = [
   MatDialogModule,
@@ -62,7 +74,7 @@ export const exportModules = [
   MatProgressBarModule,
 ];
 
-export const components = [];
+export const components = [ConfirmDialogComponent];
 
 @NgModule({
   imports: [...importModules],
