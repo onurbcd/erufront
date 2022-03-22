@@ -14,6 +14,8 @@ export abstract class ApiService<E, F, ID> {
 
   abstract getQueryParams(filter: F): QueryParams;
 
+  abstract getStatus(status: boolean): E;
+
   post(entity: E, path: string = ''): Observable<E> {
     return this.httpClient.post<E>(
       `${environment.apiUri}${this.baseUrl}${path}`,
@@ -53,6 +55,18 @@ export abstract class ApiService<E, F, ID> {
         params,
       }
     );
+  }
+
+  patch(id: ID, entity: E): Observable<E> {
+    return this.httpClient.patch<E>(
+      `${environment.apiUri}${this.baseUrl}${id}`,
+      entity,
+      {}
+    );
+  }
+
+  changeStatus(id: ID, status: boolean): Observable<E> {
+    return this.patch(id, this.getStatus(status));
   }
 
   private getHttpParams(
