@@ -27,7 +27,11 @@ import { RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { ClipboardModule } from 'ngx-clipboard';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
-import { ConfirmDialogComponent, EruInputComponent } from './components';
+import {
+  ConfirmDialogComponent,
+  EruButtonsComponent,
+  EruInputComponent,
+} from './components';
 
 export const importModules = [
   CommonModule,
@@ -74,7 +78,11 @@ export const exportModules = [
   MatProgressBarModule,
 ];
 
-export const components = [ConfirmDialogComponent, EruInputComponent];
+export const components = [
+  ConfirmDialogComponent,
+  EruInputComponent,
+  EruButtonsComponent,
+];
 
 @NgModule({
   imports: [...importModules],

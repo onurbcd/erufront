@@ -17,6 +17,8 @@
   "button": {
     "ok": "Ok",
     "cancel": "Cancel",
-    "clear": "Clear"
+    "clear": "Clear",
+    "search": "Search",
+    "new": "New"
   }
 }

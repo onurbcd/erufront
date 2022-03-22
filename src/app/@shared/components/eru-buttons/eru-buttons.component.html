@@ -1,0 +1,10 @@
+<button
+  mat-raised-button
+  color="primary"
+  [disabled]="searchDisabled"
+  (click)="search.next()"
+>
+  {{ "button.search" | translate }}
+</button>
+&nbsp;
+<a mat-raised-button [routerLink]="link">{{ "button.new" | translate }}</a>
