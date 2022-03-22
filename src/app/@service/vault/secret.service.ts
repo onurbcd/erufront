@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Secret } from '@model';
-import { SecretFilter } from '@model/vault/secret-filter';
+import { Secret, SecretFilter } from '@model';
 import { ApiService, QueryParams } from '@service/api.service';
 import { AppConstants } from 'src/app/app-constants';
 
