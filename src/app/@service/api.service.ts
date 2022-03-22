@@ -9,28 +9,28 @@ export interface QueryParams {
   [name: string]: string | string[];
 }
 
-export abstract class ApiService<T, ID> {
+export abstract class ApiService<E, F, ID> {
   constructor(protected httpClient: HttpClient, public baseUrl: string) {}
 
-  abstract getQueryParams(t: T): QueryParams;
+  abstract getQueryParams(filter: F): QueryParams;
 
-  post(t: T, path: string = ''): Observable<T> {
-    return this.httpClient.post<T>(
+  post(entity: E, path: string = ''): Observable<E> {
+    return this.httpClient.post<E>(
       `${environment.apiUri}${this.baseUrl}${path}`,
-      t
+      entity
     );
   }
 
-  put(id: ID, t: T): Observable<T> {
-    return this.httpClient.put<T>(
+  put(id: ID, entity: E): Observable<E> {
+    return this.httpClient.put<E>(
       `${environment.apiUri}${this.baseUrl}${id}`,
-      t,
+      entity,
       {}
     );
   }
 
-  save(id: ID, t: T): Observable<T> {
-    return id == null ? this.post(t) : this.put(id, t);
+  save(id: ID, entity: E): Observable<E> {
+    return id == null ? this.post(entity) : this.put(id, entity);
   }
 
   delete(id: ID): Observable<void> {
@@ -39,15 +39,15 @@ export abstract class ApiService<T, ID> {
     );
   }
 
-  get(id: ID): Observable<T> {
-    return this.httpClient.get<T>(`${environment.apiUri}${this.baseUrl}${id}`);
+  get(id: ID): Observable<E> {
+    return this.httpClient.get<E>(`${environment.apiUri}${this.baseUrl}${id}`);
   }
 
-  getAll(t: T, pageEvent: PageEvent, sort: Sort): Observable<Page<T>> {
-    const queryParams = this.getQueryParams(t);
+  getAll(filter: F, pageEvent: PageEvent, sort: Sort): Observable<Page<E>> {
+    const queryParams = this.getQueryParams(filter);
     const params = this.getHttpParams(queryParams, pageEvent, sort);
 
-    return this.httpClient.get<Page<T>>(
+    return this.httpClient.get<Page<E>>(
       `${environment.apiUri}${this.baseUrl}`,
       {
         params,
