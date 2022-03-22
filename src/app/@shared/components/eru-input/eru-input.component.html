@@ -1,0 +1,19 @@
+<mat-form-field class="input-width">
+  <input
+    matInput
+    placeholder="{{ placeholder | translate }}"
+    [formControl]="inputFormControl"
+    (input)="reset.next(true)"
+    (keydown.enter)="$event.preventDefault(); search.next()"
+  />
+  <button
+    mat-button
+    *ngIf="inputFormControl.value"
+    matSuffix
+    mat-icon-button
+    matTooltip="{{ 'button.clear' | translate }}"
+    (click)="clear.next()"
+  >
+    <mat-icon>close</mat-icon>
+  </button>
+</mat-form-field>
