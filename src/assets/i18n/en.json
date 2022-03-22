@@ -1,6 +1,8 @@
 {
   "shared": {
-    "confirmMsg": "Are you sure you want to delete?"
+    "confirmMsg": "Are you sure you want to delete?",
+    "deleteSuccess": "{{ name }} with ID '{{ id }}' deleted with success",
+    "changeStatusSuccess": "{{ name }} with ID '{{ id }}': status changed with success"
   },
   "app": {
     "title": "Eru",

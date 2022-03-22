@@ -10,8 +10,11 @@ export class ToastService {
     private zone: NgZone
   ) {}
 
-  showSuccess(message: string): void {
-    const i18nMessage = this.translateService.instant(message);
+  showSuccess(
+    key: string | string[],
+    interpolateParams?: Object | undefined
+  ): void {
+    const i18nMessage = this.translateService.instant(key, interpolateParams);
     this.showMessage(i18nMessage, 'Success', 'success');
   }
 
