@@ -3,7 +3,8 @@
     "title": "Eru",
     "menu": {
       "tooltip": "Menu",
-      "home": "Home"
+      "home": "Home",
+      "secret": "Secret"
     }
   },
   "shared": {
