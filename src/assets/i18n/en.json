@@ -1,9 +1,4 @@
 {
-  "shared": {
-    "confirmMsg": "Are you sure you want to delete?",
-    "deleteSuccess": "{{ name }} with ID '{{ id }}' deleted with success",
-    "changeStatusSuccess": "{{ name }} with ID '{{ id }}': status changed with success"
-  },
   "app": {
     "title": "Eru",
     "menu": {
@@ -11,8 +6,18 @@
       "home": "Home"
     }
   },
+  "shared": {
+    "confirmMsg": "Are you sure you want to delete?",
+    "deleteSuccess": "{{ name }} with ID '{{ id }}' deleted with success",
+    "changeStatusSuccess": "{{ name }} with ID '{{ id }}': status changed with success"
+  },
   "home": {
     "title": "Home"
+  },
+  "vault": {
+    "secret": {
+      "search": "Search"
+    }
   },
   "button": {
     "ok": "Ok",
@@ -20,5 +25,21 @@
     "clear": "Clear",
     "search": "Search",
     "new": "New"
+  },
+  "global": {
+    "slideToggle": {
+      "true": "Active",
+      "false": "Inactive"
+    },
+    "saveSuccess": "{{ type }} '{{ name }}' saved with success",
+    "radioButton": {
+      "both": "Both",
+      "active": "Active",
+      "inactive": "Inactive"
+    },
+    "edit": "Edit",
+    "delete": "Delete",
+    "noData": "No data",
+    "filters": "Filters"
   }
 }

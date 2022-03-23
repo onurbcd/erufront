@@ -6,6 +6,11 @@ const routes: Routes = [
     path: 'home',
     loadChildren: () => import('./home/home.module').then((m) => m.HomeModule),
   },
+  {
+    path: 'secret',
+    loadChildren: () =>
+      import('./vault/secret/secret.module').then((m) => m.SecretModule),
+  },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
 ];
 
