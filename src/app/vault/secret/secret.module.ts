@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { SharedModule } from '@shared';
-import { SecretFilterComponent } from './components';
+import { SecretFilterComponent, SecretGridComponent } from './components';
 
 export const SecretRoutes: Routes = [
   {
@@ -19,7 +19,7 @@ export const SecretRoutes: Routes = [
 ];
 
 @NgModule({
-  declarations: [SecretFilterComponent],
+  declarations: [SecretFilterComponent, SecretGridComponent],
   imports: [SharedModule, RouterModule.forChild(SecretRoutes)],
 })
 export class SecretModule {}

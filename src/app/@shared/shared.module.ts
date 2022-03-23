@@ -29,6 +29,7 @@ import { ClipboardModule } from 'ngx-clipboard';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import {
   ConfirmDialogComponent,
+  EruActionsComponent,
   EruButtonsComponent,
   EruInputComponent,
 } from './components';
@@ -80,8 +81,9 @@ export const exportModules = [
 
 export const components = [
   ConfirmDialogComponent,
-  EruInputComponent,
+  EruActionsComponent,
   EruButtonsComponent,
+  EruInputComponent,
 ];
 
 @NgModule({

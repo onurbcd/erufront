@@ -19,4 +19,8 @@ export class SecretService extends ApiService<Secret, SecretFilter, string> {
 
     return queryParams;
   }
+
+  getStatus(status: boolean): Secret {
+    throw new Error('Method not implemented.');
+  }
 }

@@ -16,7 +16,12 @@
   },
   "vault": {
     "secret": {
-      "search": "Search"
+      "search": "Search",
+      "name": "Name",
+      "description": "Description",
+      "link": "Link",
+      "username": "Username",
+      "password": "Password"
     }
   },
   "button": {

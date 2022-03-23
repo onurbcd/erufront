@@ -28,7 +28,7 @@ export abstract class BaseListDirective<E, F, ID> implements OnDestroy {
   };
 
   private defaultSort: Sort = {
-    active: 'id',
+    active: 'name',
     direction: 'asc',
   };
 
