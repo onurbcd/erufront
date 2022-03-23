@@ -14,7 +14,7 @@ export class SecretService extends ApiService<Secret, SecretFilter, string> {
     const queryParams: QueryParams = {};
 
     if (filter.search && filter.search.trim().length > 0) {
-      queryParams['filter'] = filter.search;
+      queryParams['search'] = filter.search;
     }
 
     return queryParams;

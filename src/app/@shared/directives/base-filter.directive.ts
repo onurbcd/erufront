@@ -12,7 +12,7 @@ import { Subject, takeUntil } from 'rxjs';
 export abstract class BaseFilterDirective<T> implements OnInit, OnDestroy {
   private unsubscribe$ = new Subject<void>();
 
-  formGroup: FormGroup;
+  formGroup!: FormGroup;
 
   @Output() restart: EventEmitter<boolean> = new EventEmitter<boolean>();
 
@@ -20,11 +20,11 @@ export abstract class BaseFilterDirective<T> implements OnInit, OnDestroy {
 
   @Output() valueChanges: EventEmitter<T> = new EventEmitter<T>();
 
-  constructor() {
-    this.formGroup = this.buildForm();
-  }
+  constructor() {}
 
   ngOnInit(): void {
+    this.buildForm();
+
     this.formGroup.valueChanges
       .pipe(takeUntil(this.unsubscribe$))
       .subscribe((value) => {
@@ -37,7 +37,7 @@ export abstract class BaseFilterDirective<T> implements OnInit, OnDestroy {
     this.unsubscribe$.complete();
   }
 
-  protected abstract buildForm(): FormGroup;
+  protected abstract buildForm(): void;
 
   protected abstract resetForm(path: string): void;
 

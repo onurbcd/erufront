@@ -2,11 +2,12 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { SharedModule } from '@shared';
 import { SecretFilterComponent, SecretGridComponent } from './components';
+import { SecretListComponent } from './containers';
 
 export const SecretRoutes: Routes = [
   {
     path: '',
-    // component: SourceListComponent,
+    component: SecretListComponent,
   },
   {
     path: 'new',
@@ -19,7 +20,11 @@ export const SecretRoutes: Routes = [
 ];
 
 @NgModule({
-  declarations: [SecretFilterComponent, SecretGridComponent],
+  declarations: [
+    SecretFilterComponent,
+    SecretGridComponent,
+    SecretListComponent,
+  ],
   imports: [SharedModule, RouterModule.forChild(SecretRoutes)],
 })
 export class SecretModule {}

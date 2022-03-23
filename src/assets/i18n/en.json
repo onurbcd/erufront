@@ -21,7 +21,8 @@
       "description": "Description",
       "link": "Link",
       "username": "Username",
-      "password": "Password"
+      "password": "Password",
+      "listTitle": "Secret List"
     }
   },
   "button": {

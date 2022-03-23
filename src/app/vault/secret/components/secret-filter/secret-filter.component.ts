@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
-import { Secret } from '@model';
+import { FormBuilder, FormControl, Validators } from '@angular/forms';
+import { SecretFilter } from '@model';
 import { BaseFilterDirective } from '@shared';
+import { AppConstants } from 'src/app/app-constants';
 
 @Component({
   selector: 'app-secret-filter',
@@ -9,10 +10,13 @@ import { BaseFilterDirective } from '@shared';
   styleUrls: ['./secret-filter.component.css'],
 })
 export class SecretFilterComponent
-  extends BaseFilterDirective<Secret>
+  extends BaseFilterDirective<SecretFilter>
   implements OnInit
 {
-  searchFormControl = new FormControl('');
+  searchFormControl = new FormControl('', [
+    Validators.minLength(AppConstants.SEARCH_MIN_LENGTH),
+    Validators.maxLength(AppConstants.SEARCH_MAX_LENGTH),
+  ]);
 
   constructor(private formBuilder: FormBuilder) {
     super();
@@ -22,8 +26,8 @@ export class SecretFilterComponent
     super.ngOnInit();
   }
 
-  protected buildForm(): FormGroup {
-    return this.formBuilder.group({
+  protected buildForm(): void {
+    this.formGroup = this.formBuilder.group({
       search: this.searchFormControl,
     });
   }
