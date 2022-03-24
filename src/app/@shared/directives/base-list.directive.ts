@@ -82,7 +82,7 @@ export abstract class BaseListDirective<E, F, ID> implements OnDestroy {
     this.getItems(this.defaultPageEvent, this.chooseSort(sort));
   }
 
-  edit(id: number): void {
+  edit(id: ID): void {
     this.router.navigate([`/${this.name}/${id}/edit`]);
   }
 

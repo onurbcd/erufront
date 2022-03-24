@@ -1,0 +1,18 @@
+<button
+  *ngIf="!isCopied"
+  mat-icon-button
+  matTooltip="{{ 'button.copy' | translate }}"
+  ngxClipboard
+  [cbContent]="content"
+  (cbOnSuccess)="success()"
+>
+  <mat-icon color="primary">{{ icon }}</mat-icon>
+</button>
+<button
+  *ngIf="isCopied"
+  mat-icon-button
+  matTooltip="{{ 'button.copied' | translate }}"
+  style="color: rgb(34, 134, 58)"
+>
+  <mat-icon>check</mat-icon>
+</button>

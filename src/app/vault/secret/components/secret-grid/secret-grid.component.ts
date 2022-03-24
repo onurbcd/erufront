@@ -20,7 +20,7 @@ export class SecretGridComponent extends BaseListDirective<
     'description',
     'link',
     'username',
-    'password',
+    'lastModifiedDate',
     'config',
   ];
 

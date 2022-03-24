@@ -23,7 +23,8 @@
       "link": "Link",
       "username": "Username",
       "password": "Password",
-      "listTitle": "Secret List"
+      "listTitle": "Secret List",
+      "lastModifiedDate": "Updated At"
     }
   },
   "button": {
@@ -31,7 +32,9 @@
     "cancel": "Cancel",
     "clear": "Clear",
     "search": "Search",
-    "new": "New"
+    "new": "New",
+    "copy": "Copy",
+    "copied": "Copied"
   },
   "global": {
     "slideToggle": {
