@@ -4,3 +4,5 @@ export * from './page/sort';
 
 export * from './vault/secret-filter';
 export * from './vault/secret';
+
+export * from './identifier';

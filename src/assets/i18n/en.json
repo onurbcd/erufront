@@ -41,7 +41,7 @@
       "true": "Active",
       "false": "Inactive"
     },
-    "saveSuccess": "{{ type }} '{{ name }}' saved with success",
+    "saveSuccess": "Saved with success",
     "radioButton": {
       "both": "Both",
       "active": "Active",

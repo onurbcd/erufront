@@ -1,6 +1,8 @@
-export class Secret {
+import { Identifier } from '@model';
+
+export class Secret extends Identifier<string> {
   constructor(
-    public id: string,
+    id: string,
     public name: string,
     public description: string,
     public link: string,
@@ -8,5 +10,7 @@ export class Secret {
     public password: string,
     public createdDate: Date,
     public lastModifiedDate: Date
-  ) {}
+  ) {
+    super(id);
+  }
 }
