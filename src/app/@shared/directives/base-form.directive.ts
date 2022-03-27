@@ -6,7 +6,7 @@ import { ApiService, ToastService } from '@service';
 import { Subject, takeUntil } from 'rxjs';
 
 @Directive()
-export abstract class BaseFormDirective<E extends Identifier<ID>, ID>
+export abstract class BaseFormDirective<E extends Identifier<ID>, F, ID>
   implements OnInit, OnDestroy
 {
   private unsubscribe$ = new Subject<void>();
@@ -17,7 +17,7 @@ export abstract class BaseFormDirective<E extends Identifier<ID>, ID>
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    private apiService: ApiService<E, E, ID>,
+    private apiService: ApiService<E, F, ID>,
     private toastService: ToastService,
     private router: Router
   ) {}

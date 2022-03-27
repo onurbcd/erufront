@@ -1,7 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { SharedModule } from '@shared';
-import { SecretFilterComponent, SecretGridComponent } from './components';
+import {
+  SecretFilterComponent,
+  SecretFormComponent,
+  SecretGridComponent,
+} from './components';
 import { SecretListComponent } from './containers';
 
 export const SecretRoutes: Routes = [
@@ -24,6 +28,7 @@ export const SecretRoutes: Routes = [
     SecretFilterComponent,
     SecretGridComponent,
     SecretListComponent,
+    SecretFormComponent,
   ],
   imports: [SharedModule, RouterModule.forChild(SecretRoutes)],
 })
