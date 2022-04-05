@@ -14,8 +14,8 @@ export class SecretFilterComponent
   implements OnInit
 {
   searchFormControl = new FormControl('', [
-    Validators.minLength(AppConstants.SEARCH_MIN_LENGTH),
-    Validators.maxLength(AppConstants.SEARCH_MAX_LENGTH),
+    Validators.minLength(AppConstants.LENGTH_3),
+    Validators.maxLength(AppConstants.LENGTH_250),
   ]);
 
   constructor(private formBuilder: FormBuilder) {

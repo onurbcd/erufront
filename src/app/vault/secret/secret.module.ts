@@ -6,7 +6,7 @@ import {
   SecretFormComponent,
   SecretGridComponent,
 } from './components';
-import { SecretListComponent } from './containers';
+import { SecretCreationComponent, SecretListComponent } from './containers';
 
 export const SecretRoutes: Routes = [
   {
@@ -15,11 +15,11 @@ export const SecretRoutes: Routes = [
   },
   {
     path: 'new',
-    // component: SourceCreationComponent,
+    component: SecretCreationComponent,
   },
   {
     path: ':id/edit',
-    // component: SourceCreationComponent,
+    component: SecretCreationComponent,
   },
 ];
 
@@ -29,6 +29,7 @@ export const SecretRoutes: Routes = [
     SecretGridComponent,
     SecretListComponent,
     SecretFormComponent,
+    SecretCreationComponent,
   ],
   imports: [SharedModule, RouterModule.forChild(SecretRoutes)],
 })

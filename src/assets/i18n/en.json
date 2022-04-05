@@ -24,7 +24,8 @@
       "username": "Username",
       "password": "Password",
       "listTitle": "Secret List",
-      "lastModifiedDate": "Updated At"
+      "lastModifiedDate": "Updated At",
+      "formTitle": "Secret Creation"
     }
   },
   "button": {
@@ -34,7 +35,9 @@
     "search": "Search",
     "new": "New",
     "copy": "Copy",
-    "copied": "Copied"
+    "copied": "Copied",
+    "save": "Save",
+    "back": "Back"
   },
   "global": {
     "slideToggle": {

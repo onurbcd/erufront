@@ -20,7 +20,7 @@ export class LoaderInterceptor implements HttpInterceptor {
     next: HttpHandler
   ): Observable<HttpEvent<unknown>> {
     this.requests.push(request);
-    this.loaderService.isLoading.next(true);
+    this.loaderService.setLoading(true);
 
     return new Observable((observable) => {
       const subscription = next.handle(request).subscribe({
@@ -51,6 +51,6 @@ export class LoaderInterceptor implements HttpInterceptor {
   private removeRequest(request: HttpRequest<unknown>): void {
     const index = this.requests.indexOf(request);
     this.requests.splice(index, 1);
-    this.loaderService.isLoading.next(this.requests.length > 0);
+    this.loaderService.setLoading(this.requests.length > 0);
   }
 }

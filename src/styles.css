@@ -20,3 +20,9 @@ mat-radio-button {
 .cursor-pointer {
   cursor: pointer;
 }
+
+.eru-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

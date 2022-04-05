@@ -1,6 +1,6 @@
 <mat-progress-bar
   mode="indeterminate"
-  *ngIf="loaderService.isLoading | async"
+  *ngIf="loaderService.getLoading() | async"
   color="accent"
 ></mat-progress-bar>
 <mat-toolbar color="primary">

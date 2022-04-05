@@ -1,20 +1,20 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Secret, SecretFilter } from '@model';
 import { SecretService, ToastService } from '@service';
 import { BaseFormDirective } from '@shared/directives/base-form.directive';
+import { AppConstants } from 'src/app/app-constants';
 
 @Component({
   selector: 'app-secret-form',
   templateUrl: './secret-form.component.html',
   styleUrls: ['./secret-form.component.css'],
 })
-export class SecretFormComponent extends BaseFormDirective<
-  Secret,
-  SecretFilter,
-  string
-> {
+export class SecretFormComponent
+  extends BaseFormDirective<Secret, SecretFilter, string>
+  implements OnInit
+{
   constructor(
     activatedRoute: ActivatedRoute,
     secretService: SecretService,
@@ -27,11 +27,37 @@ export class SecretFormComponent extends BaseFormDirective<
 
   protected buildForm(): void {
     this.formGroup = this.formBuilder.group({
-      name: [''],
-      description: [''],
-      link: [''],
-      username: [''],
-      password: [''],
+      name: [
+        this.defaultValues.name,
+        [
+          Validators.required,
+          Validators.minLength(AppConstants.LENGTH_3),
+          Validators.maxLength(AppConstants.LENGTH_50),
+        ],
+      ],
+      description: [
+        this.defaultValues.description,
+        [
+          Validators.minLength(AppConstants.LENGTH_5),
+          Validators.maxLength(AppConstants.LENGTH_250),
+        ],
+      ],
+      link: [
+        this.defaultValues.link,
+        [Validators.pattern(AppConstants.URL_PATTERN)],
+      ],
+      username: [
+        this.defaultValues.username,
+        [Validators.required, Validators.minLength(AppConstants.LENGTH_3)],
+      ],
+      password: [
+        this.defaultValues.password,
+        [Validators.required, Validators.minLength(AppConstants.LENGTH_3)],
+      ],
     });
+  }
+
+  override ngOnInit(): void {
+    super.ngOnInit();
   }
 }

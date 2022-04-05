@@ -55,7 +55,7 @@ export abstract class BaseFormDirective<E extends Identifier<ID>, F, ID>
     const entity: E = this.formGroup.value;
 
     this.apiService
-      .save(entity.id, entity)
+      .save(this.defaultValues.id, entity)
       .pipe(takeUntil(this.unsubscribe$))
       .subscribe(() => {
         this.toastService.showSuccess('global.saveSuccess');
