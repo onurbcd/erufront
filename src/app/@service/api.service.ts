@@ -79,8 +79,7 @@ export abstract class ApiService<E, F, ID> {
       queryParams['size'] = `${pageEvent.pageSize}`;
     }
 
-    queryParams['sort'] = sort.active;
-    queryParams['direction'] = sort.direction.toUpperCase();
+    queryParams['sort'] = sort.active + ',' + sort.direction;
     return new HttpParams({ fromObject: queryParams });
   }
 }
