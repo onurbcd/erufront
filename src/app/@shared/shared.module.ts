@@ -33,6 +33,7 @@ import {
   EruActionsComponent,
   EruButtonsComponent,
   EruInputComponent,
+  FormButtonsComponent,
 } from './components';
 
 export const importModules = [
@@ -87,6 +88,7 @@ export const components = [
   EruActionsComponent,
   EruButtonsComponent,
   EruInputComponent,
+  FormButtonsComponent,
 ];
 
 @NgModule({

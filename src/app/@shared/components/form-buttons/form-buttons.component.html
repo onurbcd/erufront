@@ -1,0 +1,12 @@
+<div>
+  <button
+    mat-raised-button
+    color="primary"
+    [disabled]="disabled"
+    (click)="save.next([link])"
+  >
+    {{ "button.save" | translate }}
+  </button>
+  &nbsp;
+  <a mat-raised-button [routerLink]="link">{{ "button.back" | translate }}</a>
+</div>
