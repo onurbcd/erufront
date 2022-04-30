@@ -44,15 +44,27 @@ export class SecretFormComponent
       ],
       link: [
         this.defaultValues.link,
-        [Validators.pattern(AppConstants.URL_PATTERN)],
+        [
+          Validators.pattern(AppConstants.URL_PATTERN),
+          Validators.minLength(AppConstants.LENGTH_7),
+          Validators.maxLength(AppConstants.LENGTH_2048),
+        ],
       ],
       username: [
         this.defaultValues.username,
-        [Validators.required, Validators.minLength(AppConstants.LENGTH_3)],
+        [
+          Validators.required,
+          Validators.minLength(AppConstants.LENGTH_3),
+          Validators.maxLength(AppConstants.LENGTH_50),
+        ],
       ],
       password: [
         this.defaultValues.password,
-        [Validators.required, Validators.minLength(AppConstants.LENGTH_3)],
+        [
+          Validators.required,
+          Validators.minLength(AppConstants.LENGTH_3),
+          Validators.maxLength(AppConstants.LENGTH_50),
+        ],
       ],
     });
   }

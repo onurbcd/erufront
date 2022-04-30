@@ -13,9 +13,13 @@ export class AppConstants {
 
   public static LENGTH_5 = 5;
 
+  public static LENGTH_7 = 7;
+
   public static LENGTH_50 = 50;
 
   public static LENGTH_250 = 250;
+
+  public static LENGTH_2048 = 2048;
 
   public static URL_PATTERN: RegExp =
     /^(https?|ftp|file):\/\/[-a-zA-Z0-9+&@#/%?=~_|!:,.;]*[-a-zA-Z0-9+&@#/%=~_|]/;
