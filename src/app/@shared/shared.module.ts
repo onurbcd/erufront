@@ -14,6 +14,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatListModule } from '@angular/material/list';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -26,13 +27,13 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { ClipboardModule } from 'ngx-clipboard';
-import { MatProgressBarModule } from '@angular/material/progress-bar';
 import {
   ConfirmDialogComponent,
   CopyButtonComponent,
   EruActionsComponent,
   EruButtonsComponent,
   EruInputComponent,
+  FilterStatusComponent,
   FormButtonsComponent,
 } from './components';
 
@@ -88,6 +89,7 @@ export const components = [
   EruActionsComponent,
   EruButtonsComponent,
   EruInputComponent,
+  FilterStatusComponent,
   FormButtonsComponent,
 ];
 

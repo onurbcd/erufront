@@ -1,0 +1,15 @@
+<mat-radio-group
+  [formControl]="statusFormControl"
+  color="primary"
+  (change)="search.next()"
+>
+  <mat-radio-button value="">{{
+    translation + ".both" | translate
+  }}</mat-radio-button>
+  <mat-radio-button value="true">{{
+    translation + ".active" | translate
+  }}</mat-radio-button>
+  <mat-radio-button value="false">{{
+    translation + ".inactive" | translate
+  }}</mat-radio-button>
+</mat-radio-group>
