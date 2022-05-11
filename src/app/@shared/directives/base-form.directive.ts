@@ -1,12 +1,12 @@
 import { Directive, OnDestroy, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Identifier } from '@model';
+import { Prime } from '@model';
 import { ApiService, ToastService } from '@service';
 import { Subject, takeUntil } from 'rxjs';
 
 @Directive()
-export abstract class BaseFormDirective<E extends Identifier<ID>, F, ID>
+export abstract class BaseFormDirective<E extends Prime<ID>, F, ID>
   implements OnInit, OnDestroy
 {
   private unsubscribe$ = new Subject<void>();

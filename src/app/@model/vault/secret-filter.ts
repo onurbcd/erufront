@@ -1,3 +1,3 @@
 export class SecretFilter {
-  constructor(public search: string) {}
+  constructor(public search: string, public active: boolean) {}
 }

@@ -57,16 +57,16 @@ export abstract class ApiService<E, F, ID> {
     );
   }
 
-  patch(id: ID, entity: E): Observable<E> {
-    return this.httpClient.patch<E>(
+  patch(id: ID, entity: E): Observable<void> {
+    return this.httpClient.patch<void>(
       `${environment.apiUri}${this.baseUrl}${id}`,
       entity,
       {}
     );
   }
 
-  changeStatus(id: ID, status: boolean): Observable<E> {
-    return this.patch(id, this.getStatus(status));
+  changeStatus(id: ID, active: boolean): Observable<void> {
+    return this.patch(id, this.getStatus(active));
   }
 
   private getHttpParams(

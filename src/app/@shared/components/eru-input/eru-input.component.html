@@ -3,7 +3,7 @@
     matInput
     placeholder="{{ placeholder | translate }}"
     [formControl]="inputFormControl"
-    (input)="reset.next(true)"
+    (input)="restart.next(true)"
     (keydown.enter)="$event.preventDefault(); search.next()"
   />
   <button

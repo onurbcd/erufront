@@ -1,16 +1,17 @@
-import { Identifier } from '@model';
+import { Prime } from '@model';
 
-export class Secret extends Identifier<string> {
+export class Secret extends Prime<string> {
   constructor(
+    createdDate: Date,
+    lastModifiedDate: Date,
     id: string,
-    public name: string,
+    name: string,
+    active: boolean,
     public description: string,
     public link: string,
     public username: string,
-    public password: string,
-    public createdDate: Date,
-    public lastModifiedDate: Date
+    public password: string
   ) {
-    super(id);
+    super(createdDate, lastModifiedDate, id, name, active);
   }
 }

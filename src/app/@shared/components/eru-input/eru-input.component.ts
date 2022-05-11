@@ -11,7 +11,7 @@ export class EruInputComponent {
 
   @Input() inputFormControl!: FormControl;
 
-  @Output() reset: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output() restart: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   @Output() search: EventEmitter<void> = new EventEmitter<void>();
 
