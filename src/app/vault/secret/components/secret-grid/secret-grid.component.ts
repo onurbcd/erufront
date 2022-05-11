@@ -21,6 +21,7 @@ export class SecretGridComponent extends BaseListDirective<
     'link',
     'username',
     'lastModifiedDate',
+    'active',
     'config',
   ];
 

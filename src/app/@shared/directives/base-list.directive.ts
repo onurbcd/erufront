@@ -122,6 +122,8 @@ export abstract class BaseListDirective<E, F, ID> implements OnDestroy {
           name: this.name,
           id,
         });
+
+        this.search();
       });
   }
 

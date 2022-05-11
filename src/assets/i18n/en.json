@@ -25,7 +25,8 @@
       "password": "Password",
       "listTitle": "Secret List",
       "lastModifiedDate": "Updated At",
-      "formTitle": "Secret Creation"
+      "formTitle": "Secret Creation",
+      "status": "Status"
     }
   },
   "button": {
