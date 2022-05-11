@@ -18,6 +18,8 @@ export class SecretFilterComponent
     Validators.maxLength(AppConstants.LENGTH_50),
   ]);
 
+  activeFormControl = new FormControl('');
+
   constructor(private formBuilder: FormBuilder) {
     super();
   }
@@ -29,6 +31,7 @@ export class SecretFilterComponent
   protected buildForm(): void {
     this.formGroup = this.formBuilder.group({
       search: this.searchFormControl,
+      active: this.activeFormControl,
     });
   }
 

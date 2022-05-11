@@ -17,6 +17,10 @@ export class SecretService extends ApiService<Secret, SecretFilter, string> {
       queryParams['search'] = filter.search;
     }
 
+    if (filter.active) {
+      queryParams['active'] = `${filter.active}`;
+    }
+
     return queryParams;
   }
 
