@@ -26,6 +26,8 @@ export class SecretFormComponent
   }
 
   protected buildForm(): void {
+    const activeDefaultValue = this.defaultValues.active == null ? true : this.defaultValues.active;
+
     this.formGroup = this.formBuilder.group({
       name: [
         this.defaultValues.name,
@@ -66,6 +68,7 @@ export class SecretFormComponent
           Validators.maxLength(AppConstants.LENGTH_50),
         ],
       ],
+      active: [activeDefaultValue, [Validators.required]],
     });
   }
 
