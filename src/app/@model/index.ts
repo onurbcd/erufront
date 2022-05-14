@@ -1,3 +1,7 @@
+export * from './finance/filter/bill-type-filter';
+
+export * from './finance/bill-type';
+
 export * from './page/page';
 export * from './page/pageable';
 export * from './page/sort';
