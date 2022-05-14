@@ -3,13 +3,13 @@ import { Observable } from 'rxjs';
 import { environment } from '@env/environment';
 import { PageEvent } from '@angular/material/paginator';
 import { Sort } from '@angular/material/sort';
-import { Page } from '@model';
+import { Filter, Page, Prime } from '@model';
 
 export interface QueryParams {
   [name: string]: string | string[];
 }
 
-export abstract class ApiService<E, F, ID> {
+export abstract class ApiService<E extends Prime<ID>, F, ID> {
   constructor(protected httpClient: HttpClient, public baseUrl: string) {}
 
   abstract getQueryParams(filter: F): QueryParams;
@@ -67,6 +67,26 @@ export abstract class ApiService<E, F, ID> {
 
   changeStatus(id: ID, active: boolean): Observable<void> {
     return this.patch(id, this.getStatus(active));
+  }
+
+  protected getDefaultQueryParams(filter: Filter): QueryParams {
+    const queryParams: QueryParams = {};
+
+    if (filter.search && filter.search.trim().length > 0) {
+      queryParams['search'] = filter.search;
+    }
+
+    if (filter.active) {
+      queryParams['active'] = `${filter.active}`;
+    }
+
+    return queryParams;
+  }
+
+  protected getDefaultStatus(active: boolean): E {
+    const entity = {} as E;
+    entity.active = active;
+    return entity;
   }
 
   private getHttpParams(

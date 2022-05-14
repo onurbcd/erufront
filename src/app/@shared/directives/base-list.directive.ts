@@ -10,13 +10,14 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatSort, Sort } from '@angular/material/sort';
 import { Router } from '@angular/router';
+import { Prime } from '@model';
 import { ApiService, ToastService } from '@service';
 import { ConfirmDialogComponent } from '@shared/components';
 import { Subject, takeUntil } from 'rxjs';
 import { AppConstants } from 'src/app/app-constants';
 
 @Directive()
-export abstract class BaseListDirective<E, F, ID> implements OnDestroy {
+export abstract class BaseListDirective<E extends Prime<ID>, F, ID> implements OnDestroy {
   readonly pageSizeOptions = AppConstants.PAGE_SIZE_OPTIONS;
 
   private unsubscribe$ = new Subject<void>();

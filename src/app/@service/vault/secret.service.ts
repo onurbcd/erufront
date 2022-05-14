@@ -11,22 +11,10 @@ export class SecretService extends ApiService<Secret, SecretFilter, string> {
   }
 
   getQueryParams(filter: SecretFilter): QueryParams {
-    const queryParams: QueryParams = {};
-
-    if (filter.search && filter.search.trim().length > 0) {
-      queryParams['search'] = filter.search;
-    }
-
-    if (filter.active) {
-      queryParams['active'] = `${filter.active}`;
-    }
-
-    return queryParams;
+    return this.getDefaultQueryParams(filter);
   }
 
   getStatus(active: boolean): Secret {
-    const secret = {} as Secret;
-    secret.active = active;
-    return secret;
+    return this.getDefaultStatus(active);
   }
 }
