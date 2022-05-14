@@ -6,4 +6,5 @@ export * from './vault/secret-filter';
 export * from './vault/secret';
 
 export * from './audit';
+export * from './filter';
 export * from './prime';
