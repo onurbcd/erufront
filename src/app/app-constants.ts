@@ -27,4 +27,8 @@ export class AppConstants {
   // VAULT - SECRET
 
   public static VAULT_SECRET_BASE_URL = 'secret/';
+
+  // FINANCE
+
+  public static FINANCE_BILL_TYPE_URL = 'bill-type/';
 }

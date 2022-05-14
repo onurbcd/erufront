@@ -1,3 +1,5 @@
+export * from './finance/bill-type.service';
+
 export * from './vault/secret.service';
 
 export * from './api.service';
