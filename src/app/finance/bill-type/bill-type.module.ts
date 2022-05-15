@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { SharedModule } from '@shared';
 import { BillTypeFilterComponent, BillTypeGridComponent } from './components';
-import { BillTypeListComponent } from './containers';
+import { BillTypeCreationComponent, BillTypeListComponent } from './containers';
 
 export const BillTypeRoutes: Routes = [
   {
@@ -11,11 +11,11 @@ export const BillTypeRoutes: Routes = [
   },
   {
     path: 'new',
-    // component: SecretCreationComponent,
+    component: BillTypeCreationComponent,
   },
   {
     path: ':id/edit',
-    // component: SecretCreationComponent,
+    component: BillTypeCreationComponent,
   },
 ];
 
@@ -24,6 +24,7 @@ export const BillTypeRoutes: Routes = [
     BillTypeListComponent,
     BillTypeFilterComponent,
     BillTypeGridComponent,
+    BillTypeCreationComponent,
   ],
   imports: [SharedModule, RouterModule.forChild(BillTypeRoutes)],
 })

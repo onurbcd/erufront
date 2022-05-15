@@ -21,7 +21,8 @@
       "listTitle": "Bill Type List",
       "name": "Name",
       "lastModifiedDate": "Updated At",
-      "status": "Status"
+      "status": "Status",
+      "formTitle": "Bill Type Creation"
     }
   },
   "vault": {
