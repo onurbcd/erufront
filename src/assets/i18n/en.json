@@ -18,7 +18,8 @@
   },
   "finance": {
     "billType": {
-      "listTitle": "Bill Type List"
+      "listTitle": "Bill Type List",
+      "name": "Name"
     }
   },
   "vault": {

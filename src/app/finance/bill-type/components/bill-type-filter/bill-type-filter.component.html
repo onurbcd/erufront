@@ -1,0 +1,40 @@
+<form [formGroup]="formGroup" novalidate>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title translate>
+        global.filters
+        <mat-icon
+          routerLink="/bill-type/new"
+          matTooltip="{{ 'button.new' | translate }}"
+          color="primary"
+          >add</mat-icon
+        >
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <mat-grid-list cols="2" rowHeight="75">
+      <mat-grid-tile>
+        <app-eru-input
+          [placeholder]="'finance.billType.name'"
+          [inputFormControl]="searchFormControl"
+          (restart)="restart.next($event)"
+          (search)="filterSearch()"
+          (clear)="filterClear('search')"
+        ></app-eru-input>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <app-filter-status
+          [statusFormControl]="activeFormControl"
+          [translation]="'global.radioButton'"
+          (search)="filterSearch()"
+        ></app-filter-status>
+      </mat-grid-tile>
+      <mat-grid-tile colspan="2">
+        <app-eru-buttons
+          [searchDisabled]="formGroup.invalid"
+          (search)="filterSearch()"
+          [link]="'/bill-type/new'"
+        ></app-eru-buttons>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </mat-expansion-panel>
+</form>
