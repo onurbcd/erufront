@@ -1,0 +1,18 @@
+<form [formGroup]="formGroup" novalidate class="eru-form">
+  <mat-form-field class="input-width">
+    <input
+      matInput
+      placeholder="{{ 'finance.billType.name' | translate }}"
+      formControlName="name"
+    />
+  </mat-form-field>
+  <mat-slide-toggle formControlName="active" color="primary">
+    {{ "global.slideToggle." + formGroup.value.active | translate }}
+  </mat-slide-toggle>
+  <app-form-buttons
+    [disabled]="formGroup.invalid"
+    [link]="'/bill-type'"
+    (save)="save($event)"
+    class="margin-top-20"
+  ></app-form-buttons>
+</form>

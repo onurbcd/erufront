@@ -26,7 +26,8 @@ export class SecretFormComponent
   }
 
   protected buildForm(): void {
-    const activeDefaultValue = this.defaultValues.active == null ? true : this.defaultValues.active;
+    const activeDefaultValue =
+      this.defaultValues.active == null ? true : this.defaultValues.active;
 
     this.formGroup = this.formBuilder.group({
       name: [
