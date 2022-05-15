@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { BillTypeFilter } from '@model';
 import { AppService } from '@service';
+import { BillTypeGridComponent } from '../../components';
 
 @Component({
   selector: 'app-bill-type-list',
@@ -10,8 +11,8 @@ import { AppService } from '@service';
 export class BillTypeListComponent implements OnInit, AfterViewInit {
   billTypeFilter!: BillTypeFilter;
 
-  // @ViewChild(SecretGridComponent)
-  // gridComponent!: SecretGridComponent;
+  @ViewChild(BillTypeGridComponent)
+  gridComponent!: BillTypeGridComponent;
 
   constructor(private appService: AppService) {}
 
@@ -21,7 +22,7 @@ export class BillTypeListComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {
     this.appService.setTitle('finance.billType.listTitle');
-    // this.gridComponent.search();
+    this.gridComponent.search();
   }
 
   valueChanges(billTypeFilter: BillTypeFilter): void {

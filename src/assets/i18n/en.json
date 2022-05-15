@@ -19,7 +19,9 @@
   "finance": {
     "billType": {
       "listTitle": "Bill Type List",
-      "name": "Name"
+      "name": "Name",
+      "lastModifiedDate": "Updated At",
+      "status": "Status"
     }
   },
   "vault": {

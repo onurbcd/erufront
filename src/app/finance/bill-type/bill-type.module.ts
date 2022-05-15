@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { SharedModule } from '@shared';
-import { BillTypeFilterComponent } from './components';
+import { BillTypeFilterComponent, BillTypeGridComponent } from './components';
 import { BillTypeListComponent } from './containers';
 
 export const BillTypeRoutes: Routes = [
@@ -20,7 +20,11 @@ export const BillTypeRoutes: Routes = [
 ];
 
 @NgModule({
-  declarations: [BillTypeListComponent, BillTypeFilterComponent],
+  declarations: [
+    BillTypeListComponent,
+    BillTypeFilterComponent,
+    BillTypeGridComponent,
+  ],
   imports: [SharedModule, RouterModule.forChild(BillTypeRoutes)],
 })
 export class BillTypeModule {}
