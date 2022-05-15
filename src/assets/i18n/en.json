@@ -4,7 +4,8 @@
     "menu": {
       "tooltip": "Menu",
       "home": "Home",
-      "secret": "Secret"
+      "secret": "Secret",
+      "billType": "Bill Type"
     }
   },
   "shared": {
@@ -14,6 +15,11 @@
   },
   "home": {
     "title": "Home"
+  },
+  "finance": {
+    "billType": {
+      "listTitle": "Bill Type List"
+    }
   },
   "vault": {
     "secret": {

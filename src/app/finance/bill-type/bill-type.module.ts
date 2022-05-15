@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { SharedModule } from '@shared';
+import { BillTypeListComponent } from './containers';
 
 export const BillTypeRoutes: Routes = [
   {
     path: '',
-    // component: SecretListComponent,
+    component: BillTypeListComponent,
   },
   {
     path: 'new',
@@ -18,7 +19,7 @@ export const BillTypeRoutes: Routes = [
 ];
 
 @NgModule({
-  declarations: [],
+  declarations: [BillTypeListComponent],
   imports: [SharedModule, RouterModule.forChild(BillTypeRoutes)],
 })
 export class BillTypeModule {}

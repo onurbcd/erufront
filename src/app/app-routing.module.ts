@@ -8,8 +8,11 @@ const routes: Routes = [
   },
   {
     path: 'secret',
-    loadChildren: () =>
-      import('./vault/secret/secret.module').then((m) => m.SecretModule),
+    loadChildren: () => import('./vault/secret/secret.module').then((m) => m.SecretModule),
+  },
+  {
+    path: 'bill-type',
+    loadChildren: () => import('./finance/bill-type/bill-type.module').then((m) => m.BillTypeModule),
   },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
 ];
