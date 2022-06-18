@@ -1,0 +1,63 @@
+<form [formGroup]="formGroup" novalidate>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title translate>
+        global.filters
+        <mat-icon
+          routerLink="/budget/new"
+          matTooltip="{{ 'button.new' | translate }}"
+          color="primary"
+          >add</mat-icon
+        >
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <mat-grid-list cols="3" rowHeight="75">
+      <mat-grid-tile>
+        <app-eru-input
+          [placeholder]="'finance.budget.name'"
+          [inputFormControl]="searchFormControl"
+          (restart)="restart.next($event)"
+          (search)="filterSearch()"
+          (clear)="filterClear('search')"
+        ></app-eru-input>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <app-filter-status
+          [statusFormControl]="activeFormControl"
+          [translation]="'global.radioButton'"
+          (search)="filterSearch()"
+        ></app-filter-status>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <app-filter-status
+          [statusFormControl]="paidFormControl"
+          [translation]="'finance.budget.radioButton'"
+          (search)="filterSearch()"
+        ></app-filter-status>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <app-basic-select
+          [label]="'finance.budget.refYear'"
+          [selectFormControl]="refYearFormControl"
+          [values]="years"
+          (selectionChange)="filterSearch()"
+        ></app-basic-select>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <app-basic-select
+          [label]="'finance.budget.refMonth'"
+          [selectFormControl]="refMonthFormControl"
+          [values]="months"
+          (selectionChange)="filterSearch()"
+        ></app-basic-select>
+      </mat-grid-tile>
+      <mat-grid-tile colspan="3">
+        <app-eru-buttons
+          [searchDisabled]="formGroup.invalid"
+          (search)="filterSearch()"
+          [link]="'/budget/new'"
+        ></app-eru-buttons>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </mat-expansion-panel>
+</form>

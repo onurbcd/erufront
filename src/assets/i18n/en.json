@@ -26,7 +26,15 @@
       "formTitle": "Bill Type Creation"
     },
     "budget": {
-      "listTitle": "Budget List"
+      "listTitle": "Budget List",
+      "name": "Name",
+      "radioButton": {
+        "both": "Both",
+        "active": "Paid",
+        "inactive": "Unpaid"
+      },
+      "refYear": "Year",
+      "refMonth": "Month"
     }
   },
   "vault": {

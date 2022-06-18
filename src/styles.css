@@ -2,7 +2,7 @@
 @import "@angular/material/prebuilt-themes/indigo-pink.css";
 
 .input-width {
-  width: 400px;
+  width: 20vw;
 }
 
 mat-grid-list {
