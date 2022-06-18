@@ -14,6 +14,10 @@ const routes: Routes = [
     path: 'bill-type',
     loadChildren: () => import('./finance/bill-type/bill-type.module').then((m) => m.BillTypeModule),
   },
+  {
+    path: 'budget',
+    loadChildren: () => import('./finance/budget/budget.module').then((m) => m.BudgetModule),
+  },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
 ];
 

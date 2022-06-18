@@ -5,7 +5,8 @@
       "tooltip": "Menu",
       "home": "Home",
       "secret": "Secret",
-      "billType": "Bill Type"
+      "billType": "Bill Type",
+      "budget": "Budget"
     }
   },
   "shared": {
@@ -23,6 +24,9 @@
       "lastModifiedDate": "Updated At",
       "status": "Status",
       "formTitle": "Bill Type Creation"
+    },
+    "budget": {
+      "listTitle": "Budget List"
     }
   },
   "vault": {

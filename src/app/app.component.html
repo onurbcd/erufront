@@ -20,19 +20,24 @@
 <mat-sidenav-container>
   <mat-sidenav #sidenav>
     <mat-nav-list>
-      <a mat-list-item (click)="navigate('/home')">{{
-        "app.menu.home" | translate
-      }}</a>
+      <a mat-list-item (click)="navigate('/home')">
+        {{ "app.menu.home" | translate }}
+      </a>
     </mat-nav-list>
     <mat-nav-list>
-      <a mat-list-item (click)="navigate('/secret')">{{
-        "app.menu.secret" | translate
-      }}</a>
+      <a mat-list-item (click)="navigate('/secret')">
+        {{ "app.menu.secret" | translate }}
+      </a>
     </mat-nav-list>
     <mat-nav-list>
-      <a mat-list-item (click)="navigate('/bill-type')">{{
-        "app.menu.billType" | translate
-      }}</a>
+      <a mat-list-item (click)="navigate('/bill-type')">
+        {{ "app.menu.billType" | translate }}
+      </a>
+    </mat-nav-list>
+    <mat-nav-list>
+      <a mat-list-item (click)="navigate('/budget')">
+        {{ "app.menu.budget" | translate }}
+      </a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
