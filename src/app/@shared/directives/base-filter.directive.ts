@@ -5,14 +5,22 @@ import {
   OnInit,
   Output,
 } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Subject, takeUntil } from 'rxjs';
+import { AppConstants } from 'src/app/app-constants';
 
 @Directive()
 export abstract class BaseFilterDirective<T> implements OnInit, OnDestroy {
   private unsubscribe$ = new Subject<void>();
 
   formGroup!: FormGroup;
+
+  searchFormControl = new FormControl('', [
+    Validators.minLength(AppConstants.LENGTH_3),
+    Validators.maxLength(AppConstants.LENGTH_50),
+  ]);
+
+  activeFormControl = new FormControl('');
 
   @Output() restart: EventEmitter<boolean> = new EventEmitter<boolean>();
 

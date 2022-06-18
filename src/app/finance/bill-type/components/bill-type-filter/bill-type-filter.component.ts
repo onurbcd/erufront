@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, Validators } from '@angular/forms';
+import { FormBuilder } from '@angular/forms';
 import { BillTypeFilter } from '@model';
 import { BaseFilterDirective } from '@shared';
-import { AppConstants } from 'src/app/app-constants';
 
 @Component({
   selector: 'app-bill-type-filter',
@@ -13,13 +12,6 @@ export class BillTypeFilterComponent
   extends BaseFilterDirective<BillTypeFilter>
   implements OnInit
 {
-  searchFormControl = new FormControl('', [
-    Validators.minLength(AppConstants.LENGTH_3),
-    Validators.maxLength(AppConstants.LENGTH_50),
-  ]);
-
-  activeFormControl = new FormControl('');
-
   constructor(private formBuilder: FormBuilder) {
     super();
   }
