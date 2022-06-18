@@ -1,4 +1,5 @@
 export * from './finance/bill-type.service';
+export * from './finance/budget.service';
 
 export * from './vault/secret.service';
 
