@@ -28,6 +28,7 @@ import { RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { ClipboardModule } from 'ngx-clipboard';
 import {
+  BasicSelectComponent,
   ConfirmDialogComponent,
   CopyButtonComponent,
   EruActionsComponent,
@@ -49,6 +50,7 @@ export const importModules = [
   MatIconModule,
   RouterModule,
   ClipboardModule,
+  MatSelectModule,
 ];
 
 export const exportModules = [
@@ -84,6 +86,7 @@ export const exportModules = [
 ];
 
 export const components = [
+  BasicSelectComponent,
   ConfirmDialogComponent,
   CopyButtonComponent,
   EruActionsComponent,
