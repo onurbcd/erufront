@@ -7,6 +7,8 @@ export class AppConstants {
 
   public static PAGE_SIZE_OPTIONS: number[] = [AppConstants.PAGE_SIZE];
 
+  public static MIN_YEAR = 2013;
+
   // VALIDATORS
 
   public static LENGTH_3 = 3;
