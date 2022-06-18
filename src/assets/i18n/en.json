@@ -34,7 +34,17 @@
         "inactive": "Unpaid"
       },
       "refYear": "Year",
-      "refMonth": "Month"
+      "refMonth": "Month",
+      "sequence": "#",
+      "billType": "Bill Type",
+      "amount": "Amount",
+      "paidStatus": "Paid Status",
+      "lastModifiedDate": "Updated At",
+      "status": "Status",
+      "slideToggle": {
+        "true": "Paid",
+        "false": "Unpaid"
+      }
     }
   },
   "vault": {

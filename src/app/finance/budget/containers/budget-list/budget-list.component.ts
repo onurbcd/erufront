@@ -1,6 +1,7 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { BudgetFilter } from '@model';
 import { AppService } from '@service';
+import { BudgetGridComponent } from '../../components';
 
 @Component({
   selector: 'app-budget-list',
@@ -10,8 +11,8 @@ import { AppService } from '@service';
 export class BudgetListComponent implements OnInit, AfterViewInit {
   budgetFilter!: BudgetFilter;
 
-  // @ViewChild(BillTypeGridComponent)
-  // gridComponent!: BillTypeGridComponent;
+  @ViewChild(BudgetGridComponent)
+  gridComponent!: BudgetGridComponent;
 
   constructor(private appService: AppService) {}
 
@@ -21,7 +22,7 @@ export class BudgetListComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {
     this.appService.setTitle('finance.budget.listTitle');
-    // this.gridComponent.search();
+    this.gridComponent.search();
   }
 
   valueChanges(budgetFilter: BudgetFilter): void {

@@ -1,1 +1,6 @@
-<app-budget-filter (valueChanges)="valueChanges($event)"></app-budget-filter>
+<app-budget-filter
+  (restart)="gridComponent.reset($event)"
+  (search)="gridComponent.search()"
+  (valueChanges)="valueChanges($event)"
+></app-budget-filter>
+<app-budget-grid [value]="budgetFilter"></app-budget-grid>
