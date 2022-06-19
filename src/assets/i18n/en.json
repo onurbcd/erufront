@@ -44,7 +44,8 @@
       "slideToggle": {
         "true": "Paid",
         "false": "Unpaid"
-      }
+      },
+      "formTitle": "Budget Creation"
     }
   },
   "vault": {
