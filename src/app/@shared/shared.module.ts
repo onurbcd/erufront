@@ -27,6 +27,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { ClipboardModule } from 'ngx-clipboard';
+import { NgxCurrencyModule } from 'ngx-currency';
 import {
   BasicSelectComponent,
   ConfirmDialogComponent,
@@ -83,6 +84,7 @@ export const exportModules = [
   MatDatepickerModule,
   ClipboardModule,
   MatProgressBarModule,
+  NgxCurrencyModule,
 ];
 
 export const components = [

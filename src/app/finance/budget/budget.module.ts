@@ -1,7 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { SharedModule } from '@shared';
-import { BudgetFilterComponent, BudgetGridComponent } from './components';
+import {
+  BudgetFilterComponent,
+  BudgetFormComponent,
+  BudgetGridComponent,
+} from './components';
 import { BudgetCreationComponent, BudgetListComponent } from './containers';
 
 export const BudgetRoutes: Routes = [
@@ -25,6 +29,7 @@ export const BudgetRoutes: Routes = [
     BudgetFilterComponent,
     BudgetGridComponent,
     BudgetCreationComponent,
+    BudgetFormComponent,
   ],
   imports: [SharedModule, RouterModule.forChild(BudgetRoutes)],
 })

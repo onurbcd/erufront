@@ -1,0 +1,49 @@
+<form [formGroup]="formGroup" novalidate class="eru-form">
+  <mat-form-field class="input-width">
+    <input
+      matInput
+      placeholder="{{ 'finance.budget.sequence' | translate }}"
+      formControlName="sequence"
+    />
+  </mat-form-field>
+  <mat-form-field class="input-width">
+    <input
+      matInput
+      placeholder="{{ 'finance.budget.name' | translate }}"
+      formControlName="name"
+    />
+  </mat-form-field>
+  <app-basic-select
+    [label]="'finance.budget.refYear'"
+    [selectFormControl]="refYearFormControl"
+    [values]="years"
+  ></app-basic-select>
+  <app-basic-select
+    [label]="'finance.budget.refMonth'"
+    [selectFormControl]="refMonthFormControl"
+    [values]="months"
+  ></app-basic-select>
+  <mat-form-field class="input-width">
+    <input
+      matInput
+      placeholder="{{ 'finance.budget.amount' | translate }}"
+      formControlName="amount"
+      currencyMask
+      [options]="currencyMaskConfig"
+    />
+  </mat-form-field>
+  <div>
+    <mat-slide-toggle formControlName="active" color="primary">
+      {{ "global.slideToggle." + formGroup.value.active | translate }}
+    </mat-slide-toggle>
+    <mat-slide-toggle formControlName="paid" color="primary" class="margin-left-20">
+      {{ "finance.budget.slideToggle." + formGroup.value.paid | translate }}
+    </mat-slide-toggle>
+  </div>
+  <app-form-buttons
+    [disabled]="formGroup.invalid"
+    [link]="'/budget'"
+    (save)="save($event)"
+    class="margin-top-20"
+  ></app-form-buttons>
+</form>

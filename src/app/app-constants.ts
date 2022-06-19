@@ -1,3 +1,5 @@
+import { CurrencyMaskConfig, CurrencyMaskInputMode } from 'ngx-currency';
+
 export class AppConstants {
   // MISCELLANEOUS
 
@@ -8,6 +10,21 @@ export class AppConstants {
   public static PAGE_SIZE_OPTIONS: number[] = [AppConstants.PAGE_SIZE];
 
   public static MIN_YEAR = 2013;
+
+  public static CURRENCY_MASK_CONFIG: CurrencyMaskConfig = {
+    align: 'left',
+    allowNegative: false,
+    allowZero: false,
+    decimal: ',',
+    precision: 4,
+    prefix: 'R$ ',
+    suffix: '',
+    thousands: '.',
+    nullable: true,
+    min: 0.0001,
+    max: 999999999999999,
+    inputMode: CurrencyMaskInputMode.FINANCIAL,
+  };
 
   // VALIDATORS
 
