@@ -62,4 +62,8 @@ export abstract class BaseFormDirective<E extends Prime<ID>, F, ID>
         this.router.navigate(commands);
       });
   }
+
+  clear(path: string): void {
+    this.formGroup.get(path)?.reset();
+  }
 }

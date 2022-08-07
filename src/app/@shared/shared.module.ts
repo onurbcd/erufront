@@ -25,9 +25,11 @@ import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { RouterModule } from '@angular/router';
+import { NgSelectModule } from '@ng-select/ng-select';
 import { TranslateModule } from '@ngx-translate/core';
 import { ClipboardModule } from 'ngx-clipboard';
 import { NgxCurrencyModule } from 'ngx-currency';
+import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
 import {
   BasicSelectComponent,
   ConfirmDialogComponent,
@@ -38,6 +40,7 @@ import {
   FilterStatusComponent,
   FormButtonsComponent,
 } from './components';
+import { AppDatePipe } from './pipes';
 
 export const importModules = [
   CommonModule,
@@ -85,6 +88,8 @@ export const exportModules = [
   ClipboardModule,
   MatProgressBarModule,
   NgxCurrencyModule,
+  NgxMatSelectSearchModule,
+  NgSelectModule,
 ];
 
 export const components = [
@@ -98,10 +103,12 @@ export const components = [
   FormButtonsComponent,
 ];
 
+export const pipes = [AppDatePipe];
+
 @NgModule({
   imports: [...importModules],
-  exports: [...exportModules, ...components],
-  declarations: [...components],
+  exports: [...exportModules, ...components, ...pipes],
+  declarations: [...components, ...pipes],
   providers: [],
 })
 export class SharedModule {}

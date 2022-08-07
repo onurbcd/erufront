@@ -112,9 +112,9 @@ export abstract class BaseListDirective<E extends Prime<ID>, F, ID> implements O
       });
   }
 
-  changeStatus(id: ID, checked: boolean): void {
+  changeStatus(id: ID, checked: boolean, property: string = 'active'): void {
     this.apiService
-      .changeStatus(id, checked)
+      .changeStatus(id, checked, property)
       .pipe(takeUntil(this.unsubscribe$))
       .subscribe(() => {
         this.listChanged.next();

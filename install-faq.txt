@@ -1,0 +1,19 @@
+-> Lodash
+
+    - https://lodash.com/
+    - https://www.npmjs.com/package/lodash
+    - https://www.npmjs.com/package/@types/lodash
+    - npm install lodash --save
+    - npm install @types/lodash --save-dev
+
+-> Angular ng-select - Lightweight all in one UI Select, Multiselect and Autocomplete
+
+    - https://github.com/ng-select/ng-select
+    - https://www.npmjs.com/package/@ng-select/ng-select
+    - npm i @ng-select/ng-select --save
+
+-> NgxMatSelectSearch
+
+    - https://github.com/bithost-gmbh/ngx-mat-select-search
+    - https://www.npmjs.com/package/ngx-mat-select-search
+    - npm i ngx-mat-select-search --save

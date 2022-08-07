@@ -45,7 +45,8 @@
         "true": "Paid",
         "false": "Unpaid"
       },
-      "formTitle": "Budget Creation"
+      "formTitle": "Budget Creation",
+      "searchBillType": "Search Bill Type By Name"
     }
   },
   "vault": {
@@ -87,6 +88,7 @@
     "edit": "Edit",
     "delete": "Delete",
     "noData": "No data",
-    "filters": "Filters"
+    "filters": "Filters",
+    "noEntriesFoundLabel": "No entries found"
   }
 }

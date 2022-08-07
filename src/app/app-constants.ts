@@ -7,6 +7,8 @@ export class AppConstants {
 
   public static PAGE_SIZE = 20;
 
+  public static PAGE_SIZE_SELECT = 10;
+
   public static PAGE_SIZE_OPTIONS: number[] = [AppConstants.PAGE_SIZE];
 
   public static MIN_YEAR = 2013;
@@ -16,7 +18,7 @@ export class AppConstants {
     allowNegative: false,
     allowZero: false,
     decimal: ',',
-    precision: 4,
+    precision: 2,
     prefix: 'R$ ',
     suffix: '',
     thousands: '.',

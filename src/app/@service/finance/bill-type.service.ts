@@ -18,7 +18,7 @@ export class BillTypeService extends ApiService<
     return this.getDefaultQueryParams(filter);
   }
 
-  getStatus(active: boolean): BillType {
+  getStatus(active: boolean, property: string): BillType {
     return this.getDefaultStatus(active);
   }
 }

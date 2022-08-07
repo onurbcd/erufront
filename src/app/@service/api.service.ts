@@ -14,7 +14,7 @@ export abstract class ApiService<E extends Prime<ID>, F, ID> {
 
   abstract getQueryParams(filter: F): QueryParams;
 
-  abstract getStatus(status: boolean): E;
+  abstract getStatus(status: boolean, property: string): E;
 
   post(entity: E, path: string = ''): Observable<E> {
     return this.httpClient.post<E>(
@@ -65,8 +65,8 @@ export abstract class ApiService<E extends Prime<ID>, F, ID> {
     );
   }
 
-  changeStatus(id: ID, active: boolean): Observable<void> {
-    return this.patch(id, this.getStatus(active));
+  changeStatus(id: ID, value: boolean, property: string): Observable<void> {
+    return this.patch(id, this.getStatus(value, property));
   }
 
   protected getDefaultQueryParams(filter: Filter): QueryParams {

@@ -32,7 +32,15 @@ export class BudgetService extends ApiService<Budget, BudgetFilter, string> {
     return queryParams;
   }
 
-  getStatus(status: boolean): Budget {
-    throw new Error('Method not implemented.');
+  getStatus(status: boolean, property: string): Budget {
+    const budget = {} as Budget;
+
+    if (property === 'active') {
+      budget.active = status;
+    } else if (property === 'paid') {
+      budget.paid = status;
+    }
+
+    return budget;
   }
 }

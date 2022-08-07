@@ -10,7 +10,8 @@ export class Budget extends Prime<string> {
     public sequence: number,
     public refYear: number,
     public refMonth: number,
-    public billType: BillType,
+    public billTypeId: string,
+    public billTypeName: string,
     public amount: number,
     public paid: boolean
   ) {

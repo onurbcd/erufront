@@ -1,9 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Budget, BudgetFilter } from '@model';
-import { BudgetService, DateService, ToastService } from '@service';
+import { BillType, BillTypeFilter, Budget, BudgetFilter, Page } from '@model';
+import {
+  BillTypeService,
+  BudgetService,
+  DateService,
+  ToastService,
+} from '@service';
+import { Debounce } from '@shared';
 import { BaseFormDirective } from '@shared/directives/base-form.directive';
+import { Observable } from 'rxjs';
 import { AppConstants } from 'src/app/app-constants';
 
 @Component({
@@ -25,15 +32,25 @@ export class BudgetFormComponent
 
   readonly currencyMaskConfig = AppConstants.CURRENCY_MASK_CONFIG;
 
+  billTypes$!: Observable<Page<BillType>>;
+
   constructor(
     activatedRoute: ActivatedRoute,
     budgetService: BudgetService,
     toastService: ToastService,
     router: Router,
     private formBuilder: FormBuilder,
-    private dateService: DateService
+    private dateService: DateService,
+    private billTypeService: BillTypeService
   ) {
     super(activatedRoute, budgetService, toastService, router);
+  }
+
+  override ngOnInit(): void {
+    super.ngOnInit();
+    this.years = this.dateService.getYears();
+    this.months = this.dateService.getMonths();
+    this.getBillTypes('');
   }
 
   protected buildForm(): void {
@@ -59,6 +76,7 @@ export class BudgetFormComponent
     this.refYearFormControl = new FormControl(refYearDefaultValue, [
       Validators.required,
     ]);
+
     this.refMonthFormControl = new FormControl(refMonthDefaultValue, [
       Validators.required,
     ]);
@@ -74,20 +92,39 @@ export class BudgetFormComponent
       ],
       active: [activeDefaultValue, [Validators.required]],
       sequence: [
-        { value: sequenceDefaultValue, disabled: true },
+        // { value: sequenceDefaultValue, disabled: false },
+        sequenceDefaultValue,
         [Validators.required],
       ],
       refYear: this.refYearFormControl,
       refMonth: this.refMonthFormControl,
-      // billType: [this.defaultValues.billType, [Validators.required]],
+      billTypeId: [this.defaultValues.billTypeId, [Validators.required]],
       amount: [this.defaultValues.amount, [Validators.required]],
       paid: [paidDefaultValue, [Validators.required]],
     });
   }
 
-  override ngOnInit(): void {
-    super.ngOnInit();
-    this.years = this.dateService.getYears();
-    this.months = this.dateService.getMonths();
+  @Debounce(1000)
+  searchBillType(searchBillTypeInput: string): void {
+    if (!searchBillTypeInput || searchBillTypeInput.trim().length < 3) {
+      return;
+    }
+
+    this.getBillTypes(searchBillTypeInput);
+  }
+
+  private getBillTypes(search: string): void {
+    this.billTypes$ = this.billTypeService.getAll(
+      { search } as BillTypeFilter,
+      {
+        pageIndex: 0,
+        pageSize: AppConstants.PAGE_SIZE_SELECT,
+        length: 0,
+      },
+      {
+        active: 'name',
+        direction: 'asc',
+      }
+    );
   }
 }

@@ -14,7 +14,7 @@ export class SecretService extends ApiService<Secret, SecretFilter, string> {
     return this.getDefaultQueryParams(filter);
   }
 
-  getStatus(active: boolean): Secret {
+  getStatus(active: boolean, property: string): Secret {
     return this.getDefaultStatus(active);
   }
 }

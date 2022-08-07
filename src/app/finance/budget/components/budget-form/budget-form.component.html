@@ -1,36 +1,38 @@
 <form [formGroup]="formGroup" novalidate class="eru-form">
   <mat-form-field class="input-width">
-    <input
-      matInput
-      placeholder="{{ 'finance.budget.sequence' | translate }}"
-      formControlName="sequence"
-    />
+    <input matInput placeholder="{{ 'finance.budget.sequence' | translate }}" formControlName="sequence"
+      [readonly]="true" />
   </mat-form-field>
   <mat-form-field class="input-width">
-    <input
-      matInput
-      placeholder="{{ 'finance.budget.name' | translate }}"
-      formControlName="name"
-    />
+    <input matInput placeholder="{{ 'finance.budget.name' | translate }}" formControlName="name" />
   </mat-form-field>
-  <app-basic-select
-    [label]="'finance.budget.refYear'"
-    [selectFormControl]="refYearFormControl"
-    [values]="years"
-  ></app-basic-select>
-  <app-basic-select
-    [label]="'finance.budget.refMonth'"
-    [selectFormControl]="refMonthFormControl"
-    [values]="months"
-  ></app-basic-select>
+  <app-basic-select [label]="'finance.budget.refYear'" [selectFormControl]="refYearFormControl" [values]="years">
+  </app-basic-select>
+  <app-basic-select [label]="'finance.budget.refMonth'" [selectFormControl]="refMonthFormControl" [values]="months">
+  </app-basic-select>
   <mat-form-field class="input-width">
-    <input
-      matInput
-      placeholder="{{ 'finance.budget.amount' | translate }}"
-      formControlName="amount"
-      currencyMask
-      [options]="currencyMaskConfig"
-    />
+    <mat-label>{{ 'finance.budget.billType' | translate }}</mat-label>
+    <mat-select #billTypeSelect formControlName="billTypeId">
+      <div (mouseleave)="billTypeSelect.close()">
+        <mat-option>
+          <ngx-mat-select-search ngModel [ngModelOptions]="{standalone: true}" (ngModelChange)="searchBillType($event)"
+            placeholderLabel="{{ 'finance.budget.searchBillType' | translate }}"
+            noEntriesFoundLabel="{{ 'global.noEntriesFoundLabel' | translate }}">
+          </ngx-mat-select-search>
+        </mat-option>
+        <mat-option *ngFor="let billType of (billTypes$ | async)?.content" [value]="billType.id">
+          {{ billType.name }}
+        </mat-option>
+      </div>
+    </mat-select>
+    <button mat-button *ngIf="formGroup.value.billTypeId" matSuffix mat-icon-button
+      matTooltip="{{ 'button.clear' | translate }}" (click)="clear('billTypeId')">
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
+  <mat-form-field class="input-width">
+    <input matInput placeholder="{{ 'finance.budget.amount' | translate }}" formControlName="amount" currencyMask
+      [options]="currencyMaskConfig" />
   </mat-form-field>
   <div>
     <mat-slide-toggle formControlName="active" color="primary">
@@ -40,10 +42,6 @@
       {{ "finance.budget.slideToggle." + formGroup.value.paid | translate }}
     </mat-slide-toggle>
   </div>
-  <app-form-buttons
-    [disabled]="formGroup.invalid"
-    [link]="'/budget'"
-    (save)="save($event)"
-    class="margin-top-20"
-  ></app-form-buttons>
+  <app-form-buttons [disabled]="formGroup.invalid" [link]="'/budget'" (save)="save($event)" class="margin-top-20">
+  </app-form-buttons>
 </form>
