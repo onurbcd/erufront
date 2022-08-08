@@ -33,5 +33,10 @@ export class BudgetGridComponent extends BaseListDirective<
     toastService: ToastService
   ) {
     super('budget', router, matDialog, budgetService, toastService);
+
+    this.defaultSort = {
+      active: 'sequence',
+      direction: 'asc',
+    };
   }
 }

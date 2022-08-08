@@ -1,5 +1,7 @@
+import { registerLocaleData } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
-import { NgModule } from '@angular/core';
+import localePt from '@angular/common/locales/pt';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CoreModule } from '@core';
@@ -9,6 +11,8 @@ import { AppService } from '@service';
 import { SharedModule } from '@shared';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+
+registerLocaleData(localePt);
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
@@ -33,7 +37,13 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     // Must be imported as the last module as it contains the fallback route
     AppRoutingModule,
   ],
-  providers: [AppService],
+  providers: [
+    AppService,
+    {
+      provide: LOCALE_ID,
+      useValue: 'pt-BR',
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

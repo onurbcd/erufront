@@ -28,7 +28,7 @@ export abstract class BaseListDirective<E extends Prime<ID>, F, ID> implements O
     length: 0,
   };
 
-  private defaultSort: Sort = {
+  protected defaultSort: Sort = {
     active: 'name',
     direction: 'asc',
   };
