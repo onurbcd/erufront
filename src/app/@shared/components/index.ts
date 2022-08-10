@@ -6,3 +6,4 @@ export * from './eru-buttons';
 export * from './eru-input';
 export * from './filter-status';
 export * from './form-buttons';
+export * from './sequence-control';

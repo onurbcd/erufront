@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 import { environment } from '@env/environment';
 import { PageEvent } from '@angular/material/paginator';
 import { Sort } from '@angular/material/sort';
-import { Filter, Page, Prime } from '@model';
+import { Filter, Page, Prime, Sequence } from '@model';
 
 export interface QueryParams {
   [name: string]: string | string[];
@@ -67,6 +67,18 @@ export abstract class ApiService<E extends Prime<ID>, F, ID> {
 
   changeStatus(id: ID, value: boolean, property: string): Observable<void> {
     return this.patch(id, this.getStatus(value, property));
+  }
+
+  updateSequence(sequence: Sequence): Observable<void> {
+    const queryParams: QueryParams = {};
+    queryParams['direction'] = sequence.direction;
+    const params = new HttpParams({ fromObject: queryParams });
+
+    return this.httpClient.patch<void>(
+      `${environment.apiUri}${this.baseUrl}${sequence.id}/sequence`,
+      null,
+      { params }
+    );
   }
 
   protected getDefaultQueryParams(filter: Filter): QueryParams {

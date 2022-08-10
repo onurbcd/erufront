@@ -1,0 +1,8 @@
+.sequence-control-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+button:disabled {
+  color: black !important;
+}

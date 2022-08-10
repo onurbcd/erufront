@@ -39,6 +39,7 @@ import {
   EruInputComponent,
   FilterStatusComponent,
   FormButtonsComponent,
+  SequenceControlComponent,
 } from './components';
 import { AppDatePipe } from './pipes';
 
@@ -101,6 +102,7 @@ export const components = [
   EruInputComponent,
   FilterStatusComponent,
   FormButtonsComponent,
+  SequenceControlComponent,
 ];
 
 export const pipes = [AppDatePipe];

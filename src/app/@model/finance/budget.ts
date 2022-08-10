@@ -1,4 +1,4 @@
-import { BillType, Prime } from '@model';
+import { Prime } from '@model';
 
 export class Budget extends Prime<string> {
   constructor(

@@ -10,14 +10,16 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatSort, Sort } from '@angular/material/sort';
 import { Router } from '@angular/router';
-import { Prime } from '@model';
+import { Prime, Sequence } from '@model';
 import { ApiService, ToastService } from '@service';
 import { ConfirmDialogComponent } from '@shared/components';
 import { Subject, takeUntil } from 'rxjs';
 import { AppConstants } from 'src/app/app-constants';
 
 @Directive()
-export abstract class BaseListDirective<E extends Prime<ID>, F, ID> implements OnDestroy {
+export abstract class BaseListDirective<E extends Prime<ID>, F, ID>
+  implements OnDestroy
+{
   readonly pageSizeOptions = AppConstants.PAGE_SIZE_OPTIONS;
 
   private unsubscribe$ = new Subject<void>();
@@ -124,6 +126,17 @@ export abstract class BaseListDirective<E extends Prime<ID>, F, ID> implements O
           id,
         });
 
+        this.search();
+      });
+  }
+
+  updateSequence(sequence: Sequence): void {
+    this.apiService
+      .updateSequence(sequence)
+      .pipe(takeUntil(this.unsubscribe$))
+      .subscribe(() => {
+        this.listChanged.next();
+        this.toastService.showSuccess('shared.updateSequence');
         this.search();
       });
   }
