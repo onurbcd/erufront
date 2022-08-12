@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Budget, BudgetFilter } from '@model';
+import { Budget, BudgetFilter, Sum } from '@model';
 import { ApiService, QueryParams } from '@service/api.service';
+import { Observable } from 'rxjs';
 import { AppConstants } from 'src/app/app-constants';
 
 @Injectable({ providedIn: 'root' })
@@ -42,5 +43,13 @@ export class BudgetService extends ApiService<Budget, BudgetFilter, string> {
     }
 
     return budget;
+  }
+
+  getSumByMonth(budgetFilter: BudgetFilter): Observable<Sum[]> {
+    const queryParams: QueryParams = {};
+    queryParams['refYear'] = `${budgetFilter.refYear}`;
+    queryParams['refMonth'] = `${budgetFilter.refMonth}`;
+    const params = this.getParams(queryParams);
+    return this.httpClient.get<Sum[]>(this.getUrl('sum-month'), { params });
   }
 }

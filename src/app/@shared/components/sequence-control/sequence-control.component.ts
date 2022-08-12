@@ -11,6 +11,8 @@ export class SequenceControlComponent {
 
   @Input() id: string = '';
 
+  @Input() max: number = -1;
+
   @Output() updateSequence: EventEmitter<Sequence> =
     new EventEmitter<Sequence>();
 

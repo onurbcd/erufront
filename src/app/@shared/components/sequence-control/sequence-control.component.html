@@ -3,7 +3,7 @@
         <button mat-icon-button matTooltip="{{ 'button.up' | translate }}" (click)="up()" *ngIf="sequence !== 1">
             <mat-icon color="primary">arrow_upward</mat-icon>
         </button>
-        <button mat-icon-button matTooltip="{{ 'button.down' | translate }}" (click)="down()">
+        <button mat-icon-button matTooltip="{{ 'button.down' | translate }}" (click)="down()" *ngIf="sequence !== max">
             <mat-icon color="primary">arrow_downward</mat-icon>
         </button>
     </div>

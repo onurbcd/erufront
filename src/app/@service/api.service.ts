@@ -17,18 +17,11 @@ export abstract class ApiService<E extends Prime<ID>, F, ID> {
   abstract getStatus(status: boolean, property: string): E;
 
   post(entity: E, path: string = ''): Observable<E> {
-    return this.httpClient.post<E>(
-      `${environment.apiUri}${this.baseUrl}${path}`,
-      entity
-    );
+    return this.httpClient.post<E>(this.getUrl(path), entity);
   }
 
   put(id: ID, entity: E): Observable<E> {
-    return this.httpClient.put<E>(
-      `${environment.apiUri}${this.baseUrl}${id}`,
-      entity,
-      {}
-    );
+    return this.httpClient.put<E>(this.getUrl(`${id}`), entity, {});
   }
 
   save(id: ID, entity: E): Observable<E> {
@@ -36,33 +29,21 @@ export abstract class ApiService<E extends Prime<ID>, F, ID> {
   }
 
   delete(id: ID): Observable<void> {
-    return this.httpClient.delete<void>(
-      `${environment.apiUri}${this.baseUrl}${id}`
-    );
+    return this.httpClient.delete<void>(this.getUrl(`${id}`));
   }
 
   get(id: ID): Observable<E> {
-    return this.httpClient.get<E>(`${environment.apiUri}${this.baseUrl}${id}`);
+    return this.httpClient.get<E>(this.getUrl(`${id}`));
   }
 
   getAll(filter: F, pageEvent: PageEvent, sort: Sort): Observable<Page<E>> {
     const queryParams = this.getQueryParams(filter);
     const params = this.getHttpParams(queryParams, pageEvent, sort);
-
-    return this.httpClient.get<Page<E>>(
-      `${environment.apiUri}${this.baseUrl}`,
-      {
-        params,
-      }
-    );
+    return this.httpClient.get<Page<E>>(this.getUrl(), { params });
   }
 
   patch(id: ID, entity: E): Observable<void> {
-    return this.httpClient.patch<void>(
-      `${environment.apiUri}${this.baseUrl}${id}`,
-      entity,
-      {}
-    );
+    return this.httpClient.patch<void>(this.getUrl(`${id}`), entity, {});
   }
 
   changeStatus(id: ID, value: boolean, property: string): Observable<void> {
@@ -75,7 +56,7 @@ export abstract class ApiService<E extends Prime<ID>, F, ID> {
     const params = new HttpParams({ fromObject: queryParams });
 
     return this.httpClient.patch<void>(
-      `${environment.apiUri}${this.baseUrl}${sequence.id}/sequence`,
+      this.getUrl(`${sequence.id}/sequence`),
       null,
       { params }
     );
@@ -99,6 +80,14 @@ export abstract class ApiService<E extends Prime<ID>, F, ID> {
     const entity = {} as E;
     entity.active = active;
     return entity;
+  }
+
+  protected getUrl(urlSuffix: string = ''): string {
+    return `${environment.apiUri}${this.baseUrl}${urlSuffix}`;
+  }
+
+  protected getParams(queryParams: QueryParams): HttpParams {
+    return new HttpParams({ fromObject: queryParams });
   }
 
   private getHttpParams(

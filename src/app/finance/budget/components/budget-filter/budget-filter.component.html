@@ -40,7 +40,7 @@
           [label]="'finance.budget.refYear'"
           [selectFormControl]="refYearFormControl"
           [values]="years"
-          (selectionChange)="filterSearch()"
+          (selectionChange)="dateSelectionChange()"
         ></app-basic-select>
       </mat-grid-tile>
       <mat-grid-tile>
@@ -48,7 +48,7 @@
           [label]="'finance.budget.refMonth'"
           [selectFormControl]="refMonthFormControl"
           [values]="months"
-          (selectionChange)="filterSearch()"
+          (selectionChange)="dateSelectionChange()"
         ></app-basic-select>
       </mat-grid-tile>
       <mat-grid-tile colspan="3">

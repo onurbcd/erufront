@@ -47,7 +47,12 @@
         "false": "Unpaid"
       },
       "formTitle": "Budget Creation",
-      "searchBillType": "Search Bill Type By Name"
+      "searchBillType": "Search Bill Type By Name",
+      "values": {
+        "total": "Total: ",
+        "paid": "Paid: ",
+        "unpaid": "Unpaid: "
+      }
     }
   },
   "vault": {

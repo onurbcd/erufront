@@ -5,6 +5,7 @@ import {
   BudgetFilterComponent,
   BudgetFormComponent,
   BudgetGridComponent,
+  BudgetValuesComponent,
 } from './components';
 import { BudgetCreationComponent, BudgetListComponent } from './containers';
 
@@ -30,6 +31,7 @@ export const BudgetRoutes: Routes = [
     BudgetGridComponent,
     BudgetCreationComponent,
     BudgetFormComponent,
+    BudgetValuesComponent,
   ],
   imports: [SharedModule, RouterModule.forChild(BudgetRoutes)],
 })

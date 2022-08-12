@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormControl } from '@angular/forms';
 import { BudgetFilter } from '@model';
 import { DateService } from '@service';
@@ -22,6 +22,9 @@ export class BudgetFilterComponent
   refMonthFormControl = new FormControl(this.dateService.getCurrentMonth());
 
   paidFormControl = new FormControl('');
+
+  @Output() dateChange: EventEmitter<BudgetFilter> =
+    new EventEmitter<BudgetFilter>();
 
   constructor(
     private formBuilder: FormBuilder,
@@ -48,5 +51,10 @@ export class BudgetFilterComponent
 
   protected resetForm(path: string): void {
     this.formGroup.get(path)?.reset();
+  }
+
+  dateSelectionChange(): void {
+    this.filterSearch();
+    this.dateChange.next(this.formGroup.value);
   }
 }

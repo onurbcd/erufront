@@ -26,6 +26,8 @@ export class BudgetGridComponent extends BaseListDirective<
     'config',
   ];
 
+  max = -1;
+
   constructor(
     router: Router,
     matDialog: MatDialog,
@@ -38,5 +40,9 @@ export class BudgetGridComponent extends BaseListDirective<
       active: 'sequence',
       direction: 'asc',
     };
+  }
+
+  setMax(max: number): void {
+    this.max = max;
   }
 }
