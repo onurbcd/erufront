@@ -10,6 +10,8 @@ export * from './finance/filter/budget-filter';
 
 export * from './finance/bill-type';
 export * from './finance/budget';
+export * from './finance/ref';
+export * from './finance/copy-budget';
 export * from './finance/sum';
 
 export * from './page/page';

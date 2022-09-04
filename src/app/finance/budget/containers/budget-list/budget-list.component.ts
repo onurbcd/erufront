@@ -1,6 +1,13 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
-import { BudgetFilter, Sum, SumType } from '@model';
-import { AppService, DateService } from '@service';
+import {
+  AfterViewInit,
+  Component,
+  OnDestroy,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
+import { BudgetFilter, CopyBudget, Sum, SumType } from '@model';
+import { AppService, BudgetService, DateService, ToastService } from '@service';
+import { Subject, takeUntil } from 'rxjs';
 import { BudgetGridComponent, BudgetValuesComponent } from '../../components';
 
 @Component({
@@ -8,7 +15,9 @@ import { BudgetGridComponent, BudgetValuesComponent } from '../../components';
   templateUrl: './budget-list.component.html',
   styleUrls: ['./budget-list.component.css'],
 })
-export class BudgetListComponent implements OnInit, AfterViewInit {
+export class BudgetListComponent implements OnInit, AfterViewInit, OnDestroy {
+  private unsubscribe$ = new Subject<void>();
+
   budgetFilter = {} as BudgetFilter;
 
   budgetValuesFilter = {} as BudgetFilter;
@@ -21,7 +30,9 @@ export class BudgetListComponent implements OnInit, AfterViewInit {
 
   constructor(
     private dateService: DateService,
-    private appService: AppService
+    private appService: AppService,
+    private budgetService: BudgetService,
+    private toastService: ToastService
   ) {}
 
   ngOnInit(): void {
@@ -34,6 +45,11 @@ export class BudgetListComponent implements OnInit, AfterViewInit {
   ngAfterViewInit(): void {
     this.appService.setTitle('finance.budget.listTitle');
     this.gridComponent.search();
+  }
+
+  ngOnDestroy(): void {
+    this.unsubscribe$.next();
+    this.unsubscribe$.complete();
   }
 
   valueChanges(budgetFilter: BudgetFilter): void {
@@ -51,5 +67,14 @@ export class BudgetListComponent implements OnInit, AfterViewInit {
   sumFetched(sum: Sum[]): void {
     let max = sum?.find((p) => p.type === SumType.SIZE)?.value || -1;
     this.gridComponent.setMax(max);
+  }
+
+  copyBudget(copyBudget: CopyBudget): void {
+    this.budgetService
+      .copy(copyBudget)
+      .pipe(takeUntil(this.unsubscribe$))
+      .subscribe(() => {
+        this.toastService.showSuccess('finance.budget.budgetCopy.success');
+      });
   }
 }

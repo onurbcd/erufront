@@ -3,60 +3,40 @@
     <mat-expansion-panel-header>
       <mat-panel-title translate>
         global.filters
-        <mat-icon
-          routerLink="/budget/new"
-          matTooltip="{{ 'button.new' | translate }}"
-          color="primary"
-          >add</mat-icon
-        >
+        <div>
+          <mat-icon routerLink="/budget/new" matTooltip="{{ 'button.new' | translate }}" color="primary">add</mat-icon>
+          <mat-icon (click)="$event.stopPropagation(); copy()" matTooltip="{{ 'button.copy' | translate }}"
+            color="accent">copy_all</mat-icon>
+        </div>
       </mat-panel-title>
     </mat-expansion-panel-header>
     <mat-grid-list cols="3" rowHeight="75">
       <mat-grid-tile>
-        <app-eru-input
-          [placeholder]="'finance.budget.name'"
-          [inputFormControl]="searchFormControl"
-          (restart)="restart.next($event)"
-          (search)="filterSearch()"
-          (clear)="filterClear('search')"
-        ></app-eru-input>
+        <app-eru-input [placeholder]="'finance.budget.name'" [inputFormControl]="searchFormControl"
+          (restart)="restart.next($event)" (search)="filterSearch()" (clear)="filterClear('search')"></app-eru-input>
       </mat-grid-tile>
       <mat-grid-tile>
-        <app-filter-status
-          [statusFormControl]="activeFormControl"
-          [translation]="'global.radioButton'"
-          (search)="filterSearch()"
-        ></app-filter-status>
+        <app-filter-status [statusFormControl]="activeFormControl" [translation]="'global.radioButton'"
+          (search)="filterSearch()"></app-filter-status>
       </mat-grid-tile>
       <mat-grid-tile>
-        <app-filter-status
-          [statusFormControl]="paidFormControl"
-          [translation]="'finance.budget.radioButton'"
-          (search)="filterSearch()"
-        ></app-filter-status>
+        <app-filter-status [statusFormControl]="paidFormControl" [translation]="'finance.budget.radioButton'"
+          (search)="filterSearch()"></app-filter-status>
       </mat-grid-tile>
       <mat-grid-tile>
-        <app-basic-select
-          [label]="'finance.budget.refYear'"
-          [selectFormControl]="refYearFormControl"
-          [values]="years"
-          (selectionChange)="dateSelectionChange()"
-        ></app-basic-select>
+        <app-basic-select [label]="'finance.budget.refYear'" [selectFormControl]="refYearFormControl" [values]="years"
+          (selectionChange)="dateSelectionChange()"></app-basic-select>
       </mat-grid-tile>
       <mat-grid-tile>
-        <app-basic-select
-          [label]="'finance.budget.refMonth'"
-          [selectFormControl]="refMonthFormControl"
-          [values]="months"
-          (selectionChange)="dateSelectionChange()"
-        ></app-basic-select>
+        <app-basic-select [label]="'finance.budget.refMonth'" [selectFormControl]="refMonthFormControl"
+          [values]="months" (selectionChange)="dateSelectionChange()"></app-basic-select>
       </mat-grid-tile>
       <mat-grid-tile colspan="3">
-        <app-eru-buttons
-          [searchDisabled]="formGroup.invalid"
-          (search)="filterSearch()"
-          [link]="'/budget/new'"
-        ></app-eru-buttons>
+        <app-eru-buttons [searchDisabled]="formGroup.invalid" (search)="filterSearch()" [link]="'/budget/new'">
+        </app-eru-buttons>
+        <button mat-raised-button color="accent" (click)="copy()" class="budget-filter-margin-left-10">
+          {{ "button.copy" | translate }}
+        </button>
       </mat-grid-tile>
     </mat-grid-list>
   </mat-expansion-panel>

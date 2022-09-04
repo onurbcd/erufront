@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { SharedModule } from '@shared';
 import {
+  BudgetCopyComponent,
   BudgetFilterComponent,
   BudgetFormComponent,
   BudgetGridComponent,
@@ -32,6 +33,7 @@ export const BudgetRoutes: Routes = [
     BudgetCreationComponent,
     BudgetFormComponent,
     BudgetValuesComponent,
+    BudgetCopyComponent,
   ],
   imports: [SharedModule, RouterModule.forChild(BudgetRoutes)],
 })

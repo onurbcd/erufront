@@ -1,0 +1,53 @@
+<span mat-dialog-title translate>finance.budget.budgetCopy.title</span>
+
+<mat-dialog-content class="mat-typography">
+    <form [formGroup]="formGroup" novalidate>
+        <p translate>finance.budget.budgetCopy.from</p>
+        <div>
+            <mat-form-field>
+                <mat-label translate>finance.budget.refYear</mat-label>
+                <mat-select [formControl]="fromRefYearFormControl">
+                    <mat-option *ngFor="let year of yearsFrom" [value]="year">
+                        {{ year }}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field class="budget-copy-margin-left-20">
+                <mat-label translate>finance.budget.refMonth</mat-label>
+                <mat-select [formControl]="fromRefMonthFormControl">
+                    <mat-option *ngFor="let month of months" [value]="month">
+                        {{ month }}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <p translate>finance.budget.budgetCopy.to</p>
+        <div>
+            <mat-form-field>
+                <mat-label translate>finance.budget.refYear</mat-label>
+                <mat-select [formControl]="toRefYearFormControl">
+                    <mat-option *ngFor="let year of yearsTo" [value]="year">
+                        {{ year }}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field class="budget-copy-margin-left-20">
+                <mat-label translate>finance.budget.refMonth</mat-label>
+                <mat-select [formControl]="toRefMonthFormControl">
+                    <mat-option *ngFor="let month of months" [value]="month">
+                        {{ month }}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+    </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="center">
+    <button mat-raised-button color="primary" (click)="onConfirmClick()" tabindex="1" [disabled]="formGroup.invalid">
+        {{ "button.ok" | translate }}
+    </button>
+    <button mat-raised-button mat-dialog-close tabindex="-1">
+        {{ "button.cancel" | translate }}
+    </button>
+</mat-dialog-actions>

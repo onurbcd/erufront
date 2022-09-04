@@ -14,17 +14,34 @@ export class DateService {
   }
 
   getYears(): number[] {
-    const years = [];
-    const currentYear = this.getCurrentYear();
+    const maxYear = this.getCurrentYear();
+    return this.getYearsBase(maxYear);
+  }
 
-    for (let year = AppConstants.MIN_YEAR; year <= currentYear; year++) {
-      years.push(year);
-    }
-
-    return years;
+  getYearsToCopy(): number[] {
+    const maxYear = this.getCurrentYear() + 1;
+    return this.getYearsBase(maxYear);
   }
 
   getMonths(): number[] {
     return Array.from({ length: 12 }, (item, index) => index + 1);
+  }
+
+  getNextYear(year: number, month: number): number {
+    return month === 12 ? year + 1 : year;
+  }
+
+  getNextMonth(month: number): number {
+    return month === 12 ? 1 : month + 1;
+  }
+
+  private getYearsBase(maxYear: number): number[] {
+    const years = [];
+
+    for (let year = AppConstants.MIN_YEAR; year <= maxYear; year++) {
+      years.push(year);
+    }
+
+    return years;
   }
 }

@@ -52,6 +52,12 @@
         "total": "Total: ",
         "paid": "Paid: ",
         "unpaid": "Unpaid: "
+      },
+      "budgetCopy": {
+        "title": "Copy Budget",
+        "from": "From",
+        "to": "To",
+        "success": "Budget copied with success!"
       }
     }
   },

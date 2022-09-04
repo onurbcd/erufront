@@ -11,7 +11,7 @@ import { AppConstants } from 'src/app/app-constants';
 
 @Directive()
 export abstract class BaseFilterDirective<T> implements OnInit, OnDestroy {
-  private unsubscribe$ = new Subject<void>();
+  protected unsubscribe$ = new Subject<void>();
 
   formGroup!: FormGroup;
 

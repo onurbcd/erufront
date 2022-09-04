@@ -1,4 +1,5 @@
 <app-budget-filter (restart)="gridComponent.reset($event)" (search)="gridComponent.search()"
-  (valueChanges)="valueChanges($event)" (dateChange)="dateChange($event)"></app-budget-filter>
+  (valueChanges)="valueChanges($event)" (dateChange)="dateChange($event)" (copyBudget)="copyBudget($event)">
+</app-budget-filter>
 <app-budget-values [budget]="budgetValuesFilter" (sumFetched)="sumFetched($event)"></app-budget-values>
 <app-budget-grid [value]="budgetFilter" (listChanged)="statusChanged()"></app-budget-grid>

@@ -1,8 +1,11 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormControl } from '@angular/forms';
-import { BudgetFilter } from '@model';
+import { MatDialog } from '@angular/material/dialog';
+import { BudgetFilter, CopyBudget, Ref } from '@model';
 import { DateService } from '@service';
 import { BaseFilterDirective } from '@shared';
+import { BudgetCopyComponent } from '../budget-copy';
+import { takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-budget-filter',
@@ -26,9 +29,13 @@ export class BudgetFilterComponent
   @Output() dateChange: EventEmitter<BudgetFilter> =
     new EventEmitter<BudgetFilter>();
 
+  @Output() copyBudget: EventEmitter<CopyBudget> =
+    new EventEmitter<CopyBudget>();
+
   constructor(
     private formBuilder: FormBuilder,
-    private dateService: DateService
+    private dateService: DateService,
+    private matDialog: MatDialog
   ) {
     super();
   }
@@ -56,5 +63,24 @@ export class BudgetFilterComponent
   dateSelectionChange(): void {
     this.filterSearch();
     this.dateChange.next(this.formGroup.value);
+  }
+
+  copy(): void {
+    const dialogRef = this.matDialog.open(BudgetCopyComponent, {
+      data: new Ref(
+        this.formGroup.value.refYear,
+        this.formGroup.value.refMonth
+      ),
+      disableClose: true,
+    });
+
+    dialogRef
+      .afterClosed()
+      .pipe(takeUntil(this.unsubscribe$))
+      .subscribe((copyBudget: CopyBudget) => {
+        if (copyBudget) {
+          this.copyBudget.next(copyBudget);
+        }
+      });
   }
 }
