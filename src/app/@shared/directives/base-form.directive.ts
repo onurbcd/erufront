@@ -37,6 +37,7 @@ export abstract class BaseFormDirective<E extends Prime<ID>, F, ID>
       .subscribe((entity) => {
         this.defaultValues = entity;
         this.buildForm();
+        this.afterInit();
       });
   }
 
@@ -46,6 +47,8 @@ export abstract class BaseFormDirective<E extends Prime<ID>, F, ID>
   }
 
   protected abstract buildForm(): void;
+
+  protected afterInit(): void {}
 
   save(commands: any[]) {
     if (this.formGroup.invalid) {

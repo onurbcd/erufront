@@ -50,7 +50,6 @@ export class BudgetFormComponent
     super.ngOnInit();
     this.years = this.dateService.getYears();
     this.months = this.dateService.getMonths();
-    this.getBillTypes('');
   }
 
   protected buildForm(): void {
@@ -91,17 +90,17 @@ export class BudgetFormComponent
         ],
       ],
       active: [activeDefaultValue, [Validators.required]],
-      sequence: [
-        // { value: sequenceDefaultValue, disabled: false },
-        sequenceDefaultValue,
-        [Validators.required],
-      ],
+      sequence: [sequenceDefaultValue, [Validators.required]],
       refYear: this.refYearFormControl,
       refMonth: this.refMonthFormControl,
       billTypeId: [this.defaultValues.billTypeId, [Validators.required]],
       amount: [this.defaultValues.amount, [Validators.required]],
       paid: [paidDefaultValue, [Validators.required]],
     });
+  }
+
+  protected override afterInit(): void {
+    this.getBillTypes(this.defaultValues.billTypeName);
   }
 
   @Debounce(1000)

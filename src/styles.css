@@ -34,3 +34,11 @@ mat-radio-button {
 .margin-left-20 {
   margin-left: 20px;
 }
+
+tr.app-grid-row:hover {
+  background: lightgray;
+}
+
+.selected {
+  background-color: lightgray !important;
+}
