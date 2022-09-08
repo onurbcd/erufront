@@ -42,6 +42,8 @@ export abstract class BaseListDirective<E extends Prime<ID>, F, ID>
 
   length = 0;
 
+  private rows: any[] = [];
+
   @Input() value: F = {} as F;
 
   @Output() listChanged: EventEmitter<void> = new EventEmitter<void>();
@@ -170,6 +172,20 @@ export abstract class BaseListDirective<E extends Prime<ID>, F, ID>
             });
         }
       });
+  }
+
+  gridRowSelected(row: any): void {
+    row.selected = !row.selected;
+
+    for (const loopRow of this.rows) {
+      loopRow.selected = false;
+    }
+
+    this.rows = [];
+
+    if (row.selected === true) {
+      this.rows.push(row);
+    }
   }
 
   private getItems(pageEvent: PageEvent, sort: Sort): void {

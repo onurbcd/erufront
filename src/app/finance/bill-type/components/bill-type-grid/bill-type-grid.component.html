@@ -35,7 +35,7 @@
     </ng-container>
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns" class="app-grid-row" [class.selected]="row.selected"
-      (click)="row.selected = !row.selected"></tr>
+      (click)="gridRowSelected(row)"></tr>
     <tr class="mat-row" *matNoDataRow>
       <td class="mat-cell" colspan="4" translate>global.noData</td>
     </tr>
