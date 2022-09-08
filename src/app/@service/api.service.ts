@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 import { environment } from '@env/environment';
 import { PageEvent } from '@angular/material/paginator';
 import { Sort } from '@angular/material/sort';
-import { Filter, Page, Prime, Sequence } from '@model';
+import { Filter, Page, Prime, Sequence, SwapPosition } from '@model';
 
 export interface QueryParams {
   [name: string]: string | string[];
@@ -59,6 +59,14 @@ export abstract class ApiService<E extends Prime<ID>, F, ID> {
       this.getUrl(`${sequence.id}/sequence`),
       null,
       { params }
+    );
+  }
+
+  swapPosition(swapPosition: SwapPosition): Observable<void> {
+    return this.httpClient.patch<void>(
+      this.getUrl(`${swapPosition.id}/${swapPosition.target}/swap-position`),
+      null,
+      {}
     );
   }
 

@@ -13,7 +13,12 @@
     "confirmMsg": "Are you sure you want to delete?",
     "deleteSuccess": "{{ name }} with ID '{{ id }}' deleted with success",
     "changeStatusSuccess": "{{ name }} with ID '{{ id }}': status changed with success",
-    "updateSequence": "Sequence updated with success"
+    "updateSequence": "Sequence updated with success",
+    "swapPosition": {
+      "message": "Sequence swaped with success",
+      "title": "Swap Position",
+      "target": "Target Position"
+    }
   },
   "home": {
     "title": "Home"
@@ -86,7 +91,8 @@
     "save": "Save",
     "back": "Back",
     "up": "Up",
-    "down": "Down"
+    "down": "Down",
+    "swapPosition": "Swap Position"
   },
   "global": {
     "slideToggle": {

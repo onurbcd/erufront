@@ -1,0 +1,19 @@
+<span mat-dialog-title translate>shared.swapPosition.title</span>
+
+<mat-dialog-content class="mat-typography">
+    <form [formGroup]="formGroup" novalidate>
+        <mat-form-field class="input-width">
+            <input matInput type="number" placeholder="{{ 'shared.swapPosition.target' | translate }}"
+                [formControl]="targetFormControl" />
+        </mat-form-field>
+    </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="center">
+    <button mat-raised-button color="primary" (click)="onConfirmClick()" tabindex="1" [disabled]="formGroup.invalid">
+        {{ "button.ok" | translate }}
+    </button>
+    <button mat-raised-button mat-dialog-close tabindex="-1">
+        {{ "button.cancel" | translate }}
+    </button>
+</mat-dialog-actions>

@@ -40,6 +40,7 @@ import {
   FilterStatusComponent,
   FormButtonsComponent,
   SequenceControlComponent,
+  SwapPositionComponent,
 } from './components';
 import { AppDatePipe } from './pipes';
 
@@ -103,6 +104,7 @@ export const components = [
   FilterStatusComponent,
   FormButtonsComponent,
   SequenceControlComponent,
+  SwapPositionComponent,
 ];
 
 export const pipes = [AppDatePipe];

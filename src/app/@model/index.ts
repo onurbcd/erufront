@@ -22,3 +22,4 @@ export * from './vault/secret-filter';
 export * from './vault/secret';
 
 export * from './sequence';
+export * from './swap-position';

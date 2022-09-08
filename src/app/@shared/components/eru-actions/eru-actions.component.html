@@ -3,7 +3,7 @@
     edit
   </mat-icon>
 </a>
-<a mat-icon-button (click)="delete.next(id)">
+<a mat-icon-button (click)="$event.stopPropagation(); delete.next(id)">
   <mat-icon color="primary" matTooltip="{{ 'global.delete' | translate }}">
     delete
   </mat-icon>

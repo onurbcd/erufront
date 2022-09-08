@@ -10,9 +10,12 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatSort, Sort } from '@angular/material/sort';
 import { Router } from '@angular/router';
-import { Prime, Sequence } from '@model';
+import { Prime, Sequence, SwapPosition } from '@model';
 import { ApiService, ToastService } from '@service';
-import { ConfirmDialogComponent } from '@shared/components';
+import {
+  ConfirmDialogComponent,
+  SwapPositionComponent,
+} from '@shared/components';
 import { Subject, takeUntil } from 'rxjs';
 import { AppConstants } from 'src/app/app-constants';
 
@@ -90,7 +93,9 @@ export abstract class BaseListDirective<E extends Prime<ID>, F, ID>
   }
 
   delete(id: ID): void {
-    const dialogRef = this.matDialog.open(ConfirmDialogComponent);
+    const dialogRef = this.matDialog.open(ConfirmDialogComponent, {
+      disableClose: true,
+    });
 
     dialogRef
       .afterClosed()
@@ -138,6 +143,32 @@ export abstract class BaseListDirective<E extends Prime<ID>, F, ID>
         this.listChanged.next();
         this.toastService.showSuccess('shared.updateSequence');
         this.search();
+      });
+  }
+
+  swapPosition(event: MouseEvent, id: string, max: number): void {
+    event.stopPropagation();
+    const swapPosition: SwapPosition = { id, max, target: 0 };
+
+    const dialogRef = this.matDialog.open(SwapPositionComponent, {
+      data: swapPosition,
+      disableClose: true,
+    });
+
+    dialogRef
+      .afterClosed()
+      .pipe(takeUntil(this.unsubscribe$))
+      .subscribe((swapPositionResult: SwapPosition) => {
+        if (swapPositionResult) {
+          this.apiService
+            .swapPosition(swapPositionResult)
+            .pipe(takeUntil(this.unsubscribe$))
+            .subscribe(() => {
+              this.listChanged.next();
+              this.toastService.showSuccess('shared.swapPosition.message');
+              this.search();
+            });
+        }
       });
   }
 
