@@ -1,13 +1,8 @@
 <mat-dialog-content>
-  <p translate>shared.confirmMsg</p>
+  <p>{{ confirmDialogData.message | translate }}</p>
 </mat-dialog-content>
 <mat-dialog-actions align="center">
-  <button
-    mat-raised-button
-    color="primary"
-    (click)="onConfirmClick()"
-    tabindex="1"
-  >
+  <button mat-raised-button color="primary" (click)="onConfirmClick()" tabindex="1">
     {{ "button.ok" | translate }}
   </button>
   <button mat-raised-button mat-dialog-close tabindex="-1">

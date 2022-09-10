@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Budget, BudgetFilter, CopyBudget, Sum } from '@model';
+import { Budget, BudgetFilter, CopyBudget, Ref, Sum } from '@model';
 import { ApiService, QueryParams } from '@service/api.service';
 import { Observable } from 'rxjs';
 import { AppConstants } from 'src/app/app-constants';
@@ -55,5 +55,11 @@ export class BudgetService extends ApiService<Budget, BudgetFilter, string> {
 
   copy(copyBudget: CopyBudget): Observable<void> {
     return this.httpClient.post<void>(this.getUrl('copy'), copyBudget);
+  }
+
+  deleteAll(ref: Ref): Observable<void> {
+    return this.httpClient.delete<void>(
+      this.getUrl(`${ref.year}/${ref.month}/all`)
+    );
   }
 }

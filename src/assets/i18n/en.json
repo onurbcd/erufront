@@ -92,7 +92,8 @@
     "back": "Back",
     "up": "Up",
     "down": "Down",
-    "swapPosition": "Swap Position"
+    "swapPosition": "Swap Position",
+    "deleteAll": "Delete All"
   },
   "global": {
     "slideToggle": {
@@ -109,6 +110,8 @@
     "delete": "Delete",
     "noData": "No data",
     "filters": "Filters",
-    "noEntriesFoundLabel": "No entries found"
+    "noEntriesFoundLabel": "No entries found",
+    "confirmDeleteAll": "Are you sure you want to delete all records?",
+    "successDeleteAll": "Records deleted with success!"
   }
 }

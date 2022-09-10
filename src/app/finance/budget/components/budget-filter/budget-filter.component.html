@@ -7,6 +7,8 @@
           <mat-icon routerLink="/budget/new" matTooltip="{{ 'button.new' | translate }}" color="primary">add</mat-icon>
           <mat-icon (click)="$event.stopPropagation(); copy()" matTooltip="{{ 'button.copy' | translate }}"
             color="accent">copy_all</mat-icon>
+          <mat-icon (click)="$event.stopPropagation(); deleteAll()" matTooltip="{{ 'button.deleteAll' | translate }}"
+            color="warn">delete</mat-icon>
         </div>
       </mat-panel-title>
     </mat-expansion-panel-header>
@@ -36,6 +38,9 @@
         </app-eru-buttons>
         <button mat-raised-button color="accent" (click)="copy()" class="budget-filter-margin-left-10">
           {{ "button.copy" | translate }}
+        </button>
+        <button mat-raised-button color="warn" (click)="deleteAll()" class="budget-filter-margin-left-10">
+          {{ "button.deleteAll" | translate }}
         </button>
       </mat-grid-tile>
     </mat-grid-list>

@@ -96,6 +96,7 @@ export abstract class BaseListDirective<E extends Prime<ID>, F, ID>
 
   delete(id: ID): void {
     const dialogRef = this.matDialog.open(ConfirmDialogComponent, {
+      data: { message: 'shared.confirmMsg' },
       disableClose: true,
     });
 

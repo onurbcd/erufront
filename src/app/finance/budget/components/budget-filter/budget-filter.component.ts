@@ -3,7 +3,7 @@ import { FormBuilder, FormControl } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { BudgetFilter, CopyBudget, Ref } from '@model';
 import { DateService } from '@service';
-import { BaseFilterDirective } from '@shared';
+import { BaseFilterDirective, ConfirmDialogComponent } from '@shared';
 import { BudgetCopyComponent } from '../budget-copy';
 import { takeUntil } from 'rxjs';
 
@@ -31,6 +31,8 @@ export class BudgetFilterComponent
 
   @Output() copyBudget: EventEmitter<CopyBudget> =
     new EventEmitter<CopyBudget>();
+
+  @Output() deleteAllEvent: EventEmitter<Ref> = new EventEmitter<Ref>();
 
   constructor(
     private formBuilder: FormBuilder,
@@ -80,6 +82,24 @@ export class BudgetFilterComponent
       .subscribe((copyBudget: CopyBudget) => {
         if (copyBudget) {
           this.copyBudget.next(copyBudget);
+        }
+      });
+  }
+
+  deleteAll(): void {
+    const dialogRef = this.matDialog.open(ConfirmDialogComponent, {
+      data: { message: 'global.confirmDeleteAll' },
+      disableClose: true,
+    });
+
+    dialogRef
+      .afterClosed()
+      .pipe(takeUntil(this.unsubscribe$))
+      .subscribe((confirmed: boolean) => {
+        if (confirmed) {
+          this.deleteAllEvent.next(
+            new Ref(this.formGroup.value.refYear, this.formGroup.value.refMonth)
+          );
         }
       });
   }

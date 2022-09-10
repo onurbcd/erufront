@@ -5,7 +5,7 @@ import {
   OnInit,
   ViewChild,
 } from '@angular/core';
-import { BudgetFilter, CopyBudget, Sum, SumType } from '@model';
+import { BudgetFilter, CopyBudget, Ref, Sum, SumType } from '@model';
 import { AppService, BudgetService, DateService, ToastService } from '@service';
 import { Subject, takeUntil } from 'rxjs';
 import { BudgetGridComponent, BudgetValuesComponent } from '../../components';
@@ -75,6 +75,17 @@ export class BudgetListComponent implements OnInit, AfterViewInit, OnDestroy {
       .pipe(takeUntil(this.unsubscribe$))
       .subscribe(() => {
         this.toastService.showSuccess('finance.budget.budgetCopy.success');
+      });
+  }
+
+  deleteAll(ref: Ref): void {
+    this.budgetService
+      .deleteAll(ref)
+      .pipe(takeUntil(this.unsubscribe$))
+      .subscribe(() => {
+        this.gridComponent.search();
+        this.valuesComponent.getTotals();
+        this.toastService.showSuccess('global.successDeleteAll');
       });
   }
 }
