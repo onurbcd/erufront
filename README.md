@@ -25,3 +25,12 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+## Dockerfile
+
+```shell
+$ docker pull node:16.17.0-alpine3.16
+$ docker pull nginx:stable-alpine
+$ docker build -t eru-front:1.0.0 .
+$ docker run --net eru-network -p4200:80 --name eru-front -d eru-front:1.0.0
+```

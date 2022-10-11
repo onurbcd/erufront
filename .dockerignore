@@ -1,0 +1,12 @@
+.angular/
+Dockerfile
+.dockerignore
+.git/
+.gitignore
+install-faq.txt
+LICENSE
+node_modules/
+README.md
+todo-list
+.vscode/
+*.sock
