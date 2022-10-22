@@ -1,4 +1,10 @@
 -> BUDGET
 
     - Adicionar contadores - depende de outros módulos não desenvolvidos ainda
-    - Criar funcionalidade para copiar budget a partir de outro mês
+    - Colocar a paginação da grid na parte de cima
+    - Adicionar os filtros das páginas nos query params, para ao voltar atrás se conseguir continuar da mesma página mas filtrada
+    - Implementar a página de categorias
+    - Adicionar um favicon
+    - Adicionar botões de next e previous na lista de budget
+    - Adicionar um logo
+    - Alterar as cores dos balões de valores da lista de budget
