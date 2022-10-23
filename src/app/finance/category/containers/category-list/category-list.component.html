@@ -1,0 +1,3 @@
+<app-category-filter (restart)="gridComponent.reset($event)" (search)="gridComponent.search()"
+    (valueChanges)="valueChanges($event)"></app-category-filter>
+<app-category-grid [value]="categoryFilter"></app-category-grid>

@@ -1,0 +1,78 @@
+::ng-deep .mat-slide-toggle.mat-disabled.lastBranch {
+  opacity: 1 !important;
+}
+
+::ng-deep .mat-sort-header-container {
+  display: flex;
+  justify-content: center;
+  font-weight: bold;
+  font-size: medium;
+}
+
+.mat-column-name,
+.mat-column-description,
+.mat-column-parentName {
+  word-wrap: break-word !important;
+  white-space: unset !important;
+  flex: 0 0 12.5% !important;
+  width: 12.5% !important;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-word;
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+  border-right: 1px solid gainsboro;
+  padding: 5px;
+}
+
+.mat-column-level {
+  word-wrap: break-word !important;
+  white-space: unset !important;
+  flex: 0 0 12.5% !important;
+  width: 12.5% !important;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-word;
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+  border-right: 1px solid gainsboro;
+  text-align: right;
+  padding: 5px;
+}
+
+.mat-column-lastBranch,
+.mat-column-lastModifiedDate,
+.mat-column-active {
+  word-wrap: break-word !important;
+  white-space: unset !important;
+  flex: 0 0 12.5% !important;
+  width: 12.5% !important;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-word;
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+  border-right: 1px solid gainsboro;
+  text-align: center;
+}
+
+.mat-column-config {
+  word-wrap: break-word !important;
+  white-space: unset !important;
+  flex: 0 0 12.5% !important;
+  width: 12.5% !important;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-word;
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+  text-align: center;
+}

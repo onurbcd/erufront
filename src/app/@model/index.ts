@@ -7,9 +7,11 @@ export * from './enums/sum-type';
 
 export * from './finance/filter/bill-type-filter';
 export * from './finance/filter/budget-filter';
+export * from './finance/filter/category-filter';
 
 export * from './finance/bill-type';
 export * from './finance/budget';
+export * from './finance/category';
 export * from './finance/ref';
 export * from './finance/copy-budget';
 export * from './finance/sum';

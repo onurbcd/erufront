@@ -58,10 +58,6 @@ export class BudgetFilterComponent
     });
   }
 
-  protected resetForm(path: string): void {
-    this.formGroup.get(path)?.reset();
-  }
-
   dateSelectionChange(): void {
     this.filterSearch();
     this.dateChange.next(this.formGroup.value);

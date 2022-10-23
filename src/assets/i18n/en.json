@@ -6,7 +6,8 @@
       "home": "Home",
       "secret": "Secret",
       "billType": "Bill Type",
-      "budget": "Budget"
+      "budget": "Budget",
+      "category": "Category"
     }
   },
   "shared": {
@@ -64,6 +65,23 @@
         "to": "To",
         "success": "Budget copied with success!"
       }
+    },
+    "category": {
+      "search": "Name/Description",
+      "parent": "Parent",
+      "searchCategory": "Search Category By Name Or Description",
+      "listTitle": "Category List",
+      "lastBranchRadioButton": {
+        "both": "Last Branch",
+        "active": "Yes",
+        "inactive": "No"
+      },
+      "level": "Level",
+      "name": "Name",
+      "description": "Description",
+      "lastBranch": "Last Branch",
+      "lastModifiedDate": "Updated At",
+      "status": "Status"
     }
   },
   "vault": {
@@ -112,6 +130,10 @@
     "filters": "Filters",
     "noEntriesFoundLabel": "No entries found",
     "confirmDeleteAll": "Are you sure you want to delete all records?",
-    "successDeleteAll": "Records deleted with success!"
+    "successDeleteAll": "Records deleted with success!",
+    "yesNo": {
+      "true": "Yes",
+      "false": "No"
+    }
   }
 }

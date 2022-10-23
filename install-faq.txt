@@ -17,3 +17,8 @@
     - https://github.com/bithost-gmbh/ngx-mat-select-search
     - https://www.npmjs.com/package/ngx-mat-select-search
     - npm i ngx-mat-select-search --save
+
+-> ngx-mask
+
+    - https://www.npmjs.com/package/ngx-mask
+    - npm i ngx-mask --save

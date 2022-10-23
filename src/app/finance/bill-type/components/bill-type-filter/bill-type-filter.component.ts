@@ -26,8 +26,4 @@ export class BillTypeFilterComponent
       active: this.activeFormControl,
     });
   }
-
-  protected resetForm(path: string): void {
-    this.formGroup.get(path)?.reset();
-  }
 }

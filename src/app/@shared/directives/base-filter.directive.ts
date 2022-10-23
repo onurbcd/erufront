@@ -47,7 +47,9 @@ export abstract class BaseFilterDirective<T> implements OnInit, OnDestroy {
 
   protected abstract buildForm(): void;
 
-  protected abstract resetForm(path: string): void;
+  resetForm(path: string): void {
+    this.formGroup.get(path)?.reset();
+  }
 
   filterSearch(): void {
     if (this.formGroup.invalid) {

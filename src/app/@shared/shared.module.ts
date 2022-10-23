@@ -30,6 +30,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { ClipboardModule } from 'ngx-clipboard';
 import { NgxCurrencyModule } from 'ngx-currency';
 import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
+import { NgxMaskModule } from 'ngx-mask';
 import {
   BasicSelectComponent,
   ConfirmDialogComponent,
@@ -57,6 +58,7 @@ export const importModules = [
   RouterModule,
   ClipboardModule,
   MatSelectModule,
+  NgxMaskModule.forRoot(),
 ];
 
 export const exportModules = [
@@ -92,6 +94,7 @@ export const exportModules = [
   NgxCurrencyModule,
   NgxMatSelectSearchModule,
   NgSelectModule,
+  NgxMaskModule,
 ];
 
 export const components = [

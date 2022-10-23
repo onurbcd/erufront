@@ -54,4 +54,6 @@ export class AppConstants {
   public static FINANCE_BILL_TYPE_URL = 'bill-type/';
 
   public static FINANCE_BUDGET_URL = 'budget/';
+
+  public static FINANCE_CATEGORY_URL = 'category/';
 }

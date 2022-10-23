@@ -8,15 +8,27 @@ const routes: Routes = [
   },
   {
     path: 'secret',
-    loadChildren: () => import('./vault/secret/secret.module').then((m) => m.SecretModule),
+    loadChildren: () =>
+      import('./vault/secret/secret.module').then((m) => m.SecretModule),
   },
   {
     path: 'bill-type',
-    loadChildren: () => import('./finance/bill-type/bill-type.module').then((m) => m.BillTypeModule),
+    loadChildren: () =>
+      import('./finance/bill-type/bill-type.module').then(
+        (m) => m.BillTypeModule
+      ),
   },
   {
     path: 'budget',
-    loadChildren: () => import('./finance/budget/budget.module').then((m) => m.BudgetModule),
+    loadChildren: () =>
+      import('./finance/budget/budget.module').then((m) => m.BudgetModule),
+  },
+  {
+    path: 'category',
+    loadChildren: () =>
+      import('./finance/category/category.module').then(
+        (m) => m.CategoryModule
+      ),
   },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
 ];
