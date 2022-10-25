@@ -3,10 +3,10 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Category, CategoryFilter, Page } from '@model';
 import { CategoryService, ToastService } from '@service';
-import { BaseFormDirective } from '@shared/directives/base-form.directive';
 import { AppConstants } from 'src/app/app-constants';
-import { Debounce } from '@shared';
+import { Debounce, BaseFormDirective } from '@shared';
 import { Observable } from 'rxjs';
+import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 
 @Component({
   selector: 'app-category-form',
@@ -18,6 +18,8 @@ export class CategoryFormComponent
   implements OnInit
 {
   categories$!: Observable<Page<Category>>;
+
+  private lastBranchDefaultValue = false;
 
   constructor(
     activatedRoute: ActivatedRoute,
@@ -37,7 +39,7 @@ export class CategoryFormComponent
     const levelDefaultValue =
       this.defaultValues.level == null ? -1 : this.defaultValues.level;
 
-    const lastBranchDefaultValue =
+    this.lastBranchDefaultValue =
       this.defaultValues.lastBranch == null
         ? true
         : this.defaultValues.lastBranch;
@@ -64,7 +66,7 @@ export class CategoryFormComponent
       parentId: [this.defaultValues.parentId, [Validators.required]],
       parentName: [this.defaultValues.parentName],
       level: [levelDefaultValue, [Validators.required]],
-      lastBranch: [lastBranchDefaultValue, [Validators.required]],
+      lastBranch: [this.lastBranchDefaultValue, [Validators.required]],
       active: [activeDefaultValue, [Validators.required]],
     });
   }
@@ -76,6 +78,10 @@ export class CategoryFormComponent
     }
 
     this.getCategories(searchInput);
+  }
+
+  lastBranchChange(change: MatSlideToggleChange): void {
+    this.formGroup.get('lastBranch')?.setValue(this.lastBranchDefaultValue);
   }
 
   private getCategories(search: string): void {

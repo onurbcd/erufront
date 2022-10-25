@@ -8,8 +8,7 @@ import {
   DateService,
   ToastService,
 } from '@service';
-import { Debounce } from '@shared';
-import { BaseFormDirective } from '@shared/directives/base-form.directive';
+import { BaseFormDirective, Debounce } from '@shared';
 import { Observable } from 'rxjs';
 import { AppConstants } from 'src/app/app-constants';
 

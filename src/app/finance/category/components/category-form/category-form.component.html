@@ -34,7 +34,7 @@
         <input matInput placeholder="{{ 'finance.category.level' | translate }}" formControlName="level"
             [readonly]="true" />
     </mat-form-field>
-    <mat-slide-toggle formControlName="lastBranch" color="primary">
+    <mat-slide-toggle formControlName="lastBranch" color="primary" (change)="lastBranchChange($event)">
         {{ "finance.category.lastBranchSlideToggle." + formGroup.value.lastBranch | translate }}
     </mat-slide-toggle>
     <mat-slide-toggle formControlName="active" color="primary" class="margin-top-20">

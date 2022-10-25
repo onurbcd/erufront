@@ -3,7 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Secret, SecretFilter } from '@model';
 import { SecretService, ToastService } from '@service';
-import { BaseFormDirective } from '@shared/directives/base-form.directive';
+import { BaseFormDirective } from '@shared';
 import { AppConstants } from 'src/app/app-constants';
 
 @Component({
