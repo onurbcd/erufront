@@ -81,7 +81,12 @@
       "description": "Description",
       "lastBranch": "Last Branch",
       "lastModifiedDate": "Updated At",
-      "status": "Status"
+      "status": "Status",
+      "formTitle": "Category Creation",
+      "lastBranchSlideToggle": {
+        "true": "Last Branch",
+        "false": "Not Last Branch"
+      }
     }
   },
   "vault": {

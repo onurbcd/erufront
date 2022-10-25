@@ -1,0 +1,95 @@
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Category, CategoryFilter, Page } from '@model';
+import { CategoryService, ToastService } from '@service';
+import { BaseFormDirective } from '@shared/directives/base-form.directive';
+import { AppConstants } from 'src/app/app-constants';
+import { Debounce } from '@shared';
+import { Observable } from 'rxjs';
+
+@Component({
+  selector: 'app-category-form',
+  templateUrl: './category-form.component.html',
+  styleUrls: ['./category-form.component.css'],
+})
+export class CategoryFormComponent
+  extends BaseFormDirective<Category, CategoryFilter, string>
+  implements OnInit
+{
+  categories$!: Observable<Page<Category>>;
+
+  constructor(
+    activatedRoute: ActivatedRoute,
+    private categoryService: CategoryService,
+    toastService: ToastService,
+    router: Router,
+    private formBuilder: FormBuilder
+  ) {
+    super(activatedRoute, categoryService, toastService, router);
+  }
+
+  override ngOnInit(): void {
+    super.ngOnInit();
+  }
+
+  protected buildForm(): void {
+    const levelDefaultValue =
+      this.defaultValues.level == null ? -1 : this.defaultValues.level;
+
+    const lastBranchDefaultValue =
+      this.defaultValues.lastBranch == null
+        ? true
+        : this.defaultValues.lastBranch;
+
+    const activeDefaultValue =
+      this.defaultValues.active == null ? true : this.defaultValues.active;
+
+    this.formGroup = this.formBuilder.group({
+      name: [
+        this.defaultValues.name,
+        [
+          Validators.required,
+          Validators.minLength(AppConstants.LENGTH_3),
+          Validators.maxLength(AppConstants.LENGTH_50),
+        ],
+      ],
+      description: [
+        this.defaultValues.description,
+        [
+          Validators.minLength(AppConstants.LENGTH_3),
+          Validators.maxLength(AppConstants.LENGTH_250),
+        ],
+      ],
+      parentId: [this.defaultValues.parentId, [Validators.required]],
+      parentName: [this.defaultValues.parentName],
+      level: [levelDefaultValue, [Validators.required]],
+      lastBranch: [lastBranchDefaultValue, [Validators.required]],
+      active: [activeDefaultValue, [Validators.required]],
+    });
+  }
+
+  @Debounce(1000)
+  searchCategory(searchInput: string): void {
+    if (!searchInput || searchInput.trim().length < 3) {
+      return;
+    }
+
+    this.getCategories(searchInput);
+  }
+
+  private getCategories(search: string): void {
+    this.categories$ = this.categoryService.getAll(
+      { search } as CategoryFilter,
+      {
+        pageIndex: 0,
+        pageSize: AppConstants.PAGE_SIZE_SELECT,
+        length: 0,
+      },
+      {
+        active: 'name',
+        direction: 'asc',
+      }
+    );
+  }
+}

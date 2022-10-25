@@ -1,22 +1,26 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { SharedModule } from '@shared';
-import { CategoryFilterComponent, CategoryGridComponent } from './components';
-import { CategoryListComponent } from './containers';
+import {
+  CategoryFilterComponent,
+  CategoryFormComponent,
+  CategoryGridComponent,
+} from './components';
+import { CategoryCreationComponent, CategoryListComponent } from './containers';
 
 export const CategoryRoutes: Routes = [
   {
     path: '',
     component: CategoryListComponent,
   },
-  /*{
+  {
     path: 'new',
-    component: BillTypeCreationComponent,
+    component: CategoryCreationComponent,
   },
   {
     path: ':id/edit',
-    component: BillTypeCreationComponent,
-  },*/
+    component: CategoryCreationComponent,
+  },
 ];
 
 @NgModule({
@@ -24,6 +28,8 @@ export const CategoryRoutes: Routes = [
     CategoryFilterComponent,
     CategoryListComponent,
     CategoryGridComponent,
+    CategoryFormComponent,
+    CategoryCreationComponent,
   ],
   imports: [SharedModule, RouterModule.forChild(CategoryRoutes)],
 })
