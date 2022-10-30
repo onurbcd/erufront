@@ -5,6 +5,8 @@ export class AppConstants {
 
   public static DEFAULT_LANG = 'en';
 
+  public static DEFAULT_LOCALE = 'pt-PT';
+
   public static PAGE_SIZE = 20;
 
   public static PAGE_SIZE_SELECT = 10;
@@ -26,6 +28,30 @@ export class AppConstants {
     min: 0.0001,
     max: 999999999999999,
     inputMode: CurrencyMaskInputMode.FINANCIAL,
+  };
+
+  public static APP_DAY_FORMAT = {
+    parse: {
+      dateInput: 'MM/YYYY',
+    },
+    display: {
+      dateInput: 'MM/YYYY',
+      monthYearLabel: 'MMM YYYY',
+      dateA11yLabel: 'LL',
+      monthYearA11yLabel: 'MMMM YYYY',
+    },
+  };
+
+  public static APP_DATE_FORMAT = {
+    parse: {
+      dateInput: 'YYYY-MM-DD',
+    },
+    display: {
+      dateInput: 'YYYY-MM-DD',
+      monthYearLabel: 'MMMM YYYY',
+      dateA11yLabel: 'LL',
+      monthYearA11yLabel: 'MMMM YYYY',
+    },
   };
 
   // VALIDATORS
@@ -56,4 +82,6 @@ export class AppConstants {
   public static FINANCE_BUDGET_URL = 'budget/';
 
   public static FINANCE_CATEGORY_URL = 'category/';
+
+  public static FINANCE_DAY_URL = 'day/';
 }

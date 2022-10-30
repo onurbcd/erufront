@@ -7,7 +7,8 @@
       "secret": "Secret",
       "billType": "Bill Type",
       "budget": "Budget",
-      "category": "Category"
+      "category": "Category",
+      "day": "Day"
     }
   },
   "shared": {
@@ -87,6 +88,10 @@
         "true": "Last Branch",
         "false": "Not Last Branch"
       }
+    },
+    "day": {
+      "formTitle": "Day Creation",
+      "selectMonth": "Select a month"
     }
   },
   "vault": {

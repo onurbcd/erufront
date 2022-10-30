@@ -30,6 +30,11 @@ const routes: Routes = [
         (m) => m.CategoryModule
       ),
   },
+  {
+    path: 'day',
+    loadChildren: () =>
+      import('./finance/day/day.module').then((m) => m.DayModule),
+  },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
 ];
 

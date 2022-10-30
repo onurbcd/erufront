@@ -14,6 +14,8 @@ export * from './finance/budget';
 export * from './finance/category';
 export * from './finance/ref';
 export * from './finance/copy-budget';
+export * from './finance/create-month';
+export * from './finance/day';
 export * from './finance/sum';
 
 export * from './page/page';

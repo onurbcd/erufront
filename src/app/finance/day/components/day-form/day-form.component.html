@@ -1,0 +1,16 @@
+<mat-grid-list cols="1" rowHeight="75">
+    <mat-grid-tile>
+        <mat-form-field appearance="standard">
+            <mat-label translate>finance.day.selectMonth</mat-label>
+            <input matInput [matDatepicker]="picker" [formControl]="date" [max]="max" [min]="min" />
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker startView="year" disabled="false" (monthSelected)="onMonthSelected($event, picker)"
+                [dateClass]="dateClass"></mat-datepicker>
+        </mat-form-field>
+    </mat-grid-tile>
+    <mat-grid-tile>
+        <button mat-raised-button color="primary" [disabled]="saveButtonDisabled()" (click)="save()">
+            {{ "button.save" | translate }}
+        </button>
+    </mat-grid-tile>
+</mat-grid-list>
