@@ -88,7 +88,7 @@ export class DayFormComponent implements OnInit, OnDestroy {
     const year = this.date.value?.year();
     const month = this.date.value?.month();
 
-    if (!year || !month) {
+    if (year == null || month == null) {
       return;
     }
 
