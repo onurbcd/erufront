@@ -35,6 +35,13 @@ const routes: Routes = [
     loadChildren: () =>
       import('./finance/day/day.module').then((m) => m.DayModule),
   },
+  {
+    path: 'income-source',
+    loadChildren: () =>
+      import('./finance/income-source/income-source.module').then(
+        (m) => m.IncomeSourceModule
+      ),
+  },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
 ];
 

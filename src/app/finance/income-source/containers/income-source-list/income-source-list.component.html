@@ -1,0 +1,3 @@
+<app-income-source-filter (restart)="gridComponent.reset($event)" (search)="gridComponent.search()"
+    (valueChanges)="valueChanges($event)"></app-income-source-filter>
+<app-income-source-grid [value]="incomeSourceFilter"></app-income-source-grid>

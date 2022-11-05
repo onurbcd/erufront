@@ -84,4 +84,6 @@ export class AppConstants {
   public static FINANCE_CATEGORY_URL = 'category/';
 
   public static FINANCE_DAY_URL = 'day/';
+
+  public static FINANCE_INCOME_SOURCE_URL = 'income-source/';
 }

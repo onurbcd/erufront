@@ -8,7 +8,8 @@
       "billType": "Bill Type",
       "budget": "Budget",
       "category": "Category",
-      "day": "Day"
+      "day": "Day",
+      "incomeSource": "Income Source"
     }
   },
   "shared": {
@@ -92,6 +93,13 @@
     "day": {
       "formTitle": "Day Creation",
       "selectMonth": "Select a month"
+    },
+    "incomeSource": {
+      "name": "Name",
+      "lastModifiedDate": "Updated At",
+      "status": "Status",
+      "formTitle": "Income Source Creation",
+      "listTitle": "Income Source List"
     }
   },
   "vault": {
