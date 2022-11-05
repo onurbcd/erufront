@@ -1,12 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Category, CategoryFilter } from '@model';
+import { Category, CategoryFilter, CategorySave } from '@model';
 import { ApiService, QueryParams } from '@service/api.service';
 import { AppConstants } from 'src/app/app-constants';
 
 @Injectable({ providedIn: 'root' })
 export class CategoryService extends ApiService<
   Category,
+  CategorySave,
   CategoryFilter,
   string
 > {

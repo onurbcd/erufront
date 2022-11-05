@@ -3,29 +3,26 @@ import { Observable } from 'rxjs';
 import { environment } from '@env/environment';
 import { PageEvent } from '@angular/material/paginator';
 import { Sort } from '@angular/material/sort';
-import { Filter, Page, Prime, Sequence, SwapPosition } from '@model';
+import { Filter, Page, Prime, PrimeSave, Sequence, SwapPosition } from '@model';
 
 export interface QueryParams {
   [name: string]: string | string[];
 }
 
-export abstract class ApiService<E extends Prime<ID>, F, ID> {
+export abstract class ApiService<
+  E extends Prime<ID>,
+  S extends PrimeSave,
+  F extends Filter,
+  ID
+> {
   constructor(protected httpClient: HttpClient, public baseUrl: string) {}
 
   abstract getQueryParams(filter: F): QueryParams;
 
   abstract getStatus(status: boolean, property: string): E;
 
-  post(entity: E, path: string = ''): Observable<E> {
-    return this.httpClient.post<E>(this.getUrl(path), entity);
-  }
-
-  put(id: ID, entity: E): Observable<E> {
-    return this.httpClient.put<E>(this.getUrl(`${id}`), entity, {});
-  }
-
-  save(id: ID, entity: E): Observable<E> {
-    return id == null ? this.post(entity) : this.put(id, entity);
+  save(id: ID, save: S): Observable<void> {
+    return id == null ? this.post(save) : this.put(id, save);
   }
 
   delete(id: ID): Observable<void> {
@@ -96,6 +93,14 @@ export abstract class ApiService<E extends Prime<ID>, F, ID> {
 
   protected getParams(queryParams: QueryParams): HttpParams {
     return new HttpParams({ fromObject: queryParams });
+  }
+
+  private post(save: S, path: string = ''): Observable<void> {
+    return this.httpClient.post<void>(this.getUrl(path), save);
+  }
+
+  private put(id: ID, save: S): Observable<void> {
+    return this.httpClient.put<void>(this.getUrl(`${id}`), save, {});
   }
 
   private getHttpParams(

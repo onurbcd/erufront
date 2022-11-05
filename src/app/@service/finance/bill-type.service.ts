@@ -1,12 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BillType, BillTypeFilter } from '@model';
+import { BillType, BillTypeFilter, BillTypeSave } from '@model';
 import { ApiService, QueryParams } from '@service/api.service';
 import { AppConstants } from 'src/app/app-constants';
 
 @Injectable({ providedIn: 'root' })
 export class BillTypeService extends ApiService<
   BillType,
+  BillTypeSave,
   BillTypeFilter,
   string
 > {

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Category, CategoryFilter, Page } from '@model';
+import { Category, CategoryFilter, CategorySave, Page } from '@model';
 import { CategoryService, ToastService } from '@service';
 import { AppConstants } from 'src/app/app-constants';
 import { Debounce, BaseFormDirective } from '@shared';
@@ -14,7 +14,7 @@ import { MatSlideToggleChange } from '@angular/material/slide-toggle';
   styleUrls: ['./category-form.component.css'],
 })
 export class CategoryFormComponent
-  extends BaseFormDirective<Category, CategoryFilter, string>
+  extends BaseFormDirective<Category, CategorySave, CategoryFilter, string>
   implements OnInit
 {
   categories$!: Observable<Page<Category>>;

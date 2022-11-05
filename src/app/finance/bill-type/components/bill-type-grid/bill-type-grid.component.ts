@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { BillType, BillTypeFilter } from '@model';
+import { BillType, BillTypeFilter, BillTypeSave } from '@model';
 import { BillTypeService, ToastService } from '@service';
 import { BaseListDirective } from '@shared';
 
@@ -12,6 +12,7 @@ import { BaseListDirective } from '@shared';
 })
 export class BillTypeGridComponent extends BaseListDirective<
   BillType,
+  BillTypeSave,
   BillTypeFilter,
   string
 > {

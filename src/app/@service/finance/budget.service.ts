@@ -1,12 +1,17 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Budget, BudgetFilter, CopyBudget, Ref, Sum } from '@model';
+import { Budget, BudgetFilter, BudgetSave, CopyBudget, Ref, Sum } from '@model';
 import { ApiService, QueryParams } from '@service/api.service';
 import { Observable } from 'rxjs';
 import { AppConstants } from 'src/app/app-constants';
 
 @Injectable({ providedIn: 'root' })
-export class BudgetService extends ApiService<Budget, BudgetFilter, string> {
+export class BudgetService extends ApiService<
+  Budget,
+  BudgetSave,
+  BudgetFilter,
+  string
+> {
   constructor(protected http: HttpClient) {
     super(http, AppConstants.FINANCE_BUDGET_URL);
   }

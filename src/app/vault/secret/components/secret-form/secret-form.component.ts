@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Secret, SecretFilter } from '@model';
+import { Secret, SecretFilter, SecretSave } from '@model';
 import { SecretService, ToastService } from '@service';
 import { BaseFormDirective } from '@shared';
 import { AppConstants } from 'src/app/app-constants';
@@ -12,7 +12,7 @@ import { AppConstants } from 'src/app/app-constants';
   styleUrls: ['./secret-form.component.css'],
 })
 export class SecretFormComponent
-  extends BaseFormDirective<Secret, SecretFilter, string>
+  extends BaseFormDirective<Secret, SecretSave, SecretFilter, string>
   implements OnInit
 {
   constructor(

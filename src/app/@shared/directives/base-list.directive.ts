@@ -10,7 +10,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatSort, Sort } from '@angular/material/sort';
 import { Router } from '@angular/router';
-import { Prime, Sequence, SwapPosition } from '@model';
+import { Filter, Prime, PrimeSave, Sequence, SwapPosition } from '@model';
 import { ApiService, ToastService } from '@service';
 import {
   ConfirmDialogComponent,
@@ -20,8 +20,12 @@ import { Subject, takeUntil } from 'rxjs';
 import { AppConstants } from 'src/app/app-constants';
 
 @Directive()
-export abstract class BaseListDirective<E extends Prime<ID>, F, ID>
-  implements OnDestroy
+export abstract class BaseListDirective<
+  E extends Prime<ID>,
+  S extends PrimeSave,
+  F extends Filter,
+  ID
+> implements OnDestroy
 {
   readonly pageSizeOptions = AppConstants.PAGE_SIZE_OPTIONS;
 
@@ -56,7 +60,7 @@ export abstract class BaseListDirective<E extends Prime<ID>, F, ID>
     private name: string,
     private router: Router,
     private matDialog: MatDialog,
-    private apiService: ApiService<E, F, ID>,
+    private apiService: ApiService<E, S, F, ID>,
     private toastService: ToastService
   ) {}
 

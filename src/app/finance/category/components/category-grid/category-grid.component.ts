@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { Category, CategoryFilter } from '@model';
+import { Category, CategoryFilter, CategorySave } from '@model';
 import { CategoryService, ToastService } from '@service';
 import { BaseListDirective } from '@shared';
 
@@ -12,6 +12,7 @@ import { BaseListDirective } from '@shared';
 })
 export class CategoryGridComponent extends BaseListDirective<
   Category,
+  CategorySave,
   CategoryFilter,
   string
 > {

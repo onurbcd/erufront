@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { Budget, BudgetFilter } from '@model';
+import { Budget, BudgetFilter, BudgetSave } from '@model';
 import { BudgetService, ToastService } from '@service';
 import { BaseListDirective } from '@shared';
 
@@ -12,6 +12,7 @@ import { BaseListDirective } from '@shared';
 })
 export class BudgetGridComponent extends BaseListDirective<
   Budget,
+  BudgetSave,
   BudgetFilter,
   string
 > {

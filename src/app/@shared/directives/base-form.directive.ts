@@ -1,15 +1,21 @@
 import { Directive, OnDestroy, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Prime } from '@model';
+import { Filter, Prime, PrimeSave } from '@model';
 import { ApiService, ToastService } from '@service';
 import { Subject, takeUntil } from 'rxjs';
 
 @Directive()
-export abstract class BaseFormDirective<E extends Prime<ID>, F, ID>
-  implements OnInit, OnDestroy
+export abstract class BaseFormDirective<
+  E extends Prime<ID>,
+  S extends PrimeSave,
+  F extends Filter,
+  ID
+> implements OnInit, OnDestroy
 {
   private unsubscribe$ = new Subject<void>();
+
+  id?: any;
 
   formGroup: FormGroup = new FormGroup({});
 
@@ -17,7 +23,7 @@ export abstract class BaseFormDirective<E extends Prime<ID>, F, ID>
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    private apiService: ApiService<E, F, ID>,
+    private apiService: ApiService<E, S, F, ID>,
     private toastService: ToastService,
     private router: Router
   ) {}
@@ -25,14 +31,14 @@ export abstract class BaseFormDirective<E extends Prime<ID>, F, ID>
   ngOnInit(): void {
     this.defaultValues = {} as E;
     this.buildForm();
-    const id = this.activatedRoute.snapshot.params['id'];
+    this.id = this.activatedRoute.snapshot.params['id'];
 
-    if (!id) {
+    if (!this.id) {
       return;
     }
 
     this.apiService
-      .get(id)
+      .get(this.id)
       .pipe(takeUntil(this.unsubscribe$))
       .subscribe((entity) => {
         this.defaultValues = entity;
@@ -55,10 +61,10 @@ export abstract class BaseFormDirective<E extends Prime<ID>, F, ID>
       return;
     }
 
-    const entity: E = this.formGroup.value;
+    const save: S = this.formGroup.value;
 
     this.apiService
-      .save(this.defaultValues.id, entity)
+      .save(this.id, save)
       .pipe(takeUntil(this.unsubscribe$))
       .subscribe(() => {
         this.toastService.showSuccess('global.saveSuccess');

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { Secret, SecretFilter } from '@model';
+import { Secret, SecretFilter, SecretSave } from '@model';
 import { SecretService, ToastService } from '@service';
 import { BaseListDirective } from '@shared';
 
@@ -12,6 +12,7 @@ import { BaseListDirective } from '@shared';
 })
 export class SecretGridComponent extends BaseListDirective<
   Secret,
+  SecretSave,
   SecretFilter,
   string
 > {

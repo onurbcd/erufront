@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { BillType, BillTypeFilter } from '@model';
+import { BillType, BillTypeFilter, BillTypeSave } from '@model';
 import { BillTypeService, ToastService } from '@service';
 import { BaseFormDirective } from '@shared';
 import { AppConstants } from 'src/app/app-constants';
@@ -12,7 +12,7 @@ import { AppConstants } from 'src/app/app-constants';
   styleUrls: ['./bill-type-form.component.css'],
 })
 export class BillTypeFormComponent
-  extends BaseFormDirective<BillType, BillTypeFilter, string>
+  extends BaseFormDirective<BillType, BillTypeSave, BillTypeFilter, string>
   implements OnInit
 {
   constructor(

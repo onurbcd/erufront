@@ -1,7 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { BillType, BillTypeFilter, Budget, BudgetFilter, Page } from '@model';
+import {
+  BillType,
+  BillTypeFilter,
+  Budget,
+  BudgetFilter,
+  BudgetSave,
+  Page,
+} from '@model';
 import {
   BillTypeService,
   BudgetService,
@@ -18,7 +25,7 @@ import { AppConstants } from 'src/app/app-constants';
   styleUrls: ['./budget-form.component.css'],
 })
 export class BudgetFormComponent
-  extends BaseFormDirective<Budget, BudgetFilter, string>
+  extends BaseFormDirective<Budget, BudgetSave, BudgetFilter, string>
   implements OnInit
 {
   years: number[] = [];
