@@ -29,7 +29,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 ## Dockerfile
 
 ```shell
-$ docker pull node:16.18.0-alpine3.16
+$ docker pull node:18.12.0-alpine3.16
 $ docker pull nginx:stable-alpine
 $ docker build -t eru-front:1.0.0 .
 $ docker run --net eru-network -p4200:80 --name eru-front -d eru-front:1.0.0
