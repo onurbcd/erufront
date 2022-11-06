@@ -63,7 +63,7 @@ export class BudgetFormComponent
       this.defaultValues.active == null ? true : this.defaultValues.active;
 
     const sequenceDefaultValue =
-      this.defaultValues.sequence == null ? -1 : this.defaultValues.sequence;
+      this.defaultValues.sequence == null ? 1 : this.defaultValues.sequence;
 
     const refYearDefaultValue =
       this.defaultValues.refYear == null
