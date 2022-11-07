@@ -37,7 +37,7 @@ export class CategoryFormComponent
 
   protected buildForm(): void {
     const levelDefaultValue =
-      this.defaultValues.level == null ? -1 : this.defaultValues.level;
+      this.defaultValues.level == null ? 1 : this.defaultValues.level;
 
     this.lastBranchDefaultValue =
       this.defaultValues.lastBranch == null
