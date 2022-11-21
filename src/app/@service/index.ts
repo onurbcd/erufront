@@ -1,8 +1,4 @@
-export * from './finance/bill-type.service';
-export * from './finance/budget.service';
-export * from './finance/category.service';
-export * from './finance/day.service';
-export * from './finance/income-source.service';
+export * from './finance';
 
 export * from './vault/secret.service';
 

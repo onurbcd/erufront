@@ -9,7 +9,8 @@
       "budget": "Budget",
       "category": "Category",
       "day": "Day",
-      "incomeSource": "Income Source"
+      "incomeSource": "Income Source",
+      "source": "Source"
     }
   },
   "shared": {
@@ -100,6 +101,14 @@
       "status": "Status",
       "formTitle": "Income Source Creation",
       "listTitle": "Income Source List"
+    },
+    "source": {
+      "name": "Name",
+      "listTitle": "Source List",
+      "sourceType": "Source Type",
+      "currencyType": "Currency Type",
+      "incomeSource": "Income Source",
+      "searchIncomeSource": "Search Income Source By Name"
     }
   },
   "vault": {

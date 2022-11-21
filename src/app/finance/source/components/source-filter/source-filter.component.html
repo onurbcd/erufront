@@ -1,0 +1,61 @@
+<form [formGroup]="formGroup" novalidate>
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title translate>
+                global.filters
+                <mat-icon routerLink="/source/new" matTooltip="{{ 'button.new' | translate }}" color="primary">
+                    add
+                </mat-icon>
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-grid-list cols="3" rowHeight="75">
+            <mat-grid-tile>
+                <app-eru-input [placeholder]="'finance.source.name'" [inputFormControl]="searchFormControl"
+                    (restart)="restart.next($event)" (search)="filterSearch()" (clear)="filterClear('search')">
+                </app-eru-input>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <mat-form-field class="input-width">
+                    <mat-label>{{ 'finance.source.incomeSource' | translate }}</mat-label>
+                    <mat-select #incomeSourceSelect formControlName="incomeSourceId">
+                        <div (mouseleave)="incomeSourceSelect.close()">
+                            <mat-option>
+                                <ngx-mat-select-search ngModel [ngModelOptions]="{standalone: true}"
+                                    (ngModelChange)="searchIncomeSource($event)"
+                                    placeholderLabel="{{ 'finance.source.searchIncomeSource' | translate }}"
+                                    noEntriesFoundLabel="{{ 'global.noEntriesFoundLabel' | translate }}">
+                                </ngx-mat-select-search>
+                            </mat-option>
+                            <mat-option *ngFor="let incomeSource of (incomeSources$ | async)?.content"
+                                [value]="incomeSource.id" (onSelectionChange)="filterSearch()">
+                                {{ incomeSource.name }}
+                            </mat-option>
+                        </div>
+                    </mat-select>
+                    <button mat-button *ngIf="formGroup.value.incomeSourceId" matSuffix mat-icon-button
+                        matTooltip="{{ 'button.clear' | translate }}" (click)="filterClear('incomeSourceId')">
+                        <mat-icon>close</mat-icon>
+                    </button>
+                </mat-form-field>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <app-basic-select [label]="'finance.source.sourceType'" [selectFormControl]="sourceTypeFormControl"
+                    [values]="sourceTypes" (selectionChange)="filterSearch()" (clear)="filterClear('sourceType')">
+                </app-basic-select>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <app-basic-select [label]="'finance.source.currencyType'" [selectFormControl]="currencyTypeFormControl"
+                    [values]="currencyTypes" (selectionChange)="filterSearch()" (clear)="filterClear('currencyType')">
+                </app-basic-select>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <app-filter-status [statusFormControl]="activeFormControl" [translation]="'global.radioButton'"
+                    (search)="filterSearch()"></app-filter-status>
+            </mat-grid-tile>
+            <mat-grid-tile colspan="3">
+                <app-eru-buttons [searchDisabled]="formGroup.invalid" (search)="filterSearch()" [link]="'/source/new'">
+                </app-eru-buttons>
+            </mat-grid-tile>
+        </mat-grid-list>
+    </mat-expansion-panel>
+</form>

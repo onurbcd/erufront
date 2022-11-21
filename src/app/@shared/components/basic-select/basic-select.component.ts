@@ -15,5 +15,7 @@ export class BasicSelectComponent {
 
   @Output() selectionChange: EventEmitter<void> = new EventEmitter<void>();
 
+  @Output() clear: EventEmitter<void> = new EventEmitter<void>();
+
   constructor() {}
 }

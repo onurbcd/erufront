@@ -42,6 +42,11 @@ const routes: Routes = [
         (m) => m.IncomeSourceModule
       ),
   },
+  {
+    path: 'source',
+    loadChildren: () =>
+      import('./finance/source/source.module').then((m) => m.SourceModule),
+  },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
 ];
 
