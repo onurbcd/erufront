@@ -1,0 +1,48 @@
+<form [formGroup]="formGroup" novalidate class="eru-form">
+    <!-- NAME -->
+    <mat-form-field class="input-width">
+        <input matInput placeholder="{{ 'finance.source.name' | translate }}" formControlName="name" />
+    </mat-form-field>
+    <!-- INCOME SOURCE ID -->
+    <mat-form-field class="input-width">
+        <mat-label>{{ 'finance.source.incomeSource' | translate }}</mat-label>
+        <mat-select #incomeSourceSelect formControlName="incomeSourceId">
+            <div (mouseleave)="incomeSourceSelect.close()">
+                <mat-option>
+                    <ngx-mat-select-search ngModel [ngModelOptions]="{standalone: true}"
+                        (ngModelChange)="searchIncomeSource($event)"
+                        placeholderLabel="{{ 'finance.source.searchIncomeSource' | translate }}"
+                        noEntriesFoundLabel="{{ 'global.noEntriesFoundLabel' | translate }}">
+                    </ngx-mat-select-search>
+                </mat-option>
+                <mat-option *ngFor="let incomeSource of (incomeSources$ | async)?.content" [value]="incomeSource.id">
+                    {{ incomeSource.name }}
+                </mat-option>
+            </div>
+        </mat-select>
+        <button mat-button *ngIf="formGroup.value.incomeSourceId" matSuffix mat-icon-button
+            matTooltip="{{ 'button.clear' | translate }}" (click)="clear('incomeSourceId')">
+            <mat-icon>close</mat-icon>
+        </button>
+    </mat-form-field>
+    <!-- SOURCE TYPE -->
+    <app-basic-select [label]="'finance.source.sourceType'" [selectFormControl]="sourceTypeFormControl"
+        [values]="sourceTypes">
+    </app-basic-select>
+    <!-- CURRENCY TYPE -->
+    <app-basic-select [label]="'finance.source.currencyType'" [selectFormControl]="currencyTypeFormControl"
+        [values]="currencyTypes">
+    </app-basic-select>
+    <!-- BALANCE -->
+    <mat-form-field class="input-width">
+        <input matInput placeholder="{{ 'finance.source.balance' | translate }}" formControlName="balance" currencyMask
+            [options]="currencyMaskConfig" />
+    </mat-form-field>
+    <!-- ACTIVE -->
+    <mat-slide-toggle formControlName="active" color="primary">
+        {{ "global.slideToggle." + formGroup.value.active | translate }}
+    </mat-slide-toggle>
+    <!-- BUTTONS -->
+    <app-form-buttons [disabled]="formGroup.invalid" [link]="'/source'" (save)="save($event)" class="margin-top-20">
+    </app-form-buttons>
+</form>

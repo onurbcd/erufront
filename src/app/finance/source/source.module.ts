@@ -1,22 +1,26 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { SharedModule } from '@shared';
-import { SourceFilterComponent, SourceGridComponent } from './components';
-import { SourceListComponent } from './containers';
+import {
+  SourceFilterComponent,
+  SourceFormComponent,
+  SourceGridComponent,
+} from './components';
+import { SourceCreationComponent, SourceListComponent } from './containers';
 
 export const SourceRoutes: Routes = [
   {
     path: '',
     component: SourceListComponent,
   },
-  /*{
+  {
     path: 'new',
-    component: IncomeSourceCreationComponent,
+    component: SourceCreationComponent,
   },
   {
     path: ':id/edit',
-    component: IncomeSourceCreationComponent,
-  },*/
+    component: SourceCreationComponent,
+  },
 ];
 
 @NgModule({
@@ -24,6 +28,8 @@ export const SourceRoutes: Routes = [
     SourceFilterComponent,
     SourceListComponent,
     SourceGridComponent,
+    SourceFormComponent,
+    SourceCreationComponent,
   ],
   imports: [SharedModule, RouterModule.forChild(SourceRoutes)],
 })
