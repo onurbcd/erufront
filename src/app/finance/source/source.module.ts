@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { SharedModule } from '@shared';
-import { SourceFilterComponent } from './components';
+import { SourceFilterComponent, SourceGridComponent } from './components';
 import { SourceListComponent } from './containers';
 
 export const SourceRoutes: Routes = [
@@ -20,7 +20,11 @@ export const SourceRoutes: Routes = [
 ];
 
 @NgModule({
-  declarations: [SourceFilterComponent, SourceListComponent],
+  declarations: [
+    SourceFilterComponent,
+    SourceListComponent,
+    SourceGridComponent,
+  ],
   imports: [SharedModule, RouterModule.forChild(SourceRoutes)],
 })
 export class SourceModule {}

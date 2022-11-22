@@ -1,1 +1,3 @@
-<app-source-filter (valueChanges)="valueChanges($event)"></app-source-filter>
+<app-source-filter (restart)="gridComponent.reset($event)" (search)="gridComponent.search()"
+    (valueChanges)="valueChanges($event)"></app-source-filter>
+<app-source-grid [value]="sourceFilter"></app-source-grid>

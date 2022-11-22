@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { SourceFilter } from '@model';
 import { AppService } from '@service';
-// import { SourceGridComponent } from '../../components';
+import { SourceGridComponent } from '../../components';
 
 @Component({
   selector: 'app-source-list',
@@ -11,8 +11,8 @@ import { AppService } from '@service';
 export class SourceListComponent implements OnInit, AfterViewInit {
   sourceFilter!: SourceFilter;
 
-  // @ViewChild(SourceGridComponent)
-  // gridComponent!: SourceGridComponent;
+  @ViewChild(SourceGridComponent)
+  gridComponent!: SourceGridComponent;
 
   constructor(private appService: AppService) {}
 
@@ -22,7 +22,7 @@ export class SourceListComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {
     this.appService.setTitle('finance.source.listTitle');
-    // this.gridComponent.search();
+    this.gridComponent.search();
   }
 
   valueChanges(sourceFilter: SourceFilter): void {

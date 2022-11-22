@@ -108,7 +108,10 @@
       "sourceType": "Source Type",
       "currencyType": "Currency Type",
       "incomeSource": "Income Source",
-      "searchIncomeSource": "Search Income Source By Name"
+      "searchIncomeSource": "Search Income Source By Name",
+      "balance": "Balance",
+      "lastModifiedDate": "Updated At",
+      "status": "Status"
     }
   },
   "vault": {
