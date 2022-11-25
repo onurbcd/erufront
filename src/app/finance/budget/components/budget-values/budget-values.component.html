@@ -1,11 +1,17 @@
 <mat-card class="card-margin">
     <mat-chip-list aria-label="Fish selection">
         <mat-chip>{{ description }}</mat-chip>
-        <mat-chip color="primary" selected>{{ "finance.budget.values.total" | translate }}{{ total | currency: "BRL" }}
+        <mat-chip color="primary" selected>
+            {{ "finance.budget.values.total" | translate }}{{ total | currency: "BRL" }}
         </mat-chip>
-        <mat-chip color="accent" selected>{{ "finance.budget.values.paid" | translate }}{{ paid | currency: "BRL" }}
+        <mat-chip color="accent" selected>
+            {{ "finance.budget.values.paid" | translate }}{{ paid | currency: "BRL" }}
         </mat-chip>
-        <mat-chip color="warn" selected>{{ "finance.budget.values.unpaid" | translate }}{{ unpaid | currency: "BRL" }}
+        <mat-chip color="warn" selected>
+            {{ "finance.budget.values.unpaid" | translate }}{{ unpaid | currency: "BRL" }}
+        </mat-chip>
+        <mat-chip>
+            {{ "finance.budget.values.balance" | translate }}{{ balance | currency: "BRL" }}
         </mat-chip>
     </mat-chip-list>
 </mat-card>

@@ -24,6 +24,8 @@ export class BudgetValuesComponent implements OnDestroy {
 
   unpaid = 0;
 
+  balance = 0;
+
   description = '';
 
   private budgetFilter = {} as BudgetFilter;
@@ -58,6 +60,7 @@ export class BudgetValuesComponent implements OnDestroy {
     this.total = 0;
     this.paid = 0;
     this.unpaid = 0;
+    this.balance = 0;
 
     if (!sum || sum.length <= 0) {
       return;
@@ -66,6 +69,7 @@ export class BudgetValuesComponent implements OnDestroy {
     this.total = sum.find((p) => p.type === SumType.TOTAL)?.value || 0;
     this.paid = sum.find((p) => p.type === SumType.PAID)?.value || 0;
     this.unpaid = sum.find((p) => p.type === SumType.UNPAID)?.value || 0;
+    this.balance = sum.find((p) => p.type === SumType.BALANCE)?.value || 0;
   }
 
   setDescription(): void {

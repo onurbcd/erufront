@@ -35,7 +35,7 @@ export class SourceFormComponent
 
   currencyTypeFormControl = new FormControl();
 
-  readonly currencyMaskConfig = AppConstants.CURRENCY_MASK_CONFIG;
+  readonly currencyMaskConfig = AppConstants.SOURCE_CURRENCY_MASK_CONFIG;
 
   constructor(
     activatedRoute: ActivatedRoute,

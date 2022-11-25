@@ -60,7 +60,8 @@
       "values": {
         "total": "Total: ",
         "paid": "Paid: ",
-        "unpaid": "Unpaid: "
+        "unpaid": "Unpaid: ",
+        "balance": "Balance: "
       },
       "budgetCopy": {
         "title": "Copy Budget",
