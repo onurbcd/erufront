@@ -88,19 +88,19 @@ export class AppConstants {
 
   // VAULT - SECRET
 
-  public static VAULT_SECRET_BASE_URL = 'secret/';
+  public static VAULT_SECRET_BASE_URL = '/secret';
 
   // FINANCE
 
-  public static FINANCE_BILL_TYPE_URL = 'bill-type/';
+  public static FINANCE_BILL_TYPE_URL = '/bill-type';
 
-  public static FINANCE_BUDGET_URL = 'budget/';
+  public static FINANCE_BUDGET_URL = '/budget';
 
-  public static FINANCE_CATEGORY_URL = 'category/';
+  public static FINANCE_CATEGORY_URL = '/category';
 
-  public static FINANCE_DAY_URL = 'day/';
+  public static FINANCE_DAY_URL = '/day';
 
-  public static FINANCE_INCOME_SOURCE_URL = 'income-source/';
+  public static FINANCE_INCOME_SOURCE_URL = '/income-source';
 
-  public static FINANCE_SOURCE_URL = 'source/';
+  public static FINANCE_SOURCE_URL = '/source';
 }

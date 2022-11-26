@@ -55,16 +55,16 @@ export class BudgetService extends ApiService<
     queryParams['refYear'] = `${budgetFilter.refYear}`;
     queryParams['refMonth'] = `${budgetFilter.refMonth}`;
     const params = this.getParams(queryParams);
-    return this.httpClient.get<Sum[]>(this.getUrl('sum-month'), { params });
+    return this.httpClient.get<Sum[]>(this.getUrl('/sum-month'), { params });
   }
 
   copy(copyBudget: CopyBudget): Observable<void> {
-    return this.httpClient.post<void>(this.getUrl('copy'), copyBudget);
+    return this.httpClient.post<void>(this.getUrl('/copy'), copyBudget);
   }
 
   deleteAll(ref: Ref): Observable<void> {
     return this.httpClient.delete<void>(
-      this.getUrl(`${ref.year}/${ref.month}/all`)
+      this.getUrl(`/${ref.year}/${ref.month}/all`)
     );
   }
 }

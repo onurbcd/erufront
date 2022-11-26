@@ -26,11 +26,11 @@ export abstract class ApiService<
   }
 
   delete(id: ID): Observable<void> {
-    return this.httpClient.delete<void>(this.getUrl(`${id}`));
+    return this.httpClient.delete<void>(this.getUrl(`/${id}`));
   }
 
   get(id: ID): Observable<E> {
-    return this.httpClient.get<E>(this.getUrl(`${id}`));
+    return this.httpClient.get<E>(this.getUrl(`/${id}`));
   }
 
   getAll(filter: F, pageEvent: PageEvent, sort: Sort): Observable<Page<E>> {
@@ -40,7 +40,7 @@ export abstract class ApiService<
   }
 
   patch(id: ID, entity: E): Observable<void> {
-    return this.httpClient.patch<void>(this.getUrl(`${id}`), entity, {});
+    return this.httpClient.patch<void>(this.getUrl(`/${id}`), entity, {});
   }
 
   changeStatus(id: ID, value: boolean, property: string): Observable<void> {
@@ -53,7 +53,7 @@ export abstract class ApiService<
     const params = new HttpParams({ fromObject: queryParams });
 
     return this.httpClient.patch<void>(
-      this.getUrl(`${sequence.id}/sequence`),
+      this.getUrl(`/${sequence.id}/sequence`),
       null,
       { params }
     );
@@ -61,7 +61,7 @@ export abstract class ApiService<
 
   swapPosition(swapPosition: SwapPosition): Observable<void> {
     return this.httpClient.patch<void>(
-      this.getUrl(`${swapPosition.id}/${swapPosition.target}/swap-position`),
+      this.getUrl(`/${swapPosition.id}/${swapPosition.target}/swap-position`),
       null,
       {}
     );
@@ -100,7 +100,7 @@ export abstract class ApiService<
   }
 
   private put(id: ID, save: S): Observable<void> {
-    return this.httpClient.put<void>(this.getUrl(`${id}`), save, {});
+    return this.httpClient.put<void>(this.getUrl(`/${id}`), save, {});
   }
 
   private getHttpParams(
