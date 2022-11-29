@@ -113,7 +113,11 @@
       "balance": "Balance",
       "lastModifiedDate": "Updated At",
       "status": "Status",
-      "formTitle": "Source Creation"
+      "formTitle": "Source Creation",
+      "values": {
+        "partial": "Partial: ",
+        "total": "Total: "
+      }
     }
   },
   "vault": {

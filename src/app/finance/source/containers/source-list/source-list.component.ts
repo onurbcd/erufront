@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { SourceFilter } from '@model';
 import { AppService } from '@service';
-import { SourceGridComponent } from '../../components';
+import { SourceGridComponent, SourceValuesComponent } from '../../components';
 
 @Component({
   selector: 'app-source-list',
@@ -9,15 +9,21 @@ import { SourceGridComponent } from '../../components';
   styleUrls: ['./source-list.component.css'],
 })
 export class SourceListComponent implements OnInit, AfterViewInit {
-  sourceFilter!: SourceFilter;
+  sourceFilter: SourceFilter = {} as SourceFilter;
+
+  sourceValuesFilter: SourceFilter = {} as SourceFilter;
 
   @ViewChild(SourceGridComponent)
   gridComponent!: SourceGridComponent;
+
+  @ViewChild(SourceValuesComponent)
+  valuesComponent!: SourceValuesComponent;
 
   constructor(private appService: AppService) {}
 
   ngOnInit(): void {
     this.sourceFilter = {} as SourceFilter;
+    this.sourceValuesFilter = {} as SourceFilter;
   }
 
   ngAfterViewInit(): void {
@@ -27,5 +33,18 @@ export class SourceListComponent implements OnInit, AfterViewInit {
 
   valueChanges(sourceFilter: SourceFilter): void {
     this.sourceFilter = sourceFilter;
+  }
+
+  filterChange(sourceFilter: SourceFilter): void {
+    this.sourceValuesFilter = sourceFilter;
+  }
+
+  listChanged(): void {
+    this.valuesComponent.getBalanceSum();
+  }
+
+  restart(cleanData: boolean): void {
+    this.gridComponent.reset(cleanData);
+    this.valuesComponent.resetBalanceSum();
   }
 }

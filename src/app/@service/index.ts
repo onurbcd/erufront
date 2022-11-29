@@ -1,6 +1,6 @@
 export * from './finance';
 
-export * from './vault/secret.service';
+export * from './vault';
 
 export * from './api.service';
 export * from './app.service';

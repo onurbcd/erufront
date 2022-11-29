@@ -5,6 +5,7 @@ import {
   SourceFilterComponent,
   SourceFormComponent,
   SourceGridComponent,
+  SourceValuesComponent,
 } from './components';
 import { SourceCreationComponent, SourceListComponent } from './containers';
 
@@ -30,6 +31,7 @@ export const SourceRoutes: Routes = [
     SourceGridComponent,
     SourceFormComponent,
     SourceCreationComponent,
+    SourceValuesComponent,
   ],
   imports: [SharedModule, RouterModule.forChild(SourceRoutes)],
 })

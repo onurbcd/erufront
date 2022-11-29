@@ -1,0 +1,10 @@
+<mat-card class="card-margin" *ngIf="(balanceSum$ | async) as balanceSum">
+    <mat-chip-list aria-label="Fish selection">
+        <mat-chip color="primary" selected>
+            {{ "finance.source.values.partial" | translate }}{{ balanceSum.partial | currency: "BRL" }}
+        </mat-chip>
+        <mat-chip color="accent" selected>
+            {{ "finance.source.values.total" | translate }}{{ balanceSum.total | currency: "BRL" }}
+        </mat-chip>
+    </mat-chip-list>
+</mat-card>

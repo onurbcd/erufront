@@ -11,7 +11,7 @@
         <mat-grid-list cols="3" rowHeight="75">
             <mat-grid-tile>
                 <app-eru-input [placeholder]="'finance.source.name'" [inputFormControl]="searchFormControl"
-                    (restart)="restart.next($event)" (search)="filterSearch()" (clear)="filterClear('search')">
+                    (restart)="restart.next($event)" (search)="filterValueChange()" (clear)="filterClear('search')">
                 </app-eru-input>
             </mat-grid-tile>
             <mat-grid-tile>
@@ -27,7 +27,7 @@
                                 </ngx-mat-select-search>
                             </mat-option>
                             <mat-option *ngFor="let incomeSource of (incomeSources$ | async)?.content"
-                                [value]="incomeSource.id" (onSelectionChange)="filterSearch()">
+                                [value]="incomeSource.id" (onSelectionChange)="filterValueChangeWithEvent($event)">
                                 {{ incomeSource.name }}
                             </mat-option>
                         </div>
@@ -40,20 +40,22 @@
             </mat-grid-tile>
             <mat-grid-tile>
                 <app-basic-select [label]="'finance.source.sourceType'" [selectFormControl]="sourceTypeFormControl"
-                    [values]="sourceTypes" (selectionChange)="filterSearch()" (clear)="filterClear('sourceType')">
+                    [values]="sourceTypes" (selectionChange)="filterValueChange()" (clear)="filterClear('sourceType')">
                 </app-basic-select>
             </mat-grid-tile>
             <mat-grid-tile>
                 <app-basic-select [label]="'finance.source.currencyType'" [selectFormControl]="currencyTypeFormControl"
-                    [values]="currencyTypes" (selectionChange)="filterSearch()" (clear)="filterClear('currencyType')">
+                    [values]="currencyTypes" (selectionChange)="filterValueChange()"
+                    (clear)="filterClear('currencyType')">
                 </app-basic-select>
             </mat-grid-tile>
             <mat-grid-tile>
                 <app-filter-status [statusFormControl]="activeFormControl" [translation]="'global.radioButton'"
-                    (search)="filterSearch()"></app-filter-status>
+                    (search)="filterValueChange()"></app-filter-status>
             </mat-grid-tile>
             <mat-grid-tile colspan="3">
-                <app-eru-buttons [searchDisabled]="formGroup.invalid" (search)="filterSearch()" [link]="'/source/new'">
+                <app-eru-buttons [searchDisabled]="formGroup.invalid" (search)="filterValueChange()"
+                    [link]="'/source/new'">
                 </app-eru-buttons>
             </mat-grid-tile>
         </mat-grid-list>

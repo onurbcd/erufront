@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormControl } from '@angular/forms';
+import { MatOptionSelectionChange } from '@angular/material/core';
 import {
   CurrencyType,
   IncomeSource,
@@ -32,6 +33,9 @@ export class SourceFilterComponent
 
   currencyTypeFormControl = new FormControl('');
 
+  @Output() filterChange: EventEmitter<SourceFilter> =
+    new EventEmitter<SourceFilter>();
+
   constructor(
     private formBuilder: FormBuilder,
     private incomeSourceService: IncomeSourceService
@@ -52,6 +56,22 @@ export class SourceFilterComponent
       sourceType: this.sourceTypeFormControl,
       currencyType: this.currencyTypeFormControl,
     });
+  }
+
+  filterValueChangeWithEvent(event: MatOptionSelectionChange<string>): void {
+    if (!event.isUserInput) {
+      return;
+    }
+
+    this.filterValueChange();
+  }
+
+  filterValueChange(): void {
+    this.filterSearch();
+
+    setTimeout(() => {
+      this.filterChange.next(this.formGroup.value);
+    }, 0);
   }
 
   @Debounce(1000)
