@@ -40,6 +40,10 @@ export class AppComponent implements OnInit, OnDestroy {
     this.unsubscribe$.complete();
   }
 
+  openSidenav(): void {
+    this.sidenav.toggle();
+  }
+
   navigate(path: string): void {
     this.sidenav.close();
     this.router.navigate([path]);

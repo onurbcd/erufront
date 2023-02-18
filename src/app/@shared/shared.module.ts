@@ -30,7 +30,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { ClipboardModule } from 'ngx-clipboard';
 import { NgxCurrencyModule } from 'ngx-currency';
 import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
-import { NgxMaskModule } from 'ngx-mask';
+import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
 import {
   BasicSelectComponent,
   ConfirmDialogComponent,
@@ -58,7 +58,7 @@ export const importModules = [
   RouterModule,
   ClipboardModule,
   MatSelectModule,
-  NgxMaskModule.forRoot(),
+  NgxMaskDirective,
 ];
 
 export const exportModules = [
@@ -94,7 +94,7 @@ export const exportModules = [
   NgxCurrencyModule,
   NgxMatSelectSearchModule,
   NgSelectModule,
-  NgxMaskModule,
+  NgxMaskDirective,
 ];
 
 export const components = [
@@ -116,6 +116,6 @@ export const pipes = [AppDatePipe];
   imports: [...importModules],
   exports: [...exportModules, ...components, ...pipes],
   declarations: [...components, ...pipes],
-  providers: [],
+  providers: [provideNgxMask()],
 })
 export class SharedModule {}

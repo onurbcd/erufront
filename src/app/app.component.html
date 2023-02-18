@@ -1,9 +1,14 @@
-<mat-progress-bar mode="indeterminate" *ngIf="loaderService.getLoading() | async" color="accent"></mat-progress-bar>
+<mat-progress-bar
+  mode="indeterminate"
+  *ngIf="loaderService.getLoading() | async"
+  color="accent"
+></mat-progress-bar>
 <mat-toolbar color="primary">
   <mat-toolbar-row>
     <span translate>app.title</span>
-    <button mat-icon-button>
-      <mat-icon (click)="sidenav.toggle()" matTooltip="{{ 'app.menu.tooltip' | translate }}" color="accent">menu
+    <button mat-icon-button (click)="openSidenav()">
+      <mat-icon matTooltip="{{ 'app.menu.tooltip' | translate }}" color="accent"
+        >menu
       </mat-icon>
     </button>
     <span>{{ title }}</span>
@@ -15,38 +20,24 @@
       <a mat-list-item (click)="navigate('/home')">
         {{ "app.menu.home" | translate }}
       </a>
-    </mat-nav-list>
-    <mat-nav-list>
       <a mat-list-item (click)="navigate('/secret')">
         {{ "app.menu.secret" | translate }}
       </a>
-    </mat-nav-list>
-    <mat-nav-list>
       <a mat-list-item (click)="navigate('/bill-type')">
         {{ "app.menu.billType" | translate }}
       </a>
-    </mat-nav-list>
-    <mat-nav-list>
       <a mat-list-item (click)="navigate('/budget')">
         {{ "app.menu.budget" | translate }}
       </a>
-    </mat-nav-list>
-    <mat-nav-list>
       <a mat-list-item (click)="navigate('/category')">
         {{ "app.menu.category" | translate }}
       </a>
-    </mat-nav-list>
-    <mat-nav-list>
       <a mat-list-item (click)="navigate('/day')">
         {{ "app.menu.day" | translate }}
       </a>
-    </mat-nav-list>
-    <mat-nav-list>
       <a mat-list-item (click)="navigate('/income-source')">
         {{ "app.menu.incomeSource" | translate }}
       </a>
-    </mat-nav-list>
-    <mat-nav-list>
       <a mat-list-item (click)="navigate('/source')">
         {{ "app.menu.source" | translate }}
       </a>
