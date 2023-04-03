@@ -7,7 +7,7 @@
       </mat-option>
     </div>
   </mat-select>
-  <button mat-button *ngIf="selectFormControl.value" matSuffix mat-icon-button
+  <button *ngIf="selectFormControl.value" matSuffix mat-icon-button
     matTooltip="{{ 'button.clear' | translate }}" (click)="clear.next()">
     <mat-icon>close</mat-icon>
   </button>

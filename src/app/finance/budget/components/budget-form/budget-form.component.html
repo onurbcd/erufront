@@ -25,7 +25,7 @@
         </mat-option>
       </div>
     </mat-select>
-    <button mat-button *ngIf="formGroup.value.billTypeId" matSuffix mat-icon-button
+    <button *ngIf="formGroup.value.billTypeId" matSuffix mat-icon-button
       matTooltip="{{ 'button.clear' | translate }}" (click)="clear('billTypeId')">
       <mat-icon>close</mat-icon>
     </button>

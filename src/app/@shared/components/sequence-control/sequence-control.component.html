@@ -1,13 +1,23 @@
 <div class="sequence-control-container">
-    <div>
-        <button mat-icon-button matTooltip="{{ 'button.up' | translate }}" (click)="up()" *ngIf="sequence !== 1">
-            <mat-icon color="primary">arrow_upward</mat-icon>
-        </button>
-        <button mat-icon-button matTooltip="{{ 'button.down' | translate }}" (click)="down()" *ngIf="sequence !== max">
-            <mat-icon color="primary">arrow_downward</mat-icon>
-        </button>
-    </div>
-    <button mat-icon-button disabled>
-        {{ sequence }}
+  <div>
+    <button
+      mat-icon-button
+      matTooltip="{{ 'button.up' | translate }}"
+      (click)="up()"
+      *ngIf="sequence !== 1"
+    >
+      <mat-icon color="primary">arrow_upward</mat-icon>
     </button>
+    <button
+      mat-icon-button
+      matTooltip="{{ 'button.down' | translate }}"
+      (click)="down()"
+      *ngIf="sequence !== max"
+    >
+      <mat-icon color="primary">arrow_downward</mat-icon>
+    </button>
+  </div>
+  <button mat-icon-button disabled class="sequence-control-value">
+    {{ sequence }}
+  </button>
 </div>

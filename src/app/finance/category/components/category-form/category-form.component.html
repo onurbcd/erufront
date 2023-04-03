@@ -21,7 +21,7 @@
                 </mat-option>
             </div>
         </mat-select>
-        <button mat-button *ngIf="formGroup.value.parentId" matSuffix mat-icon-button
+        <button *ngIf="formGroup.value.parentId" matSuffix mat-icon-button
             matTooltip="{{ 'button.clear' | translate }}" (click)="clear('parentId')">
             <mat-icon>close</mat-icon>
         </button>

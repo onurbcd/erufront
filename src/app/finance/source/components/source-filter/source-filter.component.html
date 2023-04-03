@@ -32,7 +32,7 @@
                             </mat-option>
                         </div>
                     </mat-select>
-                    <button mat-button *ngIf="formGroup.value.incomeSourceId" matSuffix mat-icon-button
+                    <button *ngIf="formGroup.value.incomeSourceId" matSuffix mat-icon-button
                         matTooltip="{{ 'button.clear' | translate }}" (click)="filterClear('incomeSourceId')">
                         <mat-icon>close</mat-icon>
                     </button>

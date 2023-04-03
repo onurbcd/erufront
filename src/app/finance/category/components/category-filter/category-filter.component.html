@@ -35,7 +35,7 @@
                             </mat-option>
                         </div>
                     </mat-select>
-                    <button mat-button *ngIf="formGroup.value.parentId" matSuffix mat-icon-button
+                    <button *ngIf="formGroup.value.parentId" matSuffix mat-icon-button
                         matTooltip="{{ 'button.clear' | translate }}" (click)="filterClear('parentId')">
                         <mat-icon>close</mat-icon>
                     </button>
@@ -46,7 +46,7 @@
                     <input matInput placeholder="{{ 'finance.category.level' | translate }}" formControlName="level"
                         type="number" min="1" max="32767" step="1" pattern="\d+" (input)="restart.next(true)"
                         (keydown.enter)="$event.preventDefault(); filterSearch()" />
-                    <button mat-button *ngIf="formGroup.value.level" matSuffix mat-icon-button
+                    <button *ngIf="formGroup.value.level" matSuffix mat-icon-button
                         matTooltip="{{ 'button.clear' | translate }}" (click)="filterClear('level')">
                         <mat-icon>close</mat-icon>
                     </button>
