@@ -53,4 +53,10 @@ export class BalanceService extends ApiService<
   getStatus(active: boolean, property: string): Balance {
     return this.getDefaultStatus(active);
   }
+
+  saveBalance(balance: any): Observable<void> {
+    const formData = new FormData();
+    formData.append('balance', balance);
+    return this.http.post<void>(this.getUrl(), formData);
+  }
 }

@@ -47,6 +47,11 @@ const routes: Routes = [
     loadChildren: () =>
       import('./finance/source/source.module').then((m) => m.SourceModule),
   },
+  {
+    path: 'balance',
+    loadChildren: () =>
+      import('./finance/balance/balance.module').then((m) => m.BalanceModule),
+  },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
 ];
 

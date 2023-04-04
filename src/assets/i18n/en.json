@@ -10,7 +10,8 @@
       "category": "Category",
       "day": "Day",
       "incomeSource": "Income Source",
-      "source": "Source"
+      "source": "Source",
+      "balance": "Balance"
     }
   },
   "shared": {
@@ -28,6 +29,9 @@
     "title": "Home"
   },
   "finance": {
+    "balance": {
+      "listTitle": "Balance List"
+    },
     "billType": {
       "listTitle": "Bill Type List",
       "name": "Name",

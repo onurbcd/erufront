@@ -1,3 +1,4 @@
+export * from './balance';
 export * from './bill-type';
 export * from './budget';
 export * from './category';
