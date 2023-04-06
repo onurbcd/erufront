@@ -30,7 +30,16 @@
   },
   "finance": {
     "balance": {
-      "listTitle": "Balance List"
+      "listTitle": "Balance List",
+      "search": "Search",
+      "dayCalendarYear": "Year",
+      "dayCalendarMonth": "Month",
+      "dayCalendarDayInMonth": "Day",
+      "sourceId": "Source",
+      "searchSources": "Search Source By Name",
+      "categoryId": "Category",
+      "searchCategories": "Search Category By Name",
+      "balanceType": "Balance Type"
     },
     "billType": {
       "listTitle": "Bill Type List",

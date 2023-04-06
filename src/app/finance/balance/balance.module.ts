@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { SharedModule } from '@shared';
 import { BalanceListComponent } from './containers';
+import { BalanceFilterComponent } from './components';
 
 export const BalanceRoutes: Routes = [
   {
@@ -19,7 +20,7 @@ export const BalanceRoutes: Routes = [
 ];
 
 @NgModule({
-  declarations: [BalanceListComponent],
+  declarations: [BalanceListComponent, BalanceFilterComponent],
   imports: [SharedModule, RouterModule.forChild(BalanceRoutes)],
 })
 export class BalanceModule {}

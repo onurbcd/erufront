@@ -1,14 +1,23 @@
 <mat-form-field class="input-width">
   <mat-label>{{ label | translate }}</mat-label>
-  <mat-select #basicSelect [formControl]="selectFormControl" (selectionChange)="selectionChange.next()">
+  <mat-select
+    #basicSelect
+    [formControl]="selectFormControl"
+    (selectionChange)="selectionChange.next()"
+  >
     <div (mouseleave)="basicSelect.close()">
       <mat-option *ngFor="let value of values" [value]="value">
         {{ value }}
       </mat-option>
     </div>
   </mat-select>
-  <button *ngIf="selectFormControl.value" matSuffix mat-icon-button
-    matTooltip="{{ 'button.clear' | translate }}" (click)="clear.next()">
+  <button
+    *ngIf="selectFormControl.value && clear.observers.length > 0"
+    matSuffix
+    mat-icon-button
+    matTooltip="{{ 'button.clear' | translate }}"
+    (click)="clear.next()"
+  >
     <mat-icon>close</mat-icon>
   </button>
 </mat-form-field>

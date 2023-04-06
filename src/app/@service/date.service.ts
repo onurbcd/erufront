@@ -35,6 +35,17 @@ export class DateService {
     return month === 12 ? 1 : month + 1;
   }
 
+  getDays(): number[] {
+    const year = this.getCurrentYear();
+    const month = this.getCurrentMonth();
+    return this.getDaysFromMonth(year, month);
+  }
+
+  getDaysFromMonth(year: number, month: number): number[] {
+    const daysInMonth = this.getDaysInMonth(year, month);
+    return Array.from({ length: daysInMonth }, (item, index) => index + 1);
+  }
+
   private getYearsBase(maxYear: number): number[] {
     const years = [];
 
@@ -43,5 +54,9 @@ export class DateService {
     }
 
     return years;
+  }
+
+  private getDaysInMonth(year: number, month: number): number {
+    return new Date(year, month, 0).getDate();
   }
 }
