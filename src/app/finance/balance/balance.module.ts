@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { SharedModule } from '@shared';
-import { BalanceListComponent } from './containers';
+import { BalanceCreationComponent, BalanceListComponent } from './containers';
 import { BalanceFilterComponent, BalanceGridComponent } from './components';
 
 export const BalanceRoutes: Routes = [
@@ -9,11 +9,11 @@ export const BalanceRoutes: Routes = [
     path: '',
     component: BalanceListComponent,
   },
-  /*{
-    path: 'new',
-    component: BudgetCreationComponent,
-  },
   {
+    path: 'new',
+    component: BalanceCreationComponent,
+  },
+  /*{
     path: ':id/edit',
     component: BudgetCreationComponent,
   },*/
@@ -24,6 +24,7 @@ export const BalanceRoutes: Routes = [
     BalanceListComponent,
     BalanceFilterComponent,
     BalanceGridComponent,
+    BalanceCreationComponent,
   ],
   imports: [SharedModule, RouterModule.forChild(BalanceRoutes)],
 })

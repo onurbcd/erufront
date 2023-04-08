@@ -48,7 +48,8 @@
       "code": "Code",
       "description": "Description",
       "lastModifiedDate": "Updated At",
-      "status": "Status"
+      "status": "Status",
+      "formTitle": "Balance Creation"
     },
     "billType": {
       "listTitle": "Bill Type List",
