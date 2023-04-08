@@ -39,7 +39,16 @@
       "searchSources": "Search Source By Name",
       "categoryId": "Category",
       "searchCategories": "Search Category By Name",
-      "balanceType": "Balance Type"
+      "balanceType": "Balance Type",
+      "sequence": "#",
+      "day": "Day",
+      "source": "Source",
+      "category": "Category",
+      "amount": "Amount",
+      "code": "Code",
+      "description": "Description",
+      "lastModifiedDate": "Updated At",
+      "status": "Status"
     },
     "billType": {
       "listTitle": "Bill Type List",

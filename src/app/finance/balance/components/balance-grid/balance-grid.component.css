@@ -1,0 +1,77 @@
+::ng-deep .mat-sort-header-container {
+  display: flex;
+  justify-content: center;
+  font-weight: bold;
+  font-size: medium;
+}
+
+.mat-column-sequence,
+.mat-column-amount {
+  word-wrap: break-word !important;
+  white-space: unset !important;
+  flex: 0 0 9% !important;
+  width: 9% !important;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-word;
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+  border-right: 1px solid gainsboro;
+  text-align: right;
+  padding-right: 5px;
+}
+
+.mat-column-source,
+.mat-column-category,
+.mat-column-code,
+.mat-column-description,
+.mat-column-balanceType {
+  word-wrap: break-word !important;
+  white-space: unset !important;
+  flex: 0 0 9% !important;
+  width: 9% !important;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-word;
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+  border-right: 1px solid gainsboro;
+  padding: 5px;
+}
+
+.mat-column-day,
+.mat-column-lastModifiedDate,
+.mat-column-active {
+  word-wrap: break-word !important;
+  white-space: unset !important;
+  flex: 0 0 9% !important;
+  width: 9% !important;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-word;
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+  border-right: 1px solid gainsboro;
+  text-align: center;
+}
+
+.mat-column-config {
+  word-wrap: break-word !important;
+  white-space: unset !important;
+  flex: 0 0 10% !important;
+  width: 10% !important;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-word;
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+  text-align: center;
+}

@@ -1,1 +1,6 @@
-<app-balance-filter (valueChanges)="valueChanges($event)"></app-balance-filter>
+<app-balance-filter
+  (restart)="gridComponent.reset($event)"
+  (search)="gridComponent.search()"
+  (valueChanges)="valueChanges($event)"
+></app-balance-filter>
+<app-balance-grid [value]="balanceFilter"></app-balance-grid>

@@ -1,6 +1,7 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
-import { BalanceFilter } from '@model';
-import { AppService } from '@service';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { BalanceFilter, BalanceType } from '@model';
+import { AppService, DateService } from '@service';
+import { BalanceGridComponent } from '../../components';
 
 @Component({
   selector: 'app-balance-list',
@@ -10,14 +11,24 @@ import { AppService } from '@service';
 export class BalanceListComponent implements OnInit, AfterViewInit {
   balanceFilter = {} as BalanceFilter;
 
-  constructor(private appService: AppService) {}
+  @ViewChild(BalanceGridComponent)
+  gridComponent!: BalanceGridComponent;
+
+  constructor(
+    private dateService: DateService,
+    private appService: AppService
+  ) {}
 
   ngOnInit(): void {
     this.balanceFilter = {} as BalanceFilter;
+    this.balanceFilter.dayCalendarYear = this.dateService.getCurrentYear();
+    this.balanceFilter.dayCalendarMonth = this.dateService.getCurrentMonth();
+    this.balanceFilter.balanceType = BalanceType.OUTCOME;
   }
 
   ngAfterViewInit(): void {
     this.appService.setTitle('finance.balance.listTitle');
+    this.gridComponent.search();
   }
 
   valueChanges(balanceFilter: BalanceFilter): void {
