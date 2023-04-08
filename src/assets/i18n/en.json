@@ -49,7 +49,9 @@
       "description": "Description",
       "lastModifiedDate": "Updated At",
       "status": "Status",
-      "formTitle": "Balance Creation"
+      "formTitle": "Balance Creation",
+      "dayCalendarDate": "Date",
+      "sequenceLabel": "Sequence"
     },
     "billType": {
       "listTitle": "Bill Type List",

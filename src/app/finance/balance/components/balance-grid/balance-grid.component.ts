@@ -2,8 +2,7 @@ import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Balance, BalanceFilter, BalanceSave } from '@model';
-import { ToastService } from '@service';
-import { BalanceService } from '@service/finance/balance.service';
+import { BalanceService, ToastService } from '@service';
 import { BaseListDirective } from '@shared';
 
 @Component({

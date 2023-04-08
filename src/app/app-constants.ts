@@ -15,7 +15,7 @@ export class AppConstants {
 
   public static MIN_YEAR = 2013;
 
-  public static BUDGET_CURRENCY_MASK_CONFIG: CurrencyMaskConfig = {
+  public static POSITIVE_CURRENCY_MASK_CONFIG: CurrencyMaskConfig = {
     align: 'left',
     allowNegative: false,
     allowZero: false,
@@ -30,7 +30,7 @@ export class AppConstants {
     inputMode: CurrencyMaskInputMode.FINANCIAL,
   };
 
-  public static SOURCE_CURRENCY_MASK_CONFIG: CurrencyMaskConfig = {
+  public static CURRENCY_MASK_CONFIG: CurrencyMaskConfig = {
     align: 'left',
     allowNegative: true,
     allowZero: true,
@@ -78,6 +78,8 @@ export class AppConstants {
   public static LENGTH_7 = 7;
 
   public static LENGTH_50 = 50;
+
+  public static LENGTH_150 = 150;
 
   public static LENGTH_250 = 250;
 

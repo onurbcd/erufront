@@ -36,7 +36,7 @@ export class BudgetFormComponent
 
   refMonthFormControl = new FormControl();
 
-  readonly currencyMaskConfig = AppConstants.BUDGET_CURRENCY_MASK_CONFIG;
+  readonly currencyMaskConfig = AppConstants.POSITIVE_CURRENCY_MASK_CONFIG;
 
   billTypes$!: Observable<Page<BillType>>;
 

@@ -13,7 +13,7 @@ export abstract class BaseFormDirective<
   ID
 > implements OnInit, OnDestroy
 {
-  private unsubscribe$ = new Subject<void>();
+  protected unsubscribe$ = new Subject<void>();
 
   id?: any;
 
@@ -56,6 +56,11 @@ export abstract class BaseFormDirective<
 
   protected afterInit(): void {}
 
+  protected afterSave(commands: any[]): void {
+    this.toastService.showSuccess('global.saveSuccess');
+    this.router.navigate(commands);
+  }
+
   save(commands: any[]) {
     if (this.formGroup.invalid) {
       return;
@@ -66,10 +71,7 @@ export abstract class BaseFormDirective<
     this.apiService
       .save(this.id, save)
       .pipe(takeUntil(this.unsubscribe$))
-      .subscribe(() => {
-        this.toastService.showSuccess('global.saveSuccess');
-        this.router.navigate(commands);
-      });
+      .subscribe(() => this.afterSave(commands));
   }
 
   clear(path: string): void {

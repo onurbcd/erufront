@@ -54,9 +54,15 @@ export class BalanceService extends ApiService<
     return this.getDefaultStatus(active);
   }
 
-  saveBalance(balance: any): Observable<void> {
+  saveBalance(balance: BalanceSave): Observable<void> {
+    balance.name = 'bogus';
     const formData = new FormData();
-    formData.append('balance', balance);
-    return this.http.post<void>(this.getUrl(), formData);
+
+    formData.append(
+      'balance',
+      new Blob([JSON.stringify(balance)], { type: 'application/json' })
+    );
+
+    return this.http.post<void>(this.getUrl('/save'), formData);
   }
 }

@@ -27,8 +27,7 @@ export class ErrorInterceptor implements HttpInterceptor {
           errorMessage = httpErrorResponse.error.message;
         } else if (httpErrorResponse.error) {
           // server-side error
-          errorMessage =
-            httpErrorResponse.error.message || httpErrorResponse.message;
+          errorMessage = this.getServerSideErrorMessage(httpErrorResponse);
           this.toastService.showError(errorMessage);
         } else {
           errorMessage = httpErrorResponse.toString();
@@ -37,5 +36,35 @@ export class ErrorInterceptor implements HttpInterceptor {
         return throwError(() => new Error(errorMessage));
       })
     );
+  }
+
+  private getServerSideErrorMessage(
+    httpErrorResponse: HttpErrorResponse
+  ): string {
+    let errorMessage = 'Unable to identify the cause of the server-side error.';
+
+    if (httpErrorResponse.error) {
+      errorMessage = this.getServerSideCustomErrorMessage(
+        httpErrorResponse.error
+      );
+    } else if (httpErrorResponse.message) {
+      errorMessage = httpErrorResponse.message;
+    }
+
+    return errorMessage;
+  }
+
+  private getServerSideCustomErrorMessage(error: any): string {
+    let errorMessage = 'Unable to identify the cause of the server-side error (custom).';
+
+    if (error.message) {
+      errorMessage = error.message;
+    }
+
+    if (error.errors && error.errors.length > 0) {
+      errorMessage = errorMessage + '. Errors: ' + error.errors.join(', ');
+    }
+
+    return errorMessage;
   }
 }

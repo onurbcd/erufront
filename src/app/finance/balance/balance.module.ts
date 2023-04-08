@@ -2,7 +2,11 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { SharedModule } from '@shared';
 import { BalanceCreationComponent, BalanceListComponent } from './containers';
-import { BalanceFilterComponent, BalanceGridComponent } from './components';
+import {
+  BalanceFilterComponent,
+  BalanceFormComponent,
+  BalanceGridComponent,
+} from './components';
 
 export const BalanceRoutes: Routes = [
   {
@@ -13,10 +17,10 @@ export const BalanceRoutes: Routes = [
     path: 'new',
     component: BalanceCreationComponent,
   },
-  /*{
+  {
     path: ':id/edit',
-    component: BudgetCreationComponent,
-  },*/
+    component: BalanceCreationComponent,
+  },
 ];
 
 @NgModule({
@@ -25,6 +29,7 @@ export const BalanceRoutes: Routes = [
     BalanceFilterComponent,
     BalanceGridComponent,
     BalanceCreationComponent,
+    BalanceFormComponent,
   ],
   imports: [SharedModule, RouterModule.forChild(BalanceRoutes)],
 })
