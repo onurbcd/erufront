@@ -69,6 +69,8 @@ export class AppConstants {
     },
   };
 
+  public static BALANCE_NAME = 'bogus';
+
   // VALIDATORS
 
   public static LENGTH_3 = 3;

@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BalanceSum, Source, SourceFilter, SourceSave } from '@model';
+import { SourceSum, Source, SourceFilter, SourceSave } from '@model';
 import { ApiService, QueryParams } from '@service/api.service';
 import { Observable } from 'rxjs';
 import { AppConstants } from 'src/app/app-constants';
@@ -38,11 +38,11 @@ export class SourceService extends ApiService<
     return this.getDefaultStatus(active);
   }
 
-  getBalanceSum(filter: SourceFilter): Observable<BalanceSum> {
+  getSourceSum(filter: SourceFilter): Observable<SourceSum> {
     const queryParams = this.getQueryParams(filter);
     const params = this.getParams(queryParams);
 
-    return this.httpClient.get<BalanceSum>(this.getUrl('/balance-sum'), {
+    return this.httpClient.get<SourceSum>(this.getUrl('/balance-sum'), {
       params,
     });
   }

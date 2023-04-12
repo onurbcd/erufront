@@ -40,11 +40,11 @@ export class SourceListComponent implements OnInit, AfterViewInit {
   }
 
   listChanged(): void {
-    this.valuesComponent.getBalanceSum();
+    this.valuesComponent.getSourceSum();
   }
 
   restart(cleanData: boolean): void {
     this.gridComponent.reset(cleanData);
-    this.valuesComponent.resetBalanceSum();
+    this.valuesComponent.resetSourceSum();
   }
 }

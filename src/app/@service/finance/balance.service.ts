@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Balance, BalanceFilter, BalanceSave } from '@model';
+import { Balance, BalanceFilter, BalanceSave, BalanceSum } from '@model';
 import { ApiService, QueryParams } from '@service/api.service';
 import { Observable } from 'rxjs';
 import { AppConstants } from 'src/app/app-constants';
@@ -54,8 +54,8 @@ export class BalanceService extends ApiService<
     return this.getDefaultStatus(active);
   }
 
-  saveBalance(balance: BalanceSave): Observable<void> {
-    balance.name = 'bogus';
+  saveBalance(id: string, balance: BalanceSave): Observable<void> {
+    balance.name = AppConstants.BALANCE_NAME;
     const formData = new FormData();
 
     formData.append(
@@ -63,6 +63,14 @@ export class BalanceService extends ApiService<
       new Blob([JSON.stringify(balance)], { type: 'application/json' })
     );
 
-    return this.http.post<void>(this.getUrl('/save'), formData);
+    return id == null
+      ? this.http.post<void>(this.getUrl('/save'), formData)
+      : this.http.put<void>(this.getUrl(`/save/${id}`), formData);
+  }
+
+  getSum(balanceFilter: BalanceFilter): Observable<BalanceSum[]> {
+    const queryParams = this.getQueryParams(balanceFilter);
+    const params = this.getParams(queryParams);
+    return this.httpClient.get<BalanceSum[]>(this.getUrl('/sum'), { params });
   }
 }

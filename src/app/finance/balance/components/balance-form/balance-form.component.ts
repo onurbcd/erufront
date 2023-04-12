@@ -126,7 +126,7 @@ export class BalanceFormComponent
     const balanceSave: BalanceSave = this.formGroup.value;
 
     this.balanceService
-      .saveBalance(balanceSave)
+      .saveBalance(this.id, balanceSave)
       .pipe(takeUntil(this.unsubscribe$))
       .subscribe(() => this.afterSave(commands));
   }
