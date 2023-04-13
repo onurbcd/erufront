@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { MatOptionSelectionChange } from '@angular/material/core';
 import {
@@ -52,6 +52,9 @@ export class BalanceFilterComponent
     Validators.required,
   ]);
 
+  @Output() filterChange: EventEmitter<BalanceFilter> =
+    new EventEmitter<BalanceFilter>();
+
   constructor(
     private formBuilder: FormBuilder,
     private dateService: DateService,
@@ -94,7 +97,7 @@ export class BalanceFilterComponent
 
     this.filterClear('dayCalendarDayInMonth');
     this.days = this.dateService.getDaysFromMonth(year, month);
-    this.filterSearch();
+    this.filterValueChange();
   }
 
   @Debounce(1000)
@@ -111,7 +114,7 @@ export class BalanceFilterComponent
       return;
     }
 
-    this.filterSearch();
+    this.filterValueChange();
   }
 
   @Debounce(1000)
@@ -121,6 +124,14 @@ export class BalanceFilterComponent
     }
 
     this.getCategories(searchInput);
+  }
+
+  filterValueChange(): void {
+    this.filterSearch();
+
+    setTimeout(() => {
+      this.filterChange.next(this.formGroup.value);
+    }, 0);
   }
 
   private getSources(search: string): void {

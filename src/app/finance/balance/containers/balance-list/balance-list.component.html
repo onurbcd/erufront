@@ -1,6 +1,14 @@
 <app-balance-filter
-  (restart)="gridComponent.reset($event)"
+  (restart)="restart($event)"
   (search)="gridComponent.search()"
   (valueChanges)="valueChanges($event)"
+  (filterChange)="filterChange($event)"
 ></app-balance-filter>
-<app-balance-grid [value]="balanceFilter"></app-balance-grid>
+<app-balance-values
+  [balance]="balanceValuesFilter"
+  (sumFetched)="sumFetched($event)"
+></app-balance-values>
+<app-balance-grid
+  [value]="balanceFilter"
+  (listChanged)="listChanged()"
+></app-balance-grid>

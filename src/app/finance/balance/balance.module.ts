@@ -6,6 +6,7 @@ import {
   BalanceFilterComponent,
   BalanceFormComponent,
   BalanceGridComponent,
+  BalanceValuesComponent,
 } from './components';
 
 export const BalanceRoutes: Routes = [
@@ -30,6 +31,7 @@ export const BalanceRoutes: Routes = [
     BalanceGridComponent,
     BalanceCreationComponent,
     BalanceFormComponent,
+    BalanceValuesComponent,
   ],
   imports: [SharedModule, RouterModule.forChild(BalanceRoutes)],
 })

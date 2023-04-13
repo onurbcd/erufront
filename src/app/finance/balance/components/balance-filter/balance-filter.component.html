@@ -35,7 +35,7 @@
           [label]="'finance.balance.dayCalendarDayInMonth'"
           [selectFormControl]="dayCalendarDayInMonthFormControl"
           [values]="days"
-          (selectionChange)="filterSearch()"
+          (selectionChange)="filterValueChange()"
           (clear)="filterClear('dayCalendarDayInMonth')"
         ></app-basic-select>
       </mat-grid-tile>
@@ -122,7 +122,7 @@
           [label]="'finance.balance.balanceType'"
           [selectFormControl]="balanceTypeFormControl"
           [values]="balanceTypes"
-          (selectionChange)="filterSearch()"
+          (selectionChange)="filterValueChange()"
         >
         </app-basic-select>
       </mat-grid-tile>
@@ -131,7 +131,7 @@
           [placeholder]="'finance.balance.search'"
           [inputFormControl]="searchFormControl"
           (restart)="restart.next($event)"
-          (search)="filterSearch()"
+          (search)="filterValueChange()"
           (clear)="filterClear('search')"
         ></app-eru-input>
       </mat-grid-tile>
@@ -139,13 +139,13 @@
         <app-filter-status
           [statusFormControl]="activeFormControl"
           [translation]="'global.radioButton'"
-          (search)="filterSearch()"
+          (search)="filterValueChange()"
         ></app-filter-status>
       </mat-grid-tile>
       <mat-grid-tile colspan="3">
         <app-eru-buttons
           [searchDisabled]="formGroup.invalid"
-          (search)="filterSearch()"
+          (search)="filterValueChange()"
           [link]="'/balance/new'"
         >
         </app-eru-buttons>

@@ -51,7 +51,12 @@
       "status": "Status",
       "formTitle": "Balance Creation",
       "dayCalendarDate": "Date",
-      "sequenceLabel": "Sequence"
+      "sequenceLabel": "Sequence",
+      "values": {
+        "income": "Income: ",
+        "outcome": "Outcome: ",
+        "diff": "Balance: "
+      }
     },
     "billType": {
       "listTitle": "Bill Type List",

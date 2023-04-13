@@ -45,4 +45,8 @@ export class BalanceGridComponent extends BaseListDirective<
       direction: 'asc',
     };
   }
+
+  setMax(max: number): void {
+    this.max = max;
+  }
 }

@@ -69,18 +69,24 @@ export class BalanceFormComponent
       this.defaultValues.sequence == null ? 1 : this.defaultValues.sequence;
 
     this.balanceTypeFormControl = new FormControl(
-      this.defaultValues.balanceType,
+      { value: this.defaultValues.balanceType, disabled: this.id },
       [Validators.required]
     );
 
     this.formGroup = this.formBuilder.group({
       active: [activeDefaultValue, [Validators.required]],
-      sequence: [sequenceDefaultValue, [Validators.required]],
-      dayCalendarDate: [
-        this.defaultValues.dayCalendarDate,
+      sequence: [
+        { value: sequenceDefaultValue, disabled: true },
         [Validators.required],
       ],
-      sourceId: [this.defaultValues.sourceId, [Validators.required]],
+      dayCalendarDate: [
+        { value: this.defaultValues.dayCalendarDate, disabled: this.id },
+        [Validators.required],
+      ],
+      sourceId: [
+        { value: this.defaultValues.sourceId, disabled: this.id },
+        [Validators.required],
+      ],
       categoryId: [this.defaultValues.categoryId, [Validators.required]],
       amount: [this.defaultValues.amount, [Validators.required]],
       code: [
@@ -123,7 +129,7 @@ export class BalanceFormComponent
       return;
     }
 
-    const balanceSave: BalanceSave = this.formGroup.value;
+    const balanceSave: BalanceSave = this.formGroup.getRawValue();
 
     this.balanceService
       .saveBalance(this.id, balanceSave)

@@ -1,0 +1,16 @@
+<mat-card class="card-margin" *ngIf="balanceSum">
+  <mat-chip-listbox aria-label="Fish selection" [selectable]="false">
+    <mat-chip-option color="primary" [highlighted]="true">
+      {{ "finance.balance.values.income" | translate }}
+      {{ getValue(balanceSum, BalanceSumType.INCOME) | currency : "BRL" }}
+    </mat-chip-option>
+    <mat-chip-option color="accent" [highlighted]="true">
+      {{ "finance.balance.values.outcome" | translate }}
+      {{ getValue(balanceSum, BalanceSumType.OUTCOME) | currency : "BRL" }}
+    </mat-chip-option>
+    <mat-chip-option color="warn" [highlighted]="true">
+      {{ "finance.balance.values.diff" | translate }}
+      {{ getValue(balanceSum, BalanceSumType.DIFF) | currency : "BRL" }}
+    </mat-chip-option>
+  </mat-chip-listbox>
+</mat-card>
