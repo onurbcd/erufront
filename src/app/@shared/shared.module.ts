@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-// import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatBadgeModule } from '@angular/material/badge';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatChipsModule } from '@angular/material/chips';
@@ -29,8 +29,8 @@ import { NgSelectModule } from '@ng-select/ng-select';
 import { TranslateModule } from '@ngx-translate/core';
 import { ClipboardModule } from 'ngx-clipboard';
 import { NgxCurrencyModule } from 'ngx-currency';
-import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
 import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
+import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
 import {
   BasicSelectComponent,
   ConfirmDialogComponent,
@@ -65,7 +65,6 @@ export const exportModules = [
   MatDialogModule,
   CommonModule,
   RouterModule,
-  // FlexLayoutModule,
   FormsModule,
   ReactiveFormsModule,
   HttpClientModule,
@@ -95,6 +94,7 @@ export const exportModules = [
   NgxMatSelectSearchModule,
   NgSelectModule,
   NgxMaskDirective,
+  MatBadgeModule,
 ];
 
 export const components = [

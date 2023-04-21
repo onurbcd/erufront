@@ -20,6 +20,7 @@ import {
   ToastService,
 } from '@service';
 import { BaseFormDirective, Debounce } from '@shared';
+import * as moment from 'moment';
 import { Observable, takeUntil } from 'rxjs';
 import { AppConstants } from 'src/app/app-constants';
 
@@ -44,6 +45,14 @@ export class BalanceFormComponent
   balanceTypes: BalanceType[] = Object.values(BalanceType);
 
   balanceTypeFormControl = new FormControl();
+
+  max = moment.utc();
+
+  min = moment.utc({ year: AppConstants.MIN_YEAR, month: 0, day: 1 });
+
+  files: FileList = {} as FileList;
+
+  numberOfFiles = 0;
 
   constructor(
     activatedRoute: ActivatedRoute,
@@ -132,9 +141,15 @@ export class BalanceFormComponent
     const balanceSave: BalanceSave = this.formGroup.getRawValue();
 
     this.balanceService
-      .saveBalance(this.id, balanceSave)
+      .saveBalance(this.id, balanceSave, this.files)
       .pipe(takeUntil(this.unsubscribe$))
       .subscribe(() => this.afterSave(commands));
+  }
+
+  onFileSelected(event: Event): void {
+    const target = event.target as HTMLInputElement;
+    this.files = target.files as FileList;
+    this.numberOfFiles = this.files.length;
   }
 
   private getSources(search: string): void {

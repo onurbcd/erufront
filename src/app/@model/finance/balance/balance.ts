@@ -1,4 +1,4 @@
-import { BalanceType, Prime } from '@model';
+import { BalanceType, Document, Prime } from '@model';
 
 export class Balance extends Prime<string> {
   constructor(
@@ -18,7 +18,7 @@ export class Balance extends Prime<string> {
     public code: string,
     public description: string,
     public balanceType: BalanceType,
-    public documentsIds: string[]
+    public documents: Document[]
   ) {
     super(createdDate, lastModifiedDate, id, name, active);
   }

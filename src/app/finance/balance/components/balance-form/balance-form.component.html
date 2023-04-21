@@ -12,6 +12,8 @@
       [matDatepicker]="picker"
       formControlName="dayCalendarDate"
       readonly
+      [max]="max"
+      [min]="min"
     />
     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker #picker [disabled]="id"></mat-datepicker>
@@ -93,8 +95,27 @@
     [values]="balanceTypes"
   >
   </app-basic-select>
-  <!-- ACTIVE -->
+  <!-- FILES -->
   <div>
+    <input
+      type="file"
+      class="file-input"
+      (change)="onFileSelected($event)"
+      #fileUpload
+      multiple
+    />
+    <button
+      mat-mini-fab
+      color="primary"
+      (click)="fileUpload.click()"
+      [matBadge]="numberOfFiles"
+      matBadgeColor="accent"
+    >
+      <mat-icon>attach_file</mat-icon>
+    </button>
+  </div>
+  <!-- ACTIVE -->
+  <div class="margin-top-20">
     <mat-slide-toggle formControlName="active" color="primary">
       {{ "global.slideToggle." + formGroup.value.active | translate }}
     </mat-slide-toggle>
