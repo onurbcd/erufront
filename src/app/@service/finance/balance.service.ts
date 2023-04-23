@@ -57,7 +57,7 @@ export class BalanceService extends ApiService<
   saveBalance(
     id: string,
     balance: BalanceSave,
-    files: FileList
+    files: File[]
   ): Observable<void> {
     balance.name = AppConstants.BALANCE_NAME;
     const formData = new FormData();
@@ -67,8 +67,10 @@ export class BalanceService extends ApiService<
       new Blob([JSON.stringify(balance)], { type: 'application/json' })
     );
 
-    if (files.length > 0) {
-      formData.append('documents', files[0]);
+    if (files && files.length > 0) {
+      for (let file of files) {
+        formData.append('documents', file);
+      }
     }
 
     return id == null

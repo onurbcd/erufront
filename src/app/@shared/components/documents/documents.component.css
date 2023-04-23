@@ -1,0 +1,27 @@
+.mat-mdc-header-cell {
+  font-weight: bold;
+  font-size: medium;
+  text-align: center;
+}
+
+tr.app-grid-row:hover {
+  background: lightgray;
+}
+
+.selected {
+  background-color: lightgray !important;
+}
+
+.file-input {
+  display: none;
+}
+
+.documents-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.documents-align-number {
+  text-align: right;
+}

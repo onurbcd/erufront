@@ -23,6 +23,17 @@
       "message": "Sequence swaped with success",
       "title": "Swap Position",
       "target": "Target Position"
+    },
+    "documents": {
+      "title": "Manage Documents",
+      "name": "Name",
+      "path": "Path",
+      "mimeType": "Mime Type",
+      "size": "Size",
+      "addFiles": "Add Files",
+      "maxUploadSize": "The total file size cannot exceed {{ maxUploadSize }}",
+      "totalSize": "Total Size",
+      "fileDuplicated": "Cannot duplicate files"
     }
   },
   "home": {
@@ -56,7 +67,8 @@
         "income": "Income: ",
         "outcome": "Outcome: ",
         "diff": "Balance: "
-      }
+      },
+      "documentsManager": "Documents Manager"
     },
     "billType": {
       "listTitle": "Bill Type List",

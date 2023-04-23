@@ -18,8 +18,12 @@ export class ToastService {
     this.showMessage(i18nMessage, 'Success', 'success');
   }
 
-  showError(message: string): void {
-    this.showMessage(message, 'Error', 'error');
+  showError(
+    key: string | string[],
+    interpolateParams?: Object | undefined
+  ): void {
+    const i18nMessage = this.translateService.instant(key, interpolateParams);
+    this.showMessage(i18nMessage, 'Error', 'error');
   }
 
   private showMessage(

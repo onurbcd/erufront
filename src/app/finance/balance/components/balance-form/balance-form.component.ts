@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { MAT_DATE_FORMATS } from '@angular/material/core';
+import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import {
   Balance,
@@ -9,6 +10,8 @@ import {
   BalanceType,
   Category,
   CategoryFilter,
+  DocumentData,
+  DocumentResult,
   Page,
   Source,
   SourceFilter,
@@ -19,10 +22,11 @@ import {
   SourceService,
   ToastService,
 } from '@service';
-import { BaseFormDirective, Debounce } from '@shared';
+import { BaseFormDirective, Debounce, DocumentsComponent } from '@shared';
 import * as moment from 'moment';
 import { Observable, takeUntil } from 'rxjs';
 import { AppConstants } from 'src/app/app-constants';
+import { cloneDeep } from 'lodash';
 
 @Component({
   selector: 'app-balance-form',
@@ -50,7 +54,7 @@ export class BalanceFormComponent
 
   min = moment.utc({ year: AppConstants.MIN_YEAR, month: 0, day: 1 });
 
-  files: FileList = {} as FileList;
+  files: File[] = [];
 
   numberOfFiles = 0;
 
@@ -61,7 +65,8 @@ export class BalanceFormComponent
     private balanceService: BalanceService,
     private formBuilder: FormBuilder,
     private sourceService: SourceService,
-    private categoryService: CategoryService
+    private categoryService: CategoryService,
+    private matDialog: MatDialog
   ) {
     super(activatedRoute, balanceService, toastService, router);
   }
@@ -113,6 +118,10 @@ export class BalanceFormComponent
   protected override afterInit(): void {
     this.getSources(this.defaultValues.sourceName);
     this.getCategories(this.defaultValues.categoryName);
+
+    this.numberOfFiles = this.defaultValues.documents
+      ? this.defaultValues.documents.length
+      : 0;
   }
 
   @Debounce(1000)
@@ -138,7 +147,14 @@ export class BalanceFormComponent
       return;
     }
 
+    const currentDocumentsIds = this.defaultValues.documents
+      ? this.defaultValues.documents
+          .filter((value) => value.id !== '')
+          .map((value) => value.id)
+      : [];
+
     const balanceSave: BalanceSave = this.formGroup.getRawValue();
+    balanceSave.documentsIds = currentDocumentsIds;
 
     this.balanceService
       .saveBalance(this.id, balanceSave, this.files)
@@ -146,10 +162,24 @@ export class BalanceFormComponent
       .subscribe(() => this.afterSave(commands));
   }
 
-  onFileSelected(event: Event): void {
-    const target = event.target as HTMLInputElement;
-    this.files = target.files as FileList;
-    this.numberOfFiles = this.files.length;
+  openDocumentsDialog(event: MouseEvent): void {
+    event.stopPropagation();
+
+    const dialogRef = this.matDialog.open(DocumentsComponent, {
+      data: new DocumentData(this.defaultValues.documents),
+      disableClose: true,
+    });
+
+    dialogRef
+      .afterClosed()
+      .pipe(takeUntil(this.unsubscribe$))
+      .subscribe((documentResult: DocumentResult) => {
+        if (documentResult) {
+          this.defaultValues.documents = cloneDeep(documentResult.documents);
+          this.numberOfFiles = this.defaultValues.documents.length;
+          this.files = cloneDeep(documentResult.files);
+        }
+      });
   }
 
   private getSources(search: string): void {

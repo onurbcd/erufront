@@ -1,3 +1,6 @@
-.file-input {
-  display: none;
+.balance-form-files-active {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
 }

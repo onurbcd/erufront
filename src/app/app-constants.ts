@@ -71,6 +71,8 @@ export class AppConstants {
 
   public static BALANCE_NAME = 'bogus';
 
+  public static MAX_UPLOAD_SIZE = 10485760;
+
   // VALIDATORS
 
   public static LENGTH_3 = 3;

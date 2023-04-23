@@ -35,6 +35,7 @@ import {
   BasicSelectComponent,
   ConfirmDialogComponent,
   CopyButtonComponent,
+  DocumentsComponent,
   EruActionsComponent,
   EruButtonsComponent,
   EruInputComponent,
@@ -59,6 +60,8 @@ export const importModules = [
   ClipboardModule,
   MatSelectModule,
   NgxMaskDirective,
+  MatTableModule,
+  MatBadgeModule,
 ];
 
 export const exportModules = [
@@ -101,6 +104,7 @@ export const components = [
   BasicSelectComponent,
   ConfirmDialogComponent,
   CopyButtonComponent,
+  DocumentsComponent,
   EruActionsComponent,
   EruButtonsComponent,
   EruInputComponent,

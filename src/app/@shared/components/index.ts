@@ -1,6 +1,7 @@
 export * from './basic-select';
 export * from './confirm-dialog';
 export * from './copy-button';
+export * from './documents';
 export * from './eru-actions';
 export * from './eru-buttons';
 export * from './eru-input';

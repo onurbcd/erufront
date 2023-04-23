@@ -95,27 +95,18 @@
     [values]="balanceTypes"
   >
   </app-basic-select>
-  <!-- FILES -->
-  <div>
-    <input
-      type="file"
-      class="file-input"
-      (change)="onFileSelected($event)"
-      #fileUpload
-      multiple
-    />
+  <!-- FILES and ACTIVE -->
+  <div class="input-width balance-form-files-active">
     <button
       mat-mini-fab
       color="primary"
-      (click)="fileUpload.click()"
+      (click)="openDocumentsDialog($event)"
       [matBadge]="numberOfFiles"
       matBadgeColor="accent"
+      matTooltip="{{ 'finance.balance.documentsManager' | translate }}"
     >
       <mat-icon>attach_file</mat-icon>
     </button>
-  </div>
-  <!-- ACTIVE -->
-  <div class="margin-top-20">
     <mat-slide-toggle formControlName="active" color="primary">
       {{ "global.slideToggle." + formGroup.value.active | translate }}
     </mat-slide-toggle>
