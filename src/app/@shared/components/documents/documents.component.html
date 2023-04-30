@@ -72,6 +72,14 @@
           >
             <mat-icon color="primary">delete</mat-icon>
           </button>
+          <button
+            *ngIf="element.id !== ''"
+            mat-icon-button
+            matTooltip="{{ 'global.viewFile' | translate }}"
+            (click)="viewDocument($event, element.id)"
+          >
+            <mat-icon color="primary">visibility</mat-icon>
+          </button>
         </td>
         <td mat-footer-cell *matFooterCellDef></td>
       </ng-container>

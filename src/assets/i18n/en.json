@@ -212,6 +212,7 @@
     "yesNo": {
       "true": "Yes",
       "false": "No"
-    }
+    },
+    "viewFile": "View File"
   }
 }

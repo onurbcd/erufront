@@ -4,12 +4,14 @@ import {
   ElementRef,
   Inject,
   LOCALE_ID,
+  OnDestroy,
   ViewChild,
 } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { DocumentData, Document, DocumentResult } from '@model';
-import { ToastService } from '@service';
+import { Document, DocumentData, DocumentResult } from '@model';
+import { DocumentService, ToastService } from '@service';
 import { cloneDeep } from 'lodash';
+import { Subject, takeUntil } from 'rxjs';
 import { AppConstants } from 'src/app/app-constants';
 
 @Component({
@@ -17,7 +19,9 @@ import { AppConstants } from 'src/app/app-constants';
   templateUrl: './documents.component.html',
   styleUrls: ['./documents.component.css'],
 })
-export class DocumentsComponent {
+export class DocumentsComponent implements OnDestroy {
+  private unsubscribe$ = new Subject<void>();
+
   dataSource: Document[] = [];
 
   displayedColumns = ['name', 'path', 'mimeType', 'size', 'config'];
@@ -37,12 +41,18 @@ export class DocumentsComponent {
     @Inject(MAT_DIALOG_DATA) public documentData: DocumentData,
     private matDialogRef: MatDialogRef<DocumentsComponent>,
     private toastService: ToastService,
-    @Inject(LOCALE_ID) public locale: string
+    @Inject(LOCALE_ID) public locale: string,
+    private documentService: DocumentService
   ) {
     if (documentData.documents) {
       this.dataSource = cloneDeep(documentData.documents);
       this.calculateIndicators();
     }
+  }
+
+  ngOnDestroy(): void {
+    this.unsubscribe$.next();
+    this.unsubscribe$.complete();
   }
 
   onFileSelected(event: Event): void {
@@ -124,6 +134,19 @@ export class DocumentsComponent {
 
     const documentResult = new DocumentResult(this.dataSource, this.fileList);
     this.matDialogRef.close(documentResult);
+  }
+
+  viewDocument(event: MouseEvent, id: string): void {
+    event.stopPropagation();
+
+    this.documentService
+      .getFile(id)
+      .pipe(takeUntil(this.unsubscribe$))
+      .subscribe((blob) => {
+        const objectUrl = URL.createObjectURL(blob);
+        window.open(objectUrl, '_blank');
+        URL.revokeObjectURL(objectUrl);
+      });
   }
 
   private fileDuplicated(file: File): boolean {

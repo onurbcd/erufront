@@ -111,4 +111,8 @@ export class AppConstants {
   public static FINANCE_SOURCE_URL = '/source';
 
   public static FINANCE_BALANCE_URL = '/balance';
+
+  // OTHER SERVICES
+
+  public static DOCUMENT_URL = '/document';
 }
