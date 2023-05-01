@@ -22,3 +22,8 @@
 
     - https://www.npmjs.com/package/ngx-mask
     - npm i ngx-mask --save
+
+-> ngx-currency
+
+    - https://www.npmjs.com/package/ngx-currency
+    - npm i ngx-currency --save
