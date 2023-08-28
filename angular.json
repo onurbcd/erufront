@@ -111,7 +111,6 @@
       }
     }
   },
-  "defaultProject": "erufront",
   "cli": {
     "defaultCollection": "@angular-eslint/schematics"
   }

@@ -1,4 +1,4 @@
-import { CurrencyMaskConfig, CurrencyMaskInputMode } from 'ngx-currency';
+import { NgxCurrencyConfig, NgxCurrencyInputMode } from 'ngx-currency';
 
 export class AppConstants {
   // MISCELLANEOUS
@@ -15,7 +15,7 @@ export class AppConstants {
 
   public static MIN_YEAR = 2013;
 
-  public static POSITIVE_CURRENCY_MASK_CONFIG: CurrencyMaskConfig = {
+  public static POSITIVE_CURRENCY_MASK_CONFIG: NgxCurrencyConfig = {
     align: 'left',
     allowNegative: false,
     allowZero: false,
@@ -27,10 +27,10 @@ export class AppConstants {
     nullable: true,
     min: 0.0001,
     max: 999999999999999,
-    inputMode: CurrencyMaskInputMode.FINANCIAL,
+    inputMode: NgxCurrencyInputMode.Financial,
   };
 
-  public static CURRENCY_MASK_CONFIG: CurrencyMaskConfig = {
+  public static CURRENCY_MASK_CONFIG: NgxCurrencyConfig = {
     align: 'left',
     allowNegative: true,
     allowZero: true,
@@ -42,7 +42,7 @@ export class AppConstants {
     nullable: true,
     min: -999999999999999,
     max: 999999999999999,
-    inputMode: CurrencyMaskInputMode.FINANCIAL,
+    inputMode: NgxCurrencyInputMode.Financial,
   };
 
   public static APP_DAY_FORMAT = {

@@ -28,7 +28,7 @@ import { RouterModule } from '@angular/router';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { TranslateModule } from '@ngx-translate/core';
 import { ClipboardModule } from 'ngx-clipboard';
-import { NgxCurrencyModule } from 'ngx-currency';
+import { NgxCurrencyDirective } from 'ngx-currency';
 import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
 import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
 import {
@@ -62,6 +62,7 @@ export const importModules = [
   NgxMaskDirective,
   MatTableModule,
   MatBadgeModule,
+  NgxCurrencyDirective,
 ];
 
 export const exportModules = [
@@ -93,7 +94,7 @@ export const exportModules = [
   MatDatepickerModule,
   ClipboardModule,
   MatProgressBarModule,
-  NgxCurrencyModule,
+  NgxCurrencyDirective,
   NgxMatSelectSearchModule,
   NgSelectModule,
   NgxMaskDirective,
