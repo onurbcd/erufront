@@ -16,7 +16,13 @@ export class BillTypeGridComponent extends BaseListDirective<
   BillTypeFilter,
   string
 > {
-  displayedColumns: string[] = ['name', 'lastModifiedDate', 'active', 'config'];
+  displayedColumns: string[] = [
+    'name',
+    'path',
+    'lastModifiedDate',
+    'active',
+    'config',
+  ];
 
   constructor(
     router: Router,

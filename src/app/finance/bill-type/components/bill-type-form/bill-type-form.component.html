@@ -6,6 +6,13 @@
       formControlName="name"
     />
   </mat-form-field>
+  <mat-form-field class="input-width">
+    <input
+      matInput
+      placeholder="{{ 'finance.billType.path' | translate }}"
+      formControlName="path"
+    />
+  </mat-form-field>
   <mat-slide-toggle formControlName="active" color="primary">
     {{ "global.slideToggle." + formGroup.value.active | translate }}
   </mat-slide-toggle>

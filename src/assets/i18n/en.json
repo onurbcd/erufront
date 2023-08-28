@@ -75,7 +75,8 @@
       "name": "Name",
       "lastModifiedDate": "Updated At",
       "status": "Status",
-      "formTitle": "Bill Type Creation"
+      "formTitle": "Bill Type Creation",
+      "path": "Path"
     },
     "budget": {
       "listTitle": "Budget List",

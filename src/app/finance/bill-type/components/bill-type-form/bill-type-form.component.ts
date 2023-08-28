@@ -38,6 +38,10 @@ export class BillTypeFormComponent
           Validators.maxLength(AppConstants.LENGTH_50),
         ],
       ],
+      path: [
+        this.defaultValues.path,
+        [Validators.required, Validators.maxLength(AppConstants.LENGTH_250)],
+      ],
       active: [activeDefaultValue, [Validators.required]],
     });
   }
