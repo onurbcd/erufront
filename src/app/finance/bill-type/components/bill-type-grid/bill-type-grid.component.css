@@ -6,11 +6,12 @@
 }
 
 .mat-column-name,
-.mat-column-path {
+.mat-column-path,
+.mat-column-category {
   word-wrap: break-word !important;
   white-space: unset !important;
-  flex: 0 0 20% !important;
-  width: 20% !important;
+  flex: 0 0 17% !important;
+  width: 17% !important;
   overflow-wrap: break-word;
   word-wrap: break-word;
   word-break: break-word;
@@ -26,8 +27,8 @@
 .mat-column-active {
   word-wrap: break-word !important;
   white-space: unset !important;
-  flex: 0 0 20% !important;
-  width: 20% !important;
+  flex: 0 0 17% !important;
+  width: 17% !important;
   overflow-wrap: break-word;
   word-wrap: break-word;
   word-break: break-word;
@@ -42,8 +43,8 @@
 .mat-column-config {
   word-wrap: break-word !important;
   white-space: unset !important;
-  flex: 0 0 20% !important;
-  width: 20% !important;
+  flex: 0 0 15% !important;
+  width: 15% !important;
   overflow-wrap: break-word;
   word-wrap: break-word;
   word-break: break-word;

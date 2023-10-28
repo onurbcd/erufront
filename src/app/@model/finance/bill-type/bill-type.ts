@@ -7,7 +7,9 @@ export class BillType extends Prime<string> {
     id: string,
     name: string,
     active: boolean,
-    public path: string
+    public path: string,
+    public categoryId: string,
+    public categoryName: string
   ) {
     super(createdDate, lastModifiedDate, id, name, active);
   }

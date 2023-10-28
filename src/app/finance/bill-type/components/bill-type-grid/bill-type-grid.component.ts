@@ -19,6 +19,7 @@ export class BillTypeGridComponent extends BaseListDirective<
   displayedColumns: string[] = [
     'name',
     'path',
+    'category',
     'lastModifiedDate',
     'active',
     'config',

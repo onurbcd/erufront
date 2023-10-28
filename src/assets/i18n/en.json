@@ -76,7 +76,10 @@
       "lastModifiedDate": "Updated At",
       "status": "Status",
       "formTitle": "Bill Type Creation",
-      "path": "Path"
+      "path": "Path",
+      "category": "Category",
+      "categoryId": "Category",
+      "searchCategories": "Search Category By Name"
     },
     "budget": {
       "listTitle": "Budget List",
