@@ -92,6 +92,9 @@ export class AppConstants {
   public static URL_PATTERN: RegExp =
     /^(https?|ftp|file):\/\/[-a-zA-Z0-9+&@#/%?=~_|!:,.;]*[-a-zA-Z0-9+&@#/%=~_|]/;
 
+  public static PATH_PATTERN: RegExp =
+    /^[a-z|A-Z|0-9|-]+$/;
+
   // VAULT - SECRET
 
   public static VAULT_SECRET_BASE_URL = '/secret';

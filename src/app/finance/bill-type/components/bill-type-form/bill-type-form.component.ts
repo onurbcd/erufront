@@ -51,7 +51,12 @@ export class BillTypeFormComponent
       ],
       path: [
         this.defaultValues.path,
-        [Validators.required, Validators.maxLength(AppConstants.LENGTH_250)],
+        [
+          Validators.required,
+          Validators.minLength(AppConstants.LENGTH_3),
+          Validators.maxLength(AppConstants.LENGTH_250),
+          Validators.pattern(AppConstants.PATH_PATTERN),
+        ],
       ],
       active: [activeDefaultValue, [Validators.required]],
       categoryId: [this.defaultValues.categoryId, [Validators.required]],
