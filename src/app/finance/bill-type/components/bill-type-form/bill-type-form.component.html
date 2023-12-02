@@ -1,19 +1,13 @@
 <form [formGroup]="formGroup" novalidate class="eru-form">
   <!-- NAME -->
   <mat-form-field class="input-width">
-    <input
-      matInput
-      placeholder="{{ 'finance.billType.name' | translate }}"
-      formControlName="name"
-    />
+    <mat-label translate>finance.billType.name</mat-label>
+    <input matInput formControlName="name" />
   </mat-form-field>
   <!-- PATH -->
   <mat-form-field class="input-width">
-    <input
-      matInput
-      placeholder="{{ 'finance.billType.path' | translate }}"
-      formControlName="path"
-    />
+    <mat-label translate>finance.billType.path</mat-label>
+    <input matInput formControlName="path" />
   </mat-form-field>
   <!-- CATEGORY ID -->
   <mat-form-field class="input-width">

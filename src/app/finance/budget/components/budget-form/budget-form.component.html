@@ -1,47 +1,91 @@
 <form [formGroup]="formGroup" novalidate class="eru-form">
+  <!-- SEQUENCE -->
   <mat-form-field class="input-width">
-    <input matInput placeholder="{{ 'finance.budget.sequence' | translate }}" formControlName="sequence"
-      [readonly]="true" />
+    <mat-label translate>finance.budget.sequence</mat-label>
+    <input matInput formControlName="sequence" [readonly]="true" />
   </mat-form-field>
+  <!-- NAME -->
   <mat-form-field class="input-width">
-    <input matInput placeholder="{{ 'finance.budget.name' | translate }}" formControlName="name" />
+    <mat-label translate>finance.budget.name</mat-label>
+    <input matInput formControlName="name" />
   </mat-form-field>
-  <app-basic-select [label]="'finance.budget.refYear'" [selectFormControl]="refYearFormControl" [values]="years">
+  <!-- REF YEAR -->
+  <app-basic-select
+    [label]="'finance.budget.refYear'"
+    [selectFormControl]="refYearFormControl"
+    [values]="years"
+  >
   </app-basic-select>
-  <app-basic-select [label]="'finance.budget.refMonth'" [selectFormControl]="refMonthFormControl" [values]="months">
+  <!-- REF MONTH -->
+  <app-basic-select
+    [label]="'finance.budget.refMonth'"
+    [selectFormControl]="refMonthFormControl"
+    [values]="months"
+  >
   </app-basic-select>
+  <!-- BILL TYPE -->
   <mat-form-field class="input-width">
-    <mat-label>{{ 'finance.budget.billType' | translate }}</mat-label>
+    <mat-label translate>finance.budget.billType</mat-label>
     <mat-select #billTypeSelect formControlName="billTypeId">
       <div (mouseleave)="billTypeSelect.close()">
         <mat-option>
-          <ngx-mat-select-search ngModel [ngModelOptions]="{standalone: true}" (ngModelChange)="searchBillType($event)"
+          <ngx-mat-select-search
+            ngModel
+            [ngModelOptions]="{ standalone: true }"
+            (ngModelChange)="searchBillType($event)"
             placeholderLabel="{{ 'finance.budget.searchBillType' | translate }}"
-            noEntriesFoundLabel="{{ 'global.noEntriesFoundLabel' | translate }}">
+            noEntriesFoundLabel="{{ 'global.noEntriesFoundLabel' | translate }}"
+          >
           </ngx-mat-select-search>
         </mat-option>
-        <mat-option *ngFor="let billType of (billTypes$ | async)?.content" [value]="billType.id">
+        <mat-option
+          *ngFor="let billType of (billTypes$ | async)?.content"
+          [value]="billType.id"
+        >
           {{ billType.name }}
         </mat-option>
       </div>
     </mat-select>
-    <button *ngIf="formGroup.value.billTypeId" matSuffix mat-icon-button
-      matTooltip="{{ 'button.clear' | translate }}" (click)="clear('billTypeId')">
+    <button
+      *ngIf="formGroup.value.billTypeId"
+      matSuffix
+      mat-icon-button
+      matTooltip="{{ 'button.clear' | translate }}"
+      (click)="clear('billTypeId')"
+    >
       <mat-icon>close</mat-icon>
     </button>
   </mat-form-field>
+  <!-- AMOUNT -->
   <mat-form-field class="input-width">
-    <input matInput placeholder="{{ 'finance.budget.amount' | translate }}" formControlName="amount" currencyMask
-      [options]="currencyMaskConfig" />
+    <mat-label translate>finance.budget.amount</mat-label>
+    <input
+      matInput
+      formControlName="amount"
+      currencyMask
+      [options]="currencyMaskConfig"
+    />
   </mat-form-field>
   <div>
+    <!-- ACTIVE -->
     <mat-slide-toggle formControlName="active" color="primary">
       {{ "global.slideToggle." + formGroup.value.active | translate }}
     </mat-slide-toggle>
-    <mat-slide-toggle formControlName="paid" color="primary" class="margin-left-20">
+    <!-- PAID -->
+    <mat-slide-toggle
+      formControlName="paid"
+      color="primary"
+      class="margin-left-20"
+    >
       {{ "finance.budget.slideToggle." + formGroup.value.paid | translate }}
     </mat-slide-toggle>
   </div>
-  <app-form-buttons [disabled]="formGroup.invalid" [link]="'/budget'" (save)="save($event)" class="margin-top-20">
+  <!-- BUTTONS -->
+  <app-form-buttons
+    [disabled]="formGroup.invalid"
+    [link]="'/budget'"
+    (save)="save($event)"
+    class="margin-top-20"
+  >
   </app-form-buttons>
 </form>

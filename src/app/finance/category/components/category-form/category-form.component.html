@@ -1,45 +1,89 @@
 <form [formGroup]="formGroup" novalidate class="eru-form">
-    <mat-form-field class="input-width">
-        <input matInput placeholder="{{ 'finance.category.name' | translate }}" formControlName="name" />
-    </mat-form-field>
-    <mat-form-field class="input-width">
-        <input matInput placeholder="{{ 'finance.category.description' | translate }}" formControlName="description" />
-    </mat-form-field>
-    <mat-form-field class="input-width" *ngIf="!id">
-        <mat-label>{{ 'finance.category.parent' | translate }}</mat-label>
-        <mat-select #parentSelect formControlName="parentId" readonly>
-            <div (mouseleave)="parentSelect.close()">
-                <mat-option>
-                    <ngx-mat-select-search ngModel [ngModelOptions]="{standalone: true}"
-                        (ngModelChange)="searchCategory($event)"
-                        placeholderLabel="{{ 'finance.category.searchCategory' | translate }}"
-                        noEntriesFoundLabel="{{ 'global.noEntriesFoundLabel' | translate }}">
-                    </ngx-mat-select-search>
-                </mat-option>
-                <mat-option *ngFor="let category of (categories$ | async)?.content" [value]="category.id">
-                    {{ category.name }}
-                </mat-option>
-            </div>
-        </mat-select>
-        <button *ngIf="formGroup.value.parentId" matSuffix mat-icon-button
-            matTooltip="{{ 'button.clear' | translate }}" (click)="clear('parentId')">
-            <mat-icon>close</mat-icon>
-        </button>
-    </mat-form-field>
-    <mat-form-field class="input-width" *ngIf="id">
-        <input matInput placeholder="{{ 'finance.category.parent' | translate }}" formControlName="parentName"
-            [readonly]="true" />
-    </mat-form-field>
-    <mat-form-field class="input-width">
-        <input matInput placeholder="{{ 'finance.category.level' | translate }}" formControlName="level"
-            [readonly]="true" />
-    </mat-form-field>
-    <mat-slide-toggle formControlName="lastBranch" color="primary" (change)="lastBranchChange($event)">
-        {{ "finance.category.lastBranchSlideToggle." + formGroup.value.lastBranch | translate }}
+  <!-- NAME -->
+  <mat-form-field class="input-width">
+    <mat-label translate>finance.category.name</mat-label>
+    <input matInput formControlName="name" />
+  </mat-form-field>
+  <!-- DESCRIPTION -->
+  <mat-form-field class="input-width">
+    <mat-label translate>finance.category.description</mat-label>
+    <textarea
+      matInput
+      formControlName="description"
+      cdkTextareaAutosize
+    ></textarea>
+  </mat-form-field>
+  <!-- PARENT -->
+  <mat-form-field class="input-width" *ngIf="!id">
+    <mat-label translate>finance.category.parent</mat-label>
+    <mat-select #parentSelect formControlName="parentId" readonly>
+      <div (mouseleave)="parentSelect.close()">
+        <mat-option>
+          <ngx-mat-select-search
+            ngModel
+            [ngModelOptions]="{ standalone: true }"
+            (ngModelChange)="searchCategory($event)"
+            placeholderLabel="{{
+              'finance.category.searchCategory' | translate
+            }}"
+            noEntriesFoundLabel="{{ 'global.noEntriesFoundLabel' | translate }}"
+          >
+          </ngx-mat-select-search>
+        </mat-option>
+        <mat-option
+          *ngFor="let category of (categories$ | async)?.content"
+          [value]="category.id"
+        >
+          {{ category.name }}
+        </mat-option>
+      </div>
+    </mat-select>
+    <button
+      *ngIf="formGroup.value.parentId"
+      matSuffix
+      mat-icon-button
+      matTooltip="{{ 'button.clear' | translate }}"
+      (click)="clear('parentId')"
+    >
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
+  <mat-form-field class="input-width" *ngIf="id">
+    <mat-label translate>finance.category.parent</mat-label>
+    <input matInput formControlName="parentName" [readonly]="true" />
+  </mat-form-field>
+  <!-- LEVEL -->
+  <mat-form-field class="input-width">
+    <mat-label translate>finance.category.level</mat-label>
+    <input matInput formControlName="level" [readonly]="true" />
+  </mat-form-field>
+  <div>
+    <!-- LAST BRANCH -->
+    <mat-slide-toggle
+      formControlName="lastBranch"
+      color="primary"
+      (change)="lastBranchChange($event)"
+    >
+      {{
+        "finance.category.lastBranchSlideToggle." + formGroup.value.lastBranch
+          | translate
+      }}
     </mat-slide-toggle>
-    <mat-slide-toggle formControlName="active" color="primary" class="margin-top-20">
-        {{ "global.slideToggle." + formGroup.value.active | translate }}
+    <!-- ACTIVE -->
+    <mat-slide-toggle
+      formControlName="active"
+      color="primary"
+      class="margin-left-20"
+    >
+      {{ "global.slideToggle." + formGroup.value.active | translate }}
     </mat-slide-toggle>
-    <app-form-buttons [disabled]="formGroup.invalid" [link]="'/category'" (save)="save($event)" class="margin-top-20">
-    </app-form-buttons>
+  </div>
+  <!-- BUTTONS -->
+  <app-form-buttons
+    [disabled]="formGroup.invalid"
+    [link]="'/category'"
+    (save)="save($event)"
+    class="margin-top-20"
+  >
+  </app-form-buttons>
 </form>

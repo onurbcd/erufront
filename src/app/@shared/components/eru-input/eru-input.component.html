@@ -1,7 +1,7 @@
 <mat-form-field class="input-width">
+  <mat-label>{{ placeholder | translate }}</mat-label>
   <input
     matInput
-    placeholder="{{ placeholder | translate }}"
     [formControl]="inputFormControl"
     (input)="restart.next(true)"
     (keydown.enter)="$event.preventDefault(); search.next()"

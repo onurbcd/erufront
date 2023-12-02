@@ -1,67 +1,114 @@
 <form [formGroup]="formGroup" novalidate>
-    <mat-expansion-panel>
-        <mat-expansion-panel-header>
-            <mat-panel-title translate>
-                global.filters
-                <mat-icon routerLink="/category/new" matTooltip="{{ 'button.new' | translate }}" color="primary">add
-                </mat-icon>
-            </mat-panel-title>
-        </mat-expansion-panel-header>
-        <mat-grid-list cols="3" rowHeight="75">
-            <mat-grid-tile>
-                <app-eru-input [placeholder]="'finance.category.search'" [inputFormControl]="searchFormControl"
-                    (restart)="restart.next($event)" (search)="filterSearch()" (clear)="filterClear('search')">
-                </app-eru-input>
-            </mat-grid-tile>
-            <mat-grid-tile>
-                <app-filter-status [statusFormControl]="activeFormControl" [translation]="'global.radioButton'"
-                    (search)="filterSearch()"></app-filter-status>
-            </mat-grid-tile>
-            <mat-grid-tile>
-                <mat-form-field class="input-width">
-                    <mat-label>{{ 'finance.category.parent' | translate }}</mat-label>
-                    <mat-select #parentSelect formControlName="parentId">
-                        <div (mouseleave)="parentSelect.close()">
-                            <mat-option>
-                                <ngx-mat-select-search ngModel [ngModelOptions]="{standalone: true}"
-                                    (ngModelChange)="searchCategory($event)"
-                                    placeholderLabel="{{ 'finance.category.searchCategory' | translate }}"
-                                    noEntriesFoundLabel="{{ 'global.noEntriesFoundLabel' | translate }}">
-                                </ngx-mat-select-search>
-                            </mat-option>
-                            <mat-option *ngFor="let category of (categories$ | async)?.content" [value]="category.id"
-                                (onSelectionChange)="filterSearch()">
-                                {{ category.name }}
-                            </mat-option>
-                        </div>
-                    </mat-select>
-                    <button *ngIf="formGroup.value.parentId" matSuffix mat-icon-button
-                        matTooltip="{{ 'button.clear' | translate }}" (click)="filterClear('parentId')">
-                        <mat-icon>close</mat-icon>
-                    </button>
-                </mat-form-field>
-            </mat-grid-tile>
-            <mat-grid-tile>
-                <mat-form-field class="input-width">
-                    <input matInput placeholder="{{ 'finance.category.level' | translate }}" formControlName="level"
-                        type="number" min="1" max="32767" step="1" pattern="\d+" (input)="restart.next(true)"
-                        (keydown.enter)="$event.preventDefault(); filterSearch()" />
-                    <button *ngIf="formGroup.value.level" matSuffix mat-icon-button
-                        matTooltip="{{ 'button.clear' | translate }}" (click)="filterClear('level')">
-                        <mat-icon>close</mat-icon>
-                    </button>
-                </mat-form-field>
-            </mat-grid-tile>
-            <mat-grid-tile>
-                <app-filter-status [statusFormControl]="lastBranchFormControl"
-                    [translation]="'finance.category.lastBranchRadioButton'" (search)="filterSearch()">
-                </app-filter-status>
-            </mat-grid-tile>
-            <mat-grid-tile colspan="3">
-                <app-eru-buttons [searchDisabled]="formGroup.invalid" (search)="filterSearch()"
-                    [link]="'/category/new'">
-                </app-eru-buttons>
-            </mat-grid-tile>
-        </mat-grid-list>
-    </mat-expansion-panel>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title translate>
+        global.filters
+        <mat-icon
+          routerLink="/category/new"
+          matTooltip="{{ 'button.new' | translate }}"
+          color="primary"
+          >add
+        </mat-icon>
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <mat-grid-list cols="3" rowHeight="75">
+      <mat-grid-tile>
+        <app-eru-input
+          [placeholder]="'finance.category.search'"
+          [inputFormControl]="searchFormControl"
+          (restart)="restart.next($event)"
+          (search)="filterSearch()"
+          (clear)="filterClear('search')"
+        >
+        </app-eru-input>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <app-filter-status
+          [statusFormControl]="activeFormControl"
+          [translation]="'global.radioButton'"
+          (search)="filterSearch()"
+        ></app-filter-status>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <mat-form-field class="input-width">
+          <mat-label>{{ "finance.category.parent" | translate }}</mat-label>
+          <mat-select #parentSelect formControlName="parentId">
+            <div (mouseleave)="parentSelect.close()">
+              <mat-option>
+                <ngx-mat-select-search
+                  ngModel
+                  [ngModelOptions]="{ standalone: true }"
+                  (ngModelChange)="searchCategory($event)"
+                  placeholderLabel="{{
+                    'finance.category.searchCategory' | translate
+                  }}"
+                  noEntriesFoundLabel="{{
+                    'global.noEntriesFoundLabel' | translate
+                  }}"
+                >
+                </ngx-mat-select-search>
+              </mat-option>
+              <mat-option
+                *ngFor="let category of (categories$ | async)?.content"
+                [value]="category.id"
+                (onSelectionChange)="filterSearch()"
+              >
+                {{ category.name }}
+              </mat-option>
+            </div>
+          </mat-select>
+          <button
+            *ngIf="formGroup.value.parentId"
+            matSuffix
+            mat-icon-button
+            matTooltip="{{ 'button.clear' | translate }}"
+            (click)="filterClear('parentId')"
+          >
+            <mat-icon>close</mat-icon>
+          </button>
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <mat-form-field class="input-width">
+          <mat-label translate>finance.category.level</mat-label>
+          <input
+            matInput
+            formControlName="level"
+            type="number"
+            min="1"
+            max="32767"
+            step="1"
+            pattern="\d+"
+            (input)="restart.next(true)"
+            (keydown.enter)="$event.preventDefault(); filterSearch()"
+          />
+          <button
+            *ngIf="formGroup.value.level"
+            matSuffix
+            mat-icon-button
+            matTooltip="{{ 'button.clear' | translate }}"
+            (click)="filterClear('level')"
+          >
+            <mat-icon>close</mat-icon>
+          </button>
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <app-filter-status
+          [statusFormControl]="lastBranchFormControl"
+          [translation]="'finance.category.lastBranchRadioButton'"
+          (search)="filterSearch()"
+        >
+        </app-filter-status>
+      </mat-grid-tile>
+      <mat-grid-tile colspan="3">
+        <app-eru-buttons
+          [searchDisabled]="formGroup.invalid"
+          (search)="filterSearch()"
+          [link]="'/category/new'"
+        >
+        </app-eru-buttons>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </mat-expansion-panel>
 </form>
