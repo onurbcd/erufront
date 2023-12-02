@@ -52,6 +52,11 @@ const routes: Routes = [
     loadChildren: () =>
       import('./finance/balance/balance.module').then((m) => m.BalanceModule),
   },
+  {
+    path: 'bill',
+    loadChildren: () =>
+      import('./finance/bill/bill.module').then((m) => m.BillModule),
+  },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
 ];
 

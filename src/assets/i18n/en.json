@@ -11,7 +11,8 @@
       "day": "Day",
       "incomeSource": "Income Source",
       "source": "Source",
-      "balance": "Balance"
+      "balance": "Balance",
+      "bill": "Bill"
     }
   },
   "shared": {
