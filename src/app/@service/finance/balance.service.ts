@@ -59,7 +59,7 @@ export class BalanceService extends ApiService<
     balance: BalanceSave,
     files: File[]
   ): Observable<void> {
-    balance.name = AppConstants.BALANCE_NAME;
+    balance.name = AppConstants.BOGUS_NAME;
     const formData = new FormData();
 
     formData.append(

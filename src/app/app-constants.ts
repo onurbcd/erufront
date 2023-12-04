@@ -69,7 +69,7 @@ export class AppConstants {
     },
   };
 
-  public static BALANCE_NAME = 'bogus';
+  public static BOGUS_NAME = 'bogus';
 
   public static MAX_UPLOAD_SIZE = 10485760;
 
@@ -114,6 +114,8 @@ export class AppConstants {
   public static FINANCE_SOURCE_URL = '/source';
 
   public static FINANCE_BALANCE_URL = '/balance';
+
+  public static FINANCE_BILL_URL = '/bill';
 
   // OTHER SERVICES
 
