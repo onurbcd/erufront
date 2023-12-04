@@ -2,5 +2,8 @@ export * from './balance-sum-type';
 export * from './balance-type';
 export * from './currency-type';
 export * from './direction.enum';
+export * from './document-type';
+export * from './payment-type';
+export * from './reference-type';
 export * from './source-type';
 export * from './sum-type';
