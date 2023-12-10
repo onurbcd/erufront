@@ -194,7 +194,8 @@
     "up": "Up",
     "down": "Down",
     "swapPosition": "Swap Position",
-    "deleteAll": "Delete All"
+    "deleteAll": "Delete All",
+    "openBill": "Open Bill"
   },
   "global": {
     "slideToggle": {
