@@ -34,7 +34,8 @@
       "addFiles": "Add Files",
       "maxUploadSize": "The total file size cannot exceed {{ maxUploadSize }}",
       "totalSize": "Total Size",
-      "fileDuplicated": "Cannot duplicate files"
+      "fileDuplicated": "Cannot duplicate files",
+      "singleFile": "Cannot add multiple files"
     }
   },
   "home": {
@@ -69,6 +70,19 @@
         "outcome": "Outcome: ",
         "diff": "Balance: "
       },
+      "documentsManager": "Documents Manager"
+    },
+    "bill": {
+      "listTitle": "Bill List",
+      "openTitle": "Open Bill",
+      "referenceDayCalendarDate": "Reference Day",
+      "documentDateCalendarDate": "Document Date",
+      "dueDateCalendarDate": "Due Date",
+      "observation": "Observation",
+      "installment": "Installment",
+      "documentType": "Document Type",
+      "budgetId": "Budget",
+      "referenceType": "Reference Type",
       "documentsManager": "Documents Manager"
     },
     "billType": {

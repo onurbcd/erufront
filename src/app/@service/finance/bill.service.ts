@@ -63,7 +63,7 @@ export class BillService extends ApiService<
       queryParams['referenceType'] = `${filter.referenceType}`;
     }
 
-    if (filter.closed) {
+    if (filter.closed != null && filter.closed != undefined) {
       queryParams['closed'] = `${filter.closed}`;
     }
 

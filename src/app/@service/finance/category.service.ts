@@ -26,7 +26,7 @@ export class CategoryService extends ApiService<
       queryParams['level'] = `${filter.level}`;
     }
 
-    if (filter.lastBranch) {
+    if (filter.lastBranch != null && filter.lastBranch != undefined) {
       queryParams['lastBranch'] = `${filter.lastBranch}`;
     }
 

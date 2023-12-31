@@ -1,0 +1,131 @@
+<form [formGroup]="formGroup" novalidate class="eru-form">
+  <!-- REFERENCE DAY CALENDAR DATE -->
+  <mat-form-field class="input-width">
+    <mat-label translate>finance.bill.referenceDayCalendarDate</mat-label>
+    <input
+      matInput
+      [matDatepicker]="referenceDayCalendarDatePicker"
+      formControlName="referenceDayCalendarDate"
+      readonly
+      [max]="max"
+      [min]="min"
+      (dateChange)="referenceDayDateChange($event)"
+    />
+    <mat-datepicker-toggle
+      matSuffix
+      [for]="referenceDayCalendarDatePicker"
+    ></mat-datepicker-toggle>
+    <mat-datepicker #referenceDayCalendarDatePicker></mat-datepicker>
+  </mat-form-field>
+  <!-- DOCUMENT DATE CALENDAR DATE -->
+  <mat-form-field class="input-width">
+    <mat-label translate>finance.bill.documentDateCalendarDate</mat-label>
+    <input
+      matInput
+      [matDatepicker]="documentDateCalendarDatePicker"
+      formControlName="documentDateCalendarDate"
+      readonly
+      [max]="max"
+      [min]="min"
+    />
+    <mat-datepicker-toggle
+      matSuffix
+      [for]="documentDateCalendarDatePicker"
+    ></mat-datepicker-toggle>
+    <mat-datepicker #documentDateCalendarDatePicker></mat-datepicker>
+  </mat-form-field>
+  <!-- DUE DATE CALENDAR DATE -->
+  <mat-form-field class="input-width">
+    <mat-label translate>finance.bill.dueDateCalendarDate</mat-label>
+    <input
+      matInput
+      [matDatepicker]="dueDateCalendarDatePicker"
+      formControlName="dueDateCalendarDate"
+      readonly
+      [min]="min"
+    />
+    <mat-datepicker-toggle
+      matSuffix
+      [for]="dueDateCalendarDatePicker"
+    ></mat-datepicker-toggle>
+    <mat-datepicker #dueDateCalendarDatePicker></mat-datepicker>
+  </mat-form-field>
+  <!-- OBSERVATION -->
+  <mat-form-field class="input-width">
+    <mat-label translate>finance.bill.observation</mat-label>
+    <textarea
+      matInput
+      formControlName="observation"
+      cdkTextareaAutosize
+    ></textarea>
+    <button
+      *ngIf="formGroup.value.observation"
+      matSuffix
+      mat-icon-button
+      matTooltip="{{ 'button.clear' | translate }}"
+      (click)="clear('observation')"
+    >
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
+  <!-- INSTALLMENT -->
+  <mat-form-field class="input-width">
+    <mat-label translate>finance.bill.installment</mat-label>
+    <input matInput type="number" formControlName="installment" />
+    <button
+      *ngIf="formGroup.value.installment"
+      matSuffix
+      mat-icon-button
+      matTooltip="{{ 'button.clear' | translate }}"
+      (click)="clear('installment')"
+    >
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
+  <!-- DOCUMENT TYPE -->
+  <app-basic-select
+    [label]="'finance.bill.documentType'"
+    [selectFormControl]="documentTypeFormControl"
+    [values]="documentTypes"
+  >
+  </app-basic-select>
+  <!-- BUDGET ID -->
+  <mat-form-field class="input-width">
+    <mat-label translate>finance.bill.budgetId</mat-label>
+    <mat-select formControlName="budgetId">
+      <mat-option
+        *ngFor="let budget of (budgets$ | async)?.content"
+        [value]="budget.id"
+      >
+        {{ budget.sequence + " - " + budget.name }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <!-- REFERENCE TYPE -->
+  <app-basic-select
+    [label]="'finance.bill.referenceType'"
+    [selectFormControl]="referenceTypeFormControl"
+    [values]="referenceTypes"
+  >
+  </app-basic-select>
+  <!-- BILL DOCUMENT -->
+  <div class="input-width bill-open-files-active">
+    <button
+      mat-mini-fab
+      color="primary"
+      (click)="openDocumentsDialog($event)"
+      [matBadge]="numberOfFiles"
+      matBadgeColor="accent"
+      matTooltip="{{ 'finance.bill.documentsManager' | translate }}"
+    >
+      <mat-icon>attach_file</mat-icon>
+    </button>
+  </div>
+  <app-form-buttons
+    [disabled]="formGroup.invalid || !file"
+    [link]="'/bill'"
+    (save)="saveBill($event)"
+    class="margin-top-20"
+  >
+  </app-form-buttons>
+</form>

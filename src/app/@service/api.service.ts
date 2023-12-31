@@ -74,7 +74,7 @@ export abstract class ApiService<
       queryParams['search'] = filter.search;
     }
 
-    if (filter.active) {
+    if (filter.active != null && filter.active != undefined) {
       queryParams['active'] = `${filter.active}`;
     }
 

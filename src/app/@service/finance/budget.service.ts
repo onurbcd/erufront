@@ -31,7 +31,7 @@ export class BudgetService extends ApiService<
       queryParams['billTypeId'] = filter.billTypeId;
     }
 
-    if (filter.paid) {
+    if (filter.paid != null && filter.paid != undefined) {
       queryParams['paid'] = `${filter.paid}`;
     }
 

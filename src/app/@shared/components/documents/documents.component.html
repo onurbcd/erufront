@@ -5,7 +5,7 @@
     class="file-input"
     (change)="onFileSelected($event)"
     #fileUpload
-    multiple
+    [multiple]="multipleFiles"
   />
   <button
     mat-mini-fab

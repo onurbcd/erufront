@@ -3,6 +3,7 @@ import {
   Component,
   ElementRef,
   Inject,
+  Input,
   LOCALE_ID,
   OnDestroy,
   ViewChild,
@@ -37,6 +38,8 @@ export class DocumentsComponent implements OnDestroy {
   @ViewChild('fileUpload', { static: false })
   fileUploadRef!: ElementRef;
 
+  @Input() multipleFiles = true;
+
   constructor(
     @Inject(MAT_DIALOG_DATA) public documentData: DocumentData,
     private matDialogRef: MatDialogRef<DocumentsComponent>,
@@ -44,7 +47,7 @@ export class DocumentsComponent implements OnDestroy {
     @Inject(LOCALE_ID) public locale: string,
     private documentService: DocumentService
   ) {
-    if (documentData.documents) {
+    if (documentData.documents && documentData.documents.length > 0) {
       this.dataSource = cloneDeep(documentData.documents);
       this.calculateIndicators();
     }
@@ -59,6 +62,12 @@ export class DocumentsComponent implements OnDestroy {
     const target = event.target as HTMLInputElement;
     const files = target.files as FileList;
     const dataSourceAux = cloneDeep(this.dataSource);
+
+    if (!this.multipleFiles && dataSourceAux.length > 0) {
+      this.toastService.showError('shared.documents.singleFile');
+      this.fileUploadRef.nativeElement.value = '';
+      return;
+    }
 
     for (let i = 0; i < files.length; i++) {
       const file = files[i];
