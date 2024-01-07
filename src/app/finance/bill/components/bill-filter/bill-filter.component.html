@@ -12,4 +12,46 @@
       </div>
     </mat-panel-title>
   </mat-expansion-panel-header>
+  <mat-grid-list cols="3" rowHeight="75">
+    <mat-grid-tile>
+      <app-basic-select
+        [label]="'finance.bill.referenceDayYear'"
+        [selectFormControl]="referenceDayYearFormControl"
+        [values]="years"
+        (selectionChange)="dateSelectionChange()"
+      ></app-basic-select>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <app-basic-select
+        [label]="'finance.bill.referenceDayMonth'"
+        [selectFormControl]="referenceDayMonthFormControl"
+        [values]="months"
+        (selectionChange)="dateSelectionChange()"
+      ></app-basic-select>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <app-eru-input
+        [placeholder]="'finance.bill.search'"
+        [inputFormControl]="searchFormControl"
+        (restart)="restart.next($event)"
+        (search)="filterValueChange()"
+        (clear)="filterClear('search')"
+      ></app-eru-input>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <app-filter-status
+        [statusFormControl]="activeFormControl"
+        [translation]="'global.radioButton'"
+        (search)="filterValueChange()"
+      ></app-filter-status>
+    </mat-grid-tile>
+    <mat-grid-tile colspan="3">
+      <app-eru-buttons
+        [searchDisabled]="formGroup.invalid"
+        (search)="filterValueChange()"
+        [link]="'/bill/open'"
+      >
+      </app-eru-buttons>
+    </mat-grid-tile>
+  </mat-grid-list>
 </mat-expansion-panel>

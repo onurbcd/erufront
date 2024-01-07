@@ -83,7 +83,10 @@
       "documentType": "Document Type",
       "budgetId": "Budget",
       "referenceType": "Reference Type",
-      "documentsManager": "Documents Manager"
+      "documentsManager": "Documents Manager",
+      "referenceDayYear": "Year",
+      "referenceDayMonth": "Month",
+      "search": "Search"
     },
     "billType": {
       "listTitle": "Bill Type List",
