@@ -1,0 +1,78 @@
+::ng-deep .mat-sort-header-container {
+  display: flex;
+  justify-content: center;
+  font-weight: bold;
+  font-size: medium;
+}
+
+.mat-column-dates,
+.mat-column-status {
+  word-wrap: break-word !important;
+  white-space: unset !important;
+  flex: 0 0 14 !important;
+  width: 14% !important;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-word;
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+
+  border-right: 1px solid gainsboro;
+  text-align: center;
+}
+
+.mat-column-value {
+  word-wrap: break-word !important;
+  white-space: unset !important;
+  flex: 0 0 14% !important;
+  width: 14% !important;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-word;
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+
+  border-right: 1px solid gainsboro;
+  text-align: right;
+  padding-right: 5px;
+}
+
+.mat-column-dependencies,
+.mat-column-others,
+.mat-column-observation {
+  word-wrap: break-word !important;
+  white-space: unset !important;
+  flex: 0 0 14% !important;
+  width: 14% !important;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-word;
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+
+  border-right: 1px solid gainsboro;
+  text-align: left;
+  padding-left: 5px;
+}
+
+.mat-column-config {
+  word-wrap: break-word !important;
+  white-space: unset !important;
+  flex: 0 0 16% !important;
+  width: 16% !important;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-word;
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+
+  text-align: center;
+}

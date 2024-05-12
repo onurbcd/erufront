@@ -1,1 +1,6 @@
-<app-bill-filter></app-bill-filter>
+<app-bill-filter
+  (restart)="gridComponent.reset($event)"
+  (search)="gridComponent.search()"
+  (valueChanges)="valueChanges($event)"
+></app-bill-filter>
+<app-bill-grid [value]="billFilter"></app-bill-grid>

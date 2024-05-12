@@ -86,7 +86,28 @@
       "documentsManager": "Documents Manager",
       "referenceDayYear": "Year",
       "referenceDayMonth": "Month",
-      "search": "Search"
+      "search": "Search",
+      "dates": "Dates",
+      "refDate": "Ref: ",
+      "docDate": "Doc: ",
+      "dueDate": "Due: ",
+      "payDate": "Pay: ",
+      "value": "Value",
+      "dependencies": "Dependencies",
+      "billTypeName": "Bill Type: ",
+      "budgetName": "Budget: ",
+      "sourceName": "Source: ",
+      "balanceName": "Balance",
+      "status": "Status",
+      "closedSlideToggle": {
+        "true": "Closed",
+        "false": "Opened"
+      },
+      "others": "Others",
+      "installmentOthers": "Installment: ",
+      "documentTypeOthers": "Document Type: ",
+      "paymentTypeOthers": "Payment Type: ",
+      "referenceTypeOthers": "Reference Type: "
     },
     "billType": {
       "listTitle": "Bill Type List",

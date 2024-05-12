@@ -18,7 +18,7 @@
         [label]="'finance.bill.referenceDayYear'"
         [selectFormControl]="referenceDayYearFormControl"
         [values]="years"
-        (selectionChange)="dateSelectionChange()"
+        (selectionChange)="filterSearch()"
       ></app-basic-select>
     </mat-grid-tile>
     <mat-grid-tile>
@@ -26,7 +26,7 @@
         [label]="'finance.bill.referenceDayMonth'"
         [selectFormControl]="referenceDayMonthFormControl"
         [values]="months"
-        (selectionChange)="dateSelectionChange()"
+        (selectionChange)="filterSearch()"
       ></app-basic-select>
     </mat-grid-tile>
     <mat-grid-tile>
@@ -34,7 +34,7 @@
         [placeholder]="'finance.bill.search'"
         [inputFormControl]="searchFormControl"
         (restart)="restart.next($event)"
-        (search)="filterValueChange()"
+        (search)="filterSearch()"
         (clear)="filterClear('search')"
       ></app-eru-input>
     </mat-grid-tile>
@@ -42,13 +42,13 @@
       <app-filter-status
         [statusFormControl]="activeFormControl"
         [translation]="'global.radioButton'"
-        (search)="filterValueChange()"
+        (search)="filterSearch()"
       ></app-filter-status>
     </mat-grid-tile>
     <mat-grid-tile colspan="3">
       <app-eru-buttons
         [searchDisabled]="formGroup.invalid"
-        (search)="filterValueChange()"
+        (search)="filterSearch()"
         [link]="'/bill/open'"
       >
       </app-eru-buttons>

@@ -1,0 +1,146 @@
+<div class="mat-elevation-z8">
+  <table
+    mat-table
+    [dataSource]="dataSource"
+    matSort
+    (matSortChange)="sort($event)"
+  >
+    <!-- DATES -->
+    <ng-container matColumnDef="dates">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>
+        {{ "finance.bill.dates" | translate }}
+      </th>
+      <td mat-cell *matCellDef="let element">
+        <b>{{ "finance.bill.refDate" | translate }}</b>
+        {{ element.referenceDayCalendarDate }}
+        <br />
+        <b>{{ "finance.bill.docDate" | translate }}</b>
+        {{ element.documentDateCalendarDate }}
+        <br />
+        <b>{{ "finance.bill.dueDate" | translate }}</b>
+        {{ element.dueDateCalendarDate }}
+        <br />
+        <b>{{ "finance.bill.payDate" | translate }}</b>
+        {{
+          element.paymentDateCalendarDate
+            ? element.paymentDateCalendarDate
+            : "xxxx-xx-xx"
+        }}
+      </td>
+    </ng-container>
+    <!-- VALUE -->
+    <ng-container matColumnDef="value">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>
+        {{ "finance.bill.value" | translate }}
+      </th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.value | currency : "BRL" }}
+      </td>
+    </ng-container>
+    <!-- DEPENDENCIES -->
+    <ng-container matColumnDef="dependencies">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>
+        {{ "finance.bill.dependencies" | translate }}
+      </th>
+      <td mat-cell *matCellDef="let element">
+        <b>{{ "finance.bill.billTypeName" | translate }}</b>
+        <a
+          href="{{ '/bill-type/' + element.billTypeId + '/edit' }}"
+          target="_blank"
+        >
+          {{ element.billTypeName }}
+        </a>
+        <br />
+        <b>{{ "finance.bill.budgetName" | translate }}</b>
+        <a href="{{ '/budget/' + element.budgetId + '/edit' }}" target="_blank">
+          {{ element.budgetName }}
+        </a>
+        <br />
+        <b>{{ "finance.bill.sourceName" | translate }}</b>
+        <a href="{{ '/source/' + element.sourceId + '/edit' }}" target="_blank">
+          {{ element.sourceName }}
+        </a>
+        <br />
+        <a
+          href="{{ '/balance/' + element.balanceId + '/edit' }}"
+          target="_blank"
+          *ngIf="element.balanceId"
+        >
+          {{ "finance.bill.balanceName" | translate }}
+        </a>
+      </td>
+    </ng-container>
+    <!-- ACTIVE -->
+    <ng-container matColumnDef="status">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>
+        {{ "finance.bill.status" | translate }}
+      </th>
+      <td mat-cell *matCellDef="let element">
+        <mat-slide-toggle
+          [checked]="element.closed"
+          color="primary"
+          [disabled]="true"
+        >
+          {{ "finance.bill.closedSlideToggle." + element.closed | translate }}
+        </mat-slide-toggle>
+      </td>
+    </ng-container>
+    <!-- OTHERS -->
+    <ng-container matColumnDef="others">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>
+        {{ "finance.bill.others" | translate }}
+      </th>
+      <td mat-cell *matCellDef="let element">
+        <b>{{ "finance.bill.installmentOthers" | translate }}</b>
+        {{ element.installment }}
+        <br />
+        <b>{{ "finance.bill.documentTypeOthers" | translate }}</b>
+        {{ element.documentType }}
+        <br />
+        <b>{{ "finance.bill.paymentTypeOthers" | translate }}</b>
+        {{ element.paymentType }}
+        <br />
+        <b>{{ "finance.bill.referenceTypeOthers" | translate }}</b>
+        {{ element.referenceType }}
+      </td>
+    </ng-container>
+    <!-- OBSERVATION -->
+    <ng-container matColumnDef="observation">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>
+        {{ "finance.bill.observation" | translate }}
+      </th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.observation }}
+      </td>
+    </ng-container>
+    <!-- CONFIG -->
+    <ng-container matColumnDef="config">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let element">
+        <app-eru-actions
+          [id]="element.id"
+          (edit)="edit($event)"
+          (delete)="delete($event)"
+        ></app-eru-actions>
+      </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr
+      mat-row
+      *matRowDef="let row; columns: displayedColumns"
+      class="app-grid-row"
+      [class.selected]="row.selected"
+      (click)="gridRowSelected(row)"
+    ></tr>
+    <tr class="mat-row" *matNoDataRow>
+      <td class="mat-cell" colspan="8" translate>global.noData</td>
+    </tr>
+  </table>
+  <mat-paginator
+    [length]="length"
+    [pageSizeOptions]="pageSizeOptions"
+    (page)="page($event)"
+    showFirstLastButtons
+  >
+  </mat-paginator>
+</div>

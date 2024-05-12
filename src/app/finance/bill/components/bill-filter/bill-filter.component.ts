@@ -1,6 +1,5 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
-import { MatOptionSelectionChange } from '@angular/material/core';
 import { BillFilter } from '@model';
 import { DateService } from '@service';
 import { BaseFilterDirective } from '@shared';
@@ -28,9 +27,6 @@ export class BillFilterComponent
     [Validators.required]
   );
 
-  @Output() filterChange: EventEmitter<BillFilter> =
-    new EventEmitter<BillFilter>();
-
   constructor(
     private formBuilder: FormBuilder,
     private dateService: DateService
@@ -51,25 +47,5 @@ export class BillFilterComponent
       referenceDayYear: this.referenceDayYearFormControl,
       referenceDayMonth: this.referenceDayMonthFormControl,
     });
-  }
-
-  dateSelectionChange(): void {
-    this.filterValueChange();
-  }
-
-  filterSearchWithEvent(event: MatOptionSelectionChange<string>): void {
-    if (!event.isUserInput) {
-      return;
-    }
-
-    this.filterValueChange();
-  }
-
-  filterValueChange(): void {
-    this.filterSearch();
-
-    setTimeout(() => {
-      this.filterChange.next(this.formGroup.value);
-    }, 0);
   }
 }
